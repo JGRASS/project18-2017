@@ -5,6 +5,7 @@ import java.util.Collection;
 public class Grupa {
 
 	private long id;
+	private String naziv;
 	private Collection<Clan> clanovi;
 
 	public long getId() {
@@ -13,6 +14,14 @@ public class Grupa {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
 	}
 
 	public Collection<Clan> getClanovi() {

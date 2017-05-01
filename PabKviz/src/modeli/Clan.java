@@ -2,6 +2,7 @@ package modeli;
 
 public class Clan {
 
+	private long id;
 	private String ime;
 	private String prezime;
 
@@ -12,6 +13,14 @@ public class Clan {
 
 	public Clan() {
 
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getIme() {
@@ -32,7 +41,7 @@ public class Clan {
 
 	@Override
 	public String toString() {
-		return "Clan [ime=" + ime + ", prezime=" + prezime + "]";
+		return "Clan [id=" + id + ", ime=" + ime + ", prezime=" + prezime + "]";
 	}
 
 }
