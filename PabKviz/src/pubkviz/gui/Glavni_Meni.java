@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 
 public class Glavni_Meni extends JFrame {
@@ -26,7 +27,6 @@ public class Glavni_Meni extends JFrame {
 	private JButton button_2;
 	private JButton button_3;
 	private JPanel panel_2;
-	private JTextArea txtrOnoMaloto;
 
 	/**
 	 * Launch the application.
@@ -37,7 +37,6 @@ public class Glavni_Meni extends JFrame {
 				try {
 					Glavni_Meni frame = new Glavni_Meni();
 					frame.setVisible(true);
-					frame.setSize(500,300);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,7 +53,7 @@ public class Glavni_Meni extends JFrame {
 		setBackground(Color.WHITE);
 		setTitle("Pub Kviz");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 436, 271);
+		setBounds(100, 100, 690, 477);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -74,7 +73,8 @@ public class Glavni_Meni extends JFrame {
 	public JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.setBackground(Color.WHITE);
+			panel.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
+			panel.setBackground(new Color(235,235,235));
 			panel.add(getLblPubKviz());
 		}
 		return panel;
@@ -82,7 +82,8 @@ public class Glavni_Meni extends JFrame {
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setBackground(Color.WHITE);
+			panel_1.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
+			panel_1.setBackground(new Color(255,255,255));
 			panel_1.setPreferredSize(new Dimension(150, 10));
 			panel_1.setLayout(null);
 			panel_1.add(getButton());
@@ -181,20 +182,10 @@ public class Glavni_Meni extends JFrame {
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
-			panel_2.setBackground(Color.WHITE);
+			panel_2.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
+			panel_2.setBackground(new Color(245,245,245));
 			panel_2.setLayout(null);
-			panel_2.add(getTxtrOnoMaloto());
 		}
 		return panel_2;
-	}
-	public JTextArea getTxtrOnoMaloto() {
-		if (txtrOnoMaloto == null) {
-			txtrOnoMaloto = new JTextArea();
-			txtrOnoMaloto.setFont(new Font("Calibri", Font.PLAIN, 12));
-			txtrOnoMaloto.setEditable(false);
-			txtrOnoMaloto.setBounds(10, 73, 264, 36);
-			txtrOnoMaloto.setText("Ono malo \u0161to znam zahvaljujem svom neznanju.\r\nJohan Volfgang fon Gete");
-		}
-		return txtrOnoMaloto;
 	}
 }
