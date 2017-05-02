@@ -11,6 +11,11 @@ import java.util.LinkedList;
 import modeli.Clan;
 import modeli.Pitanje;
 
+/**
+ * Klasa uspostavlja vezu i komunicira sa mySQL bazom
+ * 
+ * @version 0.1
+ */
 public class Konektor implements BazaInterfejs {
 
 	/**
@@ -133,7 +138,7 @@ public class Konektor implements BazaInterfejs {
 	}
 
 	/**
-	 * Metoda vraca listu svih clanova iz bazi
+	 * Metoda vraca listu svih clanova iz baze
 	 */
 	@Override
 	public Collection<Clan> vratiClanove() {
@@ -156,7 +161,7 @@ public class Konektor implements BazaInterfejs {
 	}
 
 	/**
-	 * Metoda vraca listu svih pitanja iz bazi
+	 * Metoda vraca listu svih pitanja iz baze
 	 */
 	@Override
 	public Collection<Pitanje> vratiPitanja() {
