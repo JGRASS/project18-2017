@@ -6,13 +6,13 @@ public class Clan {
 	private String ime;
 	private String prezime;
 
+	public Clan() {
+
+	}
+
 	public Clan(String ime, String prezime) {
 		this.ime = ime;
 		this.prezime = prezime;
-	}
-
-	public Clan() {
-
 	}
 
 	public long getId() {

@@ -116,4 +116,23 @@ public class Konektor implements BazaInterfejs {
 		return clanovi;
 	}
 
+	@Override
+	public Collection<Pitanje> vratiPitanja() {
+		Collection<Pitanje> pitanja = new LinkedList<>();
+		otvoriKonekciju();
+		try {
+			ResultSet rezultat = izjava.executeQuery("SELECT * FROM pitanja");
+			while (rezultat.next()) {
+				Pitanje pitanje = new Pitanje();
+				pitanje.setId(rezultat.getLong("id"));
+				pitanje.setTekst(rezultat.getString("tekst"));
+				pitanja.add(pitanje);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		zatvoriKonekciju();
+		return pitanja;
+	}
+
 }
