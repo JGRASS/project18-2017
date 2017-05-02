@@ -13,13 +13,34 @@ import modeli.Pitanje;
 
 public class Konektor implements BazaInterfejs {
 
+	/**
+	 * Putanja do mySQL baze
+	 */
 	private final String baza = "jdbc:mysql://localhost:3306/pabkviz";
+
+	/**
+	 * Username koji se koristi za pristupanje bazi
+	 */
 	private final String username = "root";
+
+	/**
+	 * Password koji se koristi za pristupanje bazi
+	 */
 	private final String password = "root";
 
+	/**
+	 * Konekcija sa bazom
+	 */
 	Connection konekcija = null;
+
+	/**
+	 * Odgovor baze
+	 */
 	Statement izjava = null;
 
+	/**
+	 * Otvaranje konecije sa bazom
+	 */
 	private void otvoriKonekciju() {
 		try {
 			konekcija = DriverManager.getConnection(baza, username, password);
@@ -29,6 +50,9 @@ public class Konektor implements BazaInterfejs {
 		}
 	}
 
+	/**
+	 * Zatvaranje konekcije sa bazom
+	 */
 	private void zatvoriKonekciju() {
 		try {
 			konekcija.close();
@@ -37,6 +61,9 @@ public class Konektor implements BazaInterfejs {
 		}
 	}
 
+	/**
+	 * Metoda dodaje clana koji je ulazni argument u tabelu clanovi u bazu
+	 */
 	@Override
 	public void dodajClana(Clan clan) {
 		otvoriKonekciju();
@@ -53,6 +80,9 @@ public class Konektor implements BazaInterfejs {
 		zatvoriKonekciju();
 	}
 
+	/**
+	 * Metoda brise clana sa zadatim id-om iz tabele clanovi iz baze
+	 */
 	@Override
 	public void izbrisiClana(int id) {
 		otvoriKonekciju();
@@ -67,6 +97,9 @@ public class Konektor implements BazaInterfejs {
 		zatvoriKonekciju();
 	}
 
+	/**
+	 * Metoda dodaje pitanje koje je ulazni argument u tabelu pitanja u bazu
+	 */
 	@Override
 	public void dodajPitanje(Pitanje pitanje) {
 		otvoriKonekciju();
@@ -82,6 +115,9 @@ public class Konektor implements BazaInterfejs {
 		zatvoriKonekciju();
 	}
 
+	/**
+	 * Metoda brise pitanje sa zadatim id-om iz tabele pitanja iz baze
+	 */
 	@Override
 	public void izbrisiPitanje(int id) {
 		otvoriKonekciju();
@@ -96,6 +132,9 @@ public class Konektor implements BazaInterfejs {
 		zatvoriKonekciju();
 	}
 
+	/**
+	 * Metoda vraca listu svih clanova iz bazi
+	 */
 	@Override
 	public Collection<Clan> vratiClanove() {
 		Collection<Clan> clanovi = new LinkedList<>();
@@ -116,6 +155,9 @@ public class Konektor implements BazaInterfejs {
 		return clanovi;
 	}
 
+	/**
+	 * Metoda vraca listu svih pitanja iz bazi
+	 */
 	@Override
 	public Collection<Pitanje> vratiPitanja() {
 		Collection<Pitanje> pitanja = new LinkedList<>();
