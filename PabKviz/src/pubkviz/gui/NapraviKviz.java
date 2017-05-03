@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -56,7 +60,22 @@ public class NapraviKviz extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		contentPane = new JPanel(){
+	        @Override
+	        protected void paintComponent(Graphics grphcs) {
+	            super.paintComponent(grphcs);
+	            Graphics2D g2d = (Graphics2D) grphcs;
+	            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+	                    RenderingHints.VALUE_ANTIALIAS_ON);
+	            GradientPaint gp = new GradientPaint(0, 340,
+						getBackground().brighter().brighter(), 2000, getHeight(),
+	                    getBackground().darker());
+	            g2d.setPaint(gp);
+	            g2d.fillRect( 0,0,getWidth(),  getHeight()); 
+
+	        }
+
+	    };
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -68,7 +87,7 @@ public class NapraviKviz extends JFrame {
 	public JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
-			panel.setBackground(Color.WHITE);
+			panel.setBackground(new Color(255, 255, 255, 155));
 			panel.setPreferredSize(new Dimension(125, 0));
 			panel.add(getBtnUnesiPitanje());
 			panel.add(getBtnObrisiPitanje());
@@ -172,7 +191,7 @@ public class NapraviKviz extends JFrame {
 			btnIzadji.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnIzadji.setBackground(new Color(240, 248, 255));
+					btnIzadji.setBackground(new Color(240, 128, 125));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
