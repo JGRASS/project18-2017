@@ -1,4 +1,4 @@
-package pubkviz.gui;
+package pubkviz.gui.admin;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -23,6 +23,9 @@ import javax.swing.JTextArea;
 import javax.swing.JProgressBar;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Component;
 
 public class NapraviKviz extends JFrame {
 
@@ -32,10 +35,13 @@ public class NapraviKviz extends JFrame {
 	private JButton btnObrisiPitanje;
 	private JButton btnSacuvajTest;
 	private JButton btnIzadji;
-	private JScrollPane scrollPane;
-	private JTextArea textArea;
 	private JPanel panel_1;
 	private JProgressBar progressBar;
+	private JPanel panel_2;
+	private JLabel lblNazivKviza;
+	private JTextField txtNazivKviza;
+	private JButton btnIzmeniPitanje;
+	private JButton btnPogledajTest;
 
 	/**
 	 * Launch the application.
@@ -57,6 +63,7 @@ public class NapraviKviz extends JFrame {
 	 * Create the frame.
 	 */
 	public NapraviKviz() {
+		setTitle("Napravi kviz");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -81,7 +88,7 @@ public class NapraviKviz extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.add(getPanel(), BorderLayout.WEST);
-		contentPane.add(getScrollPane(), BorderLayout.CENTER);
+		contentPane.add(getPanel_2(), BorderLayout.CENTER);
 	}
 
 	public JPanel getPanel() {
@@ -90,9 +97,9 @@ public class NapraviKviz extends JFrame {
 			panel.setBackground(new Color(255, 255, 255, 155));
 			panel.setPreferredSize(new Dimension(125, 0));
 			panel.add(getBtnUnesiPitanje());
+			panel.add(getBtnIzmeniPitanje());
 			panel.add(getBtnObrisiPitanje());
-			panel.add(getBtnSacuvajTest());
-			panel.add(getBtnIzadji());
+			panel.add(getBtnPogledajTest());
 		}
 		return panel;
 	}
@@ -151,6 +158,8 @@ public class NapraviKviz extends JFrame {
 	public JButton getBtnSacuvajTest() {
 		if (btnSacuvajTest == null) {
 			btnSacuvajTest = new JButton("Sacuvaj test");
+			btnSacuvajTest.setEnabled(false);
+			btnSacuvajTest.setBounds(10, 225, 125, 25);
 			getBtnSacuvajTest().setPreferredSize(new Dimension(125, 25));
 			btnSacuvajTest.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnSacuvajTest.setFocusPainted(false);
@@ -179,6 +188,7 @@ public class NapraviKviz extends JFrame {
 	public JButton getBtnIzadji() {
 		if (btnIzadji == null) {
 			btnIzadji = new JButton("Izadji");
+			btnIzadji.setBounds(174, 225, 125, 25);
 			btnIzadji.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				}
@@ -204,20 +214,56 @@ public class NapraviKviz extends JFrame {
 		}
 		return btnIzadji;
 	}
-	public JScrollPane getScrollPane() {
-		if (scrollPane == null) {
-			scrollPane = new JScrollPane();
-			scrollPane.setViewportView(getTextArea());
-		}
-		return scrollPane;
-	}
-	public JTextArea getTextArea() {
-		if (textArea == null) {
-			textArea = new JTextArea();
-			textArea.setEditable(false);
-		}
-		return textArea;
-	}
 
 
+	public JPanel getPanel_2() {
+		if (panel_2 == null) {
+			panel_2 = new JPanel();
+			panel_2.setBackground(Color.WHITE);
+			panel_2.setLayout(null);
+			panel_2.add(getLblNazivKviza());
+			panel_2.add(getTxtNazivKviza());
+			panel_2.add(getBtnSacuvajTest());
+			panel_2.add(getBtnIzadji());
+		}
+		return panel_2;
+	}
+	public JLabel getLblNazivKviza() {
+		if (lblNazivKviza == null) {
+			lblNazivKviza = new JLabel("Naziv kviza");
+			lblNazivKviza.setFont(new Font("Calibri", Font.BOLD, 16));
+			lblNazivKviza.setBounds(10, 24, 125, 14);
+		}
+		return lblNazivKviza;
+	}
+	public JTextField getTxtNazivKviza() {
+		if (txtNazivKviza == null) {
+			txtNazivKviza = new JTextField();
+			txtNazivKviza.setBounds(10, 62, 289, 20);
+			txtNazivKviza.setColumns(10);
+		}
+		return txtNazivKviza;
+	}
+	public JButton getBtnIzmeniPitanje() {
+		if (btnIzmeniPitanje == null) {
+			btnIzmeniPitanje = new JButton("Izmeni");
+			btnIzmeniPitanje.setPreferredSize(new Dimension(125, 25));
+			btnIzmeniPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnIzmeniPitanje.setFocusPainted(false);
+			btnIzmeniPitanje.setBorderPainted(false);
+			btnIzmeniPitanje.setBackground(Color.WHITE);
+		}
+		return btnIzmeniPitanje;
+	}
+	public JButton getBtnPogledajTest() {
+		if (btnPogledajTest == null) {
+			btnPogledajTest = new JButton("Pogledaj test");
+			btnPogledajTest.setPreferredSize(new Dimension(125, 25));
+			btnPogledajTest.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnPogledajTest.setFocusPainted(false);
+			btnPogledajTest.setBorderPainted(false);
+			btnPogledajTest.setBackground(Color.WHITE);
+		}
+		return btnPogledajTest;
+	}
 }
