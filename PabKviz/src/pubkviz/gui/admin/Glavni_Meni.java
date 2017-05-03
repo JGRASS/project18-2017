@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,6 +19,10 @@ import java.awt.RenderingHints;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
@@ -36,6 +42,7 @@ public class Glavni_Meni extends JFrame {
 	private JButton btnNapraviKviz;
 	private JButton btnKrajRada;
 	private JPanel panel_2;
+	private JLabel lblNewLabel;
 
 
 	/**
@@ -201,8 +208,24 @@ public class Glavni_Meni extends JFrame {
 			panel_2.setBackground(new Color(245,245,245));
 			panel_2.setLayout(null);
 			panel_2.add(getLblPubKviz());
+			panel_2.add(getLblNewLabel());
 		}
 		
 		return panel_2;
+	}
+	public JLabel getLblNewLabel() {
+		if (lblNewLabel == null) {
+			try {
+				BufferedImage myPicture = ImageIO.read(Glavni_Meni.class.getResource("/capybara.png"));
+				lblNewLabel = new JLabel(new ImageIcon(myPicture));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+			lblNewLabel.setBounds(23, 11, 1111, 927);
+		}
+		return lblNewLabel;
 	}
 }

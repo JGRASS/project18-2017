@@ -15,6 +15,7 @@ import pubkviz.gui.admin.Glavni_Meni;
 import pubkviz.gui.admin.NapraviKviz;
 import pubkviz.gui.admin.Unos_Pitanja;
 import pubkviz.gui.korisnik.Glavni_Meni_Korisnik;
+import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
 
 public class GUIKontroler {
@@ -25,6 +26,7 @@ public class GUIKontroler {
 	private static NapraviKviz napraviKviz;
 	private static Unos_Pitanja unosPitanja;
 	private static Glavni_Meni_Korisnik glavniProzorKorisnik;
+	private static Pokreni_Kviz kviz;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -168,6 +170,12 @@ public class GUIKontroler {
 		dodajGrupu.setLocationRelativeTo(glavniProzor);
 		dodajGrupu.setVisible(true);
 
+	}
+	public static void pokreniKviz(){
+		kviz = new Pokreni_Kviz();
+		kviz.setVisible(true);
+		kviz.setLocationRelativeTo(glavniProzorKorisnik);
+		
 	}
 
 	public static void izaberiBrojClanova() {

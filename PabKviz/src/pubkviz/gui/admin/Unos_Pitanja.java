@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import pubkviz.gui.GUIKontroler;
@@ -39,7 +40,7 @@ public class Unos_Pitanja extends JDialog {
 	private JButton btnNapraviPItanje;
 	private JLabel lblNapisitePitanje;
 	private JPanel panel_1;
-	private JTextPane txtNapisitePitanje;
+	private JTextArea txtNapisitePitanje;
 
 
 
@@ -155,9 +156,11 @@ public class Unos_Pitanja extends JDialog {
 		}
 		return panel_1;
 	}
-	public JTextPane getTextPane_1() {
+	public JTextArea getTextPane_1() {
 		if (txtNapisitePitanje == null) {
-			txtNapisitePitanje = new JTextPane();
+			txtNapisitePitanje = new JTextArea();
+			txtNapisitePitanje.setLineWrap(true);
+			txtNapisitePitanje.setWrapStyleWord(true);
 			txtNapisitePitanje.setText("");
 		}
 		return txtNapisitePitanje;

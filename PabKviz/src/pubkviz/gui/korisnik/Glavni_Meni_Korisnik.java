@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,10 +19,14 @@ import java.awt.RenderingHints;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import pubkviz.gui.GUIKontroler;
+import pubkviz.gui.admin.Glavni_Meni;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -37,6 +43,8 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	private JPanel panel_2;
 	private JButton btnIzmeniGrupu;
 	private JButton btnIzbrisiGrupu;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 
 
 
@@ -83,6 +91,11 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	public JButton getBtnPokreniKviz() {
 		if (btnPokreniKviz == null) {
 			btnPokreniKviz = new JButton("Pokreni Kviz");
+			btnPokreniKviz.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.pokreniKviz();
+				}
+			});
 			btnPokreniKviz.setBounds(10, 70, 121, 23);
 			btnPokreniKviz.addMouseListener(new MouseAdapter() {
 				@Override
@@ -149,6 +162,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			panel_2.setBackground(new Color(245,245,245));
 			panel_2.setLayout(null);
 			panel_2.add(getLblPubKviz());
+			panel_2.add(getLblNewLabel_1());
 		}
 		
 		return panel_2;
@@ -204,5 +218,21 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			});
 		}
 		return btnIzbrisiGrupu;
+	}
+
+	public JLabel getLblNewLabel_1() {
+		if (lblNewLabel_1 == null) {
+			try {
+				BufferedImage myPicture = ImageIO.read(Glavni_Meni.class.getResource("/capybara.png"));
+				lblNewLabel_1 = new JLabel(new ImageIcon(myPicture));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+			lblNewLabel_1.setBounds(23, 11, 1111, 927);
+		}
+		return lblNewLabel_1;
 	}
 }
