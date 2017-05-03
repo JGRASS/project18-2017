@@ -20,6 +20,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
+import pubkviz.gui.GUIKontroler;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class Glavni_Meni_Korisnik extends JFrame {
 	
@@ -33,21 +38,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	private JButton btnIzmeniGrupu;
 	private JButton btnIzbrisiGrupu;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Glavni_Meni_Korisnik frame = new Glavni_Meni_Korisnik();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -113,6 +104,11 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	public JButton getButton_3_1() {
 		if (btnKrajRada == null) {
 			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.ugasiAplikacijuKorisnik();
+				}
+			});
 			btnKrajRada.setBounds(10, 172, 121, 23);
 			btnKrajRada.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnKrajRada.setFocusPainted(false);
@@ -160,6 +156,11 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	public JButton getButton_1() {
 		if (btnIzmeniGrupu == null) {
 			btnIzmeniGrupu = new JButton("Izmeni grupu");
+			btnIzmeniGrupu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.izmeniGrupu();
+				}
+			});
 			btnIzmeniGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnIzmeniGrupu.setFocusPainted(false);
 			btnIzmeniGrupu.setBorderPainted(false);
@@ -181,6 +182,10 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	public JButton getButton_2() {
 		if (btnIzbrisiGrupu == null) {
 			btnIzbrisiGrupu = new JButton("Izbrisi grupu");
+			btnIzbrisiGrupu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btnIzbrisiGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnIzbrisiGrupu.setFocusPainted(false);
 			btnIzbrisiGrupu.setBorderPainted(false);

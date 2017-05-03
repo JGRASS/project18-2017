@@ -10,10 +10,18 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import pubkviz.gui.GUIKontroler;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Login extends JFrame {
 
@@ -21,25 +29,11 @@ public class Login extends JFrame {
 	private JLabel lblKorisnickoIme;
 	private JLabel lblLozinka;
 	private JTextField textKorisnicko_Ime;
-	private JTextField textLozinka;
 	private JButton btnPrijaviSe;
 	private JButton btnRegistrujiSe;
+	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -56,9 +50,9 @@ public class Login extends JFrame {
 		contentPane.add(getLblKorisnickoIme());
 		contentPane.add(getLblLozinka());
 		contentPane.add(getTextKorisnicko_Ime());
-		contentPane.add(getTextLozinka());
 		contentPane.add(getBtnPrijaviSe());
 		contentPane.add(getBtnRegistrujiSe());
+		contentPane.add(getPasswordField());
 	}
 	public JLabel getLblKorisnickoIme() {
 		if (lblKorisnickoIme == null) {
@@ -77,28 +71,40 @@ public class Login extends JFrame {
 	public JTextField getTextKorisnicko_Ime() {
 		if (textKorisnicko_Ime == null) {
 			textKorisnicko_Ime = new JTextField();
+			textKorisnicko_Ime.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					GUIKontroler.obrisiPoljeZaIme();
+					GUIKontroler.promeniFont();
+				}
+			});
+	
+			textKorisnicko_Ime.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					GUIKontroler.obrisiPoljeZaIme();
+					GUIKontroler.promeniFont();
+				}
+			});
+			textKorisnicko_Ime.setText("Unesite ime grupe");
+		
+	
 			textKorisnicko_Ime.setForeground(Color.LIGHT_GRAY);
 			textKorisnicko_Ime.setFont(new Font("Tahoma", Font.ITALIC, 10));
-			textKorisnicko_Ime.setText("Unesite ime grupe");
+		
 			textKorisnicko_Ime.setBounds(152, 88, 136, 20);
 			textKorisnicko_Ime.setColumns(10);
 		}
 		return textKorisnicko_Ime;
 	}
-	public JTextField getTextLozinka() {
-		if (textLozinka == null) {
-			textLozinka = new JTextField();
-			textLozinka.setForeground(Color.LIGHT_GRAY);
-			textLozinka.setFont(new Font("Tahoma", Font.ITALIC, 10));
-			textLozinka.setText("Unesite lozinku");
-			textLozinka.setColumns(10);
-			textLozinka.setBounds(152, 144, 136, 20);
-		}
-		return textLozinka;
-	}
 	public JButton getBtnPrijaviSe() {
 		if (btnPrijaviSe == null) {
 			btnPrijaviSe = new JButton("Prijavi se");
+			btnPrijaviSe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.prijaviSe();
+				}
+			});
 			btnPrijaviSe.setBounds(152, 183, 136, 23);
 			btnPrijaviSe.addMouseListener(new MouseAdapter() {
 				@Override
@@ -120,6 +126,11 @@ public class Login extends JFrame {
 	public JButton getBtnRegistrujiSe() {
 		if (btnRegistrujiSe == null) {
 			btnRegistrujiSe = new JButton("Registruji se");
+			btnRegistrujiSe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.otvoriRegistar();
+				}
+			});
 			btnRegistrujiSe.setBounds(152, 222, 136, 23);
 			btnRegistrujiSe.addMouseListener(new MouseAdapter() {
 				@Override
@@ -138,5 +149,18 @@ public class Login extends JFrame {
 		
 		}
 		return btnRegistrujiSe;
+	}
+	public JPasswordField getPasswordField() {
+		if (passwordField == null) {
+			passwordField = new JPasswordField();
+			passwordField.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					GUIKontroler.prijaviSePrekoEntera(e.getKeyCode());
+				}
+			});
+			passwordField.setBounds(152, 144, 136, 20);
+		}
+		return passwordField;
 	}
 }

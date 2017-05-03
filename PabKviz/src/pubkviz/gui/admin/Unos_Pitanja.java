@@ -6,7 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import pubkviz.gui.GUIKontroler;
+
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -21,8 +26,12 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Unos_Pitanja extends JFrame {
+public class Unos_Pitanja extends JDialog {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -32,29 +41,21 @@ public class Unos_Pitanja extends JFrame {
 	private JPanel panel_1;
 	private JTextPane txtNapisitePitanje;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Unos_Pitanja frame = new Unos_Pitanja();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
 	public Unos_Pitanja() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				GUIKontroler.unosPitanjaZatvaranje();
+			}
+		});
+		setModal(true);
 		setTitle("Unesite pitanje");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel(){
 	        @Override
@@ -94,6 +95,11 @@ public class Unos_Pitanja extends JFrame {
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.unosPitanjaZatvaranje();
+				}
+			});
 			btnOdustani.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {

@@ -20,6 +20,11 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
+import pubkviz.gui.GUIKontroler;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class Glavni_Meni extends JFrame {
 
@@ -32,21 +37,6 @@ public class Glavni_Meni extends JFrame {
 	private JButton btnKrajRada;
 	private JPanel panel_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Glavni_Meni frame = new Glavni_Meni();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -112,6 +102,11 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton_1_1() {
 		if (btnDodajGrupu == null) {
 			btnDodajGrupu = new JButton("Dodaj grupu");
+			btnDodajGrupu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.dodajGrupu();
+				}
+			});
 			btnDodajGrupu.setBounds(10, 104, 121, 23);
 			btnDodajGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnDodajGrupu.setFocusPainted(false);
@@ -135,6 +130,11 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton_2_1() {
 		if (btnNapraviKviz == null) {
 			btnNapraviKviz = new JButton("Napravi kviz");
+			btnNapraviKviz.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.napraviKviz();
+				}
+			});
 			btnNapraviKviz.setBounds(10, 138, 121, 23);
 			btnNapraviKviz.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnNapraviKviz.setFocusPainted(false);
@@ -156,6 +156,11 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton_3_1() {
 		if (btnKrajRada == null) {
 			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.ugasiAplikaciju();
+				}
+			});
 			btnKrajRada.setBounds(10, 172, 121, 23);
 			btnKrajRada.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnKrajRada.setFocusPainted(false);

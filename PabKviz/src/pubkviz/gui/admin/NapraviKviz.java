@@ -12,7 +12,12 @@ import java.awt.RenderingHints;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import pubkviz.gui.GUIKontroler;
+
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -26,8 +31,10 @@ import java.awt.event.MouseWheelEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Component;
+import java.awt.Dialog.ModalityType;
+import java.awt.Dialog.ModalExclusionType;
 
-public class NapraviKviz extends JFrame {
+public class NapraviKviz extends JDialog {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -43,29 +50,16 @@ public class NapraviKviz extends JFrame {
 	private JButton btnIzmeniPitanje;
 	private JButton btnPogledajTest;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NapraviKviz frame = new NapraviKviz();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
 	 */
 	public NapraviKviz() {
+		setModal(true);
 		setTitle("Napravi kviz");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel(){
 	        @Override
@@ -106,6 +100,11 @@ public class NapraviKviz extends JFrame {
 	public JButton getBtnUnesiPitanje() {
 		if (btnUnesiPitanje == null) {
 			btnUnesiPitanje = new JButton("Unesi pitanje");
+			btnUnesiPitanje.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.unosPitanja();
+				}
+			});
 			btnUnesiPitanje.setPreferredSize(new Dimension(125, 25));
 			btnUnesiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnUnesiPitanje.setFocusPainted(false);
@@ -191,6 +190,7 @@ public class NapraviKviz extends JFrame {
 			btnIzadji.setBounds(174, 225, 125, 25);
 			btnIzadji.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					dispose();
 				}
 			});
 			btnIzadji.setPreferredSize(new Dimension(125, 25));
