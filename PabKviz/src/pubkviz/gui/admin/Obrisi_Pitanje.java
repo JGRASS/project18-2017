@@ -1,4 +1,4 @@
-package pubkviz.gui.korisnik;
+package pubkviz.gui.admin;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -26,34 +26,33 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JCheckBox;
 
-public class Pokreni_Kviz extends JDialog {
+public class Obrisi_Pitanje extends JDialog {
 
 	private JPanel contentPane;
 	private JPanel panel;
 	private JLabel lblGornjePitanje;
 	private JScrollPane scrollPane;
 	private JTextArea txtGornjePitanje;
-	private JLabel lblGornjiOdgovor;
-	private JTextArea txtGornjiOdgvor;
 	private JLabel lblSrednjePitanje;
 	private JScrollPane scrollPane_1;
 	private JTextArea txtSrednjePitanje;
-	private JLabel lblSrednjiOdgovor;
-	private JTextArea txtSrednjiOdgovor;
 	private JLabel lblDonjePitanje;
 	private JScrollPane scrollPane_2;
-	private JLabel lblDonjiOdgovor;
 	private JTextArea txtDonjePitanje;
-	private JTextArea txtDonjiOdgovor;
 	private JButton btnPrthodnaStrana;
 	private JButton btnSledecaStrana;
+	private JCheckBox chckbxObrisiGornje;
+	private JCheckBox chckbxObrisiSrednje;
+	private JCheckBox chckbxObrisiSrednje_1;
+	private JButton btnObrisiPitanje;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public Pokreni_Kviz() {
+	public Obrisi_Pitanje() {
 		setModal(true);
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -62,9 +61,9 @@ public class Pokreni_Kviz extends JDialog {
 			}
 		});
 		setResizable(false);
-		setTitle("Pokreni kviz");
+		setTitle("Obrisi pitanje");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 453, 584);
+		setBounds(100, 100, 465, 584);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -95,18 +94,16 @@ public class Pokreni_Kviz extends JDialog {
 			panel.setLayout(null);
 			panel.add(getLblGornjePitanje());
 			panel.add(getScrollPane_1());
-			panel.add(getLblGornjiOdgovor());
-			panel.add(getTxtGornjiOdgvor());
 			panel.add(getLblSrednjePitanje());
 			panel.add(getScrollPane_1_1());
-			panel.add(getLblSrednjiOdgovor());
-			panel.add(getTxtSrednjiOdgovor());
 			panel.add(getLblDonjePitanje());
 			panel.add(getScrollPane_2_1());
-			panel.add(getLblDonjiOdgovor());
-			panel.add(getTxtDonjiOdgovor());
 			panel.add(getBtnPrthodnaStrana());
 			panel.add(getBtnSledecaStrana());
+			panel.add(getChckbxObrisiGornje());
+			panel.add(getChckbxObrisiSrednje());
+			panel.add(getChckbxObrisiSrednje_1());
+			panel.add(getBtnObrisiPitanje());
 		}
 		return panel;
 	}
@@ -134,23 +131,6 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtGornjePitanje;
 	}
-	public JLabel getLblGornjiOdgovor() {
-		if (lblGornjiOdgovor == null) {
-			lblGornjiOdgovor = new JLabel("Gornji odgovor");
-			lblGornjiOdgovor.setBounds(10, 109, 106, 14);
-		}
-		return lblGornjiOdgovor;
-	}
-	public JTextArea getTxtGornjiOdgvor() {
-		if (txtGornjiOdgvor == null) {
-			txtGornjiOdgvor = new JTextArea();
-			txtGornjiOdgvor.setBorder(new LineBorder(new Color(0, 0, 0)));
-			txtGornjiOdgvor.setLineWrap(true);
-			txtGornjiOdgvor.setWrapStyleWord(true);
-			txtGornjiOdgvor.setBounds(10, 134, 417, 29);
-		}
-		return txtGornjiOdgvor;
-	}
 	public JLabel getLblSrednjePitanje() {
 		if (lblSrednjePitanje == null) {
 			lblSrednjePitanje = new JLabel("Srednje pitanje");
@@ -175,23 +155,6 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtSrednjePitanje;
 	}
-	public JLabel getLblSrednjiOdgovor() {
-		if (lblSrednjiOdgovor == null) {
-			lblSrednjiOdgovor = new JLabel("Srednji odgovor");
-			lblSrednjiOdgovor.setBounds(10, 275, 106, 14);
-		}
-		return lblSrednjiOdgovor;
-	}
-	public JTextArea getTxtSrednjiOdgovor() {
-		if (txtSrednjiOdgovor == null) {
-			txtSrednjiOdgovor = new JTextArea();
-			txtSrednjiOdgovor.setBorder(new LineBorder(new Color(0, 0, 0)));
-			txtSrednjiOdgovor.setLineWrap(true);
-			txtSrednjiOdgovor.setWrapStyleWord(true);
-			txtSrednjiOdgovor.setBounds(10, 300, 417, 29);
-		}
-		return txtSrednjiOdgovor;
-	}
 	public JLabel getLblDonjePitanje() {
 		if (lblDonjePitanje == null) {
 			lblDonjePitanje = new JLabel("Donje pitanje");
@@ -207,13 +170,6 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return scrollPane_2;
 	}
-	public JLabel getLblDonjiOdgovor() {
-		if (lblDonjiOdgovor == null) {
-			lblDonjiOdgovor = new JLabel("Donji odgovor");
-			lblDonjiOdgovor.setBounds(10, 438, 106, 14);
-		}
-		return lblDonjiOdgovor;
-	}
 	public JTextArea getTxtDonjePitanje() {
 		if (txtDonjePitanje == null) {
 			txtDonjePitanje = new JTextArea();
@@ -222,16 +178,6 @@ public class Pokreni_Kviz extends JDialog {
 			txtDonjePitanje.setEditable(false);
 		}
 		return txtDonjePitanje;
-	}
-	public JTextArea getTxtDonjiOdgovor() {
-		if (txtDonjiOdgovor == null) {
-			txtDonjiOdgovor = new JTextArea();
-			txtDonjiOdgovor.setBorder(new LineBorder(new Color(0, 0, 0)));
-			txtDonjiOdgovor.setLineWrap(true);
-			txtDonjiOdgovor.setWrapStyleWord(true);
-			txtDonjiOdgovor.setBounds(10, 463, 417, 29);
-		}
-		return txtDonjiOdgovor;
 	}
 	public JButton getBtnPrthodnaStrana() {
 		if (btnPrthodnaStrana == null) {
@@ -261,7 +207,7 @@ public class Pokreni_Kviz extends JDialog {
 	public JButton getBtnSledecaStrana() {
 		if (btnSledecaStrana == null) {
 			btnSledecaStrana = new JButton("Sledeca strana");
-			btnSledecaStrana.setBounds(259, 511, 168, 23);
+			btnSledecaStrana.setBounds(271, 511, 168, 23);
 			btnSledecaStrana.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnSledecaStrana.setFocusPainted(false);
 			btnSledecaStrana.setBorderPainted(false);
@@ -278,5 +224,40 @@ public class Pokreni_Kviz extends JDialog {
 			});
 		}
 		return btnSledecaStrana;
+	}
+	public JCheckBox getChckbxObrisiGornje() {
+		if (chckbxObrisiGornje == null) {
+			chckbxObrisiGornje = new JCheckBox("Obrisi gornje");
+			chckbxObrisiGornje.setBounds(10, 105, 87, 23);
+			chckbxObrisiGornje.setBackground(new Color(255, 255, 255));
+		}
+		return chckbxObrisiGornje;
+	}
+	public JCheckBox getChckbxObrisiSrednje() {
+		if (chckbxObrisiSrednje == null) {
+			chckbxObrisiSrednje = new JCheckBox("Obrisi srednje");
+			chckbxObrisiSrednje.setBackground(Color.WHITE);
+			chckbxObrisiSrednje.setBounds(10, 268, 106, 23);
+		}
+		return chckbxObrisiSrednje;
+	}
+	public JCheckBox getChckbxObrisiSrednje_1() {
+		if (chckbxObrisiSrednje_1 == null) {
+			chckbxObrisiSrednje_1 = new JCheckBox("Obrisi donje");
+			chckbxObrisiSrednje_1.setBackground(Color.WHITE);
+			chckbxObrisiSrednje_1.setBounds(10, 434, 87, 23);
+		}
+		return chckbxObrisiSrednje_1;
+	}
+	public JButton getBtnObrisiPitanje() {
+		if (btnObrisiPitanje == null) {
+			btnObrisiPitanje = new JButton("Obrisi pitanje");
+			btnObrisiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnObrisiPitanje.setFocusPainted(false);
+			btnObrisiPitanje.setBorderPainted(false);
+			btnObrisiPitanje.setBackground(Color.WHITE);
+			btnObrisiPitanje.setBounds(10, 477, 168, 23);
+		}
+		return btnObrisiPitanje;
 	}
 }

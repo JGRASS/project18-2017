@@ -136,6 +136,7 @@ public class NapraviKviz extends JDialog {
 			btnObrisiPitanje.setBackground(Color.WHITE);
 			btnObrisiPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.obrisiPitanje();
 				}
 			});
 			btnObrisiPitanje.addMouseListener(new MouseAdapter() {
@@ -258,6 +259,11 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnPogledajTest() {
 		if (btnPogledajTest == null) {
 			btnPogledajTest = new JButton("Pogledaj test");
+			btnPogledajTest.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.pogledajTest();
+				}
+			});
 			btnPogledajTest.setPreferredSize(new Dimension(125, 25));
 			btnPogledajTest.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnPogledajTest.setFocusPainted(false);

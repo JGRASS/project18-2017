@@ -127,7 +127,7 @@ public class Dodaj_Grupu extends JDialog {
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setBackground(Color.WHITE);
+			panel_1.setBackground(new Color(255, 255, 255, 10));
 			panel_1.setLayout(new BorderLayout(0, 0));
 			panel_1.add(getLblIzaberiteBrojClanova(), BorderLayout.NORTH);
 			panel_1.add(getPanel_2(), BorderLayout.CENTER);
@@ -145,7 +145,7 @@ public class Dodaj_Grupu extends JDialog {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
 			panel_2.setLayout(null);
-			panel_2.setBackground(Color.WHITE);
+			panel_2.setBackground(new Color(255, 255, 255, 0));
 			panel_2.add(getCbxIzaberiteBrojClanova());
 			panel_2.add(getBtnOdustani());
 			panel_2.add(getBtnSacuvaj());
@@ -182,7 +182,7 @@ public class Dodaj_Grupu extends JDialog {
 				}
 			});
 			cbxIzaberiteBrojClanova.setBackground(new Color(255,255,255));
-			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] {"2", "3", "4", "5"}));
+			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] {"5", "4", "3", "2"}));
 			cbxIzaberiteBrojClanova.setBounds(0, 11, 53, 27);
 		}
 		return cbxIzaberiteBrojClanova;
