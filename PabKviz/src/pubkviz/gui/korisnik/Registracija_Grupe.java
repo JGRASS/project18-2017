@@ -32,11 +32,11 @@ public class Registracija_Grupe extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblUnesiteImeGrupe;
 	private JPanel panel;
-	private JTextField textField;
+	private JTextField txtUnesiteImeGrupe;
 	private JPanel panel_1;
 	private JLabel lblIzaberiteBrojClanova;
 	private JPanel panel_2;
-	private JComboBox comboBox;
+	private JComboBox cbxIzaberiteBrojClanova;
 	private JButton btnSacuvaj;
 	private JButton btnOdustani;
 	private JLabel lblime;
@@ -119,18 +119,18 @@ public class Registracija_Grupe extends JFrame {
 		if (panel == null) {
 			panel = new JPanel();
 			panel.setLayout(new BorderLayout(0, 0));
-			panel.add(getTextField(), BorderLayout.NORTH);
+			panel.add(getTxtUnesiteImeGrupe(), BorderLayout.NORTH);
 			panel.add(getPanel_1(), BorderLayout.CENTER);
 		}
 		return panel;
 	}
-	public JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setText("");
-			textField.setColumns(10);
+	public JTextField getTxtUnesiteImeGrupe() {
+		if (txtUnesiteImeGrupe == null) {
+			txtUnesiteImeGrupe = new JTextField();
+			txtUnesiteImeGrupe.setText("");
+			txtUnesiteImeGrupe.setColumns(10);
 		}
-		return textField;
+		return txtUnesiteImeGrupe;
 	}
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
@@ -154,7 +154,7 @@ public class Registracija_Grupe extends JFrame {
 			panel_2 = new JPanel();
 			panel_2.setLayout(null);
 			panel_2.setBackground(Color.WHITE);
-			panel_2.add(getComboBox());
+			panel_2.add(getCbxIzaberiteBrojClanova());
 			panel_2.add(getBtnOdustani());
 			panel_2.add(getBtnSacuvaj());
 			panel_2.add(getLblime());
@@ -180,18 +180,19 @@ public class Registracija_Grupe extends JFrame {
 		}
 		return panel_2;
 	}
-	public JComboBox getComboBox() {
-		if (comboBox == null) {
-			comboBox = new JComboBox();
-			comboBox.setBackground(new Color(255,255,255));
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"2", "3", "4", "5"}));
-			comboBox.setBounds(0, 11, 53, 27);
+	public JComboBox getCbxIzaberiteBrojClanova() {
+		if (cbxIzaberiteBrojClanova == null) {
+			cbxIzaberiteBrojClanova = new JComboBox();
+			cbxIzaberiteBrojClanova.setBackground(new Color(255,255,255));
+			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] {"2", "3", "4", "5"}));
+			cbxIzaberiteBrojClanova.setBounds(0, 11, 53, 27);
 		}
-		return comboBox;
+		return cbxIzaberiteBrojClanova;
 	}
 	public JButton getBtnSacuvaj() {
 		if (btnSacuvaj == null) {
 			btnSacuvaj = new JButton("Sacuvaj");
+			btnSacuvaj.setEnabled(false);
 			btnSacuvaj.setBounds(0, 362, 89, 23);
 			btnSacuvaj.setFocusPainted(false);
 			btnSacuvaj.setBorderPainted(false);

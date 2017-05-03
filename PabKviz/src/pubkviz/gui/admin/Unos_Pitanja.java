@@ -26,11 +26,11 @@ public class Unos_Pitanja extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panel;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
+	private JButton btnOdustani;
+	private JButton btnNapraviPItanje;
 	private JLabel lblNapisitePitanje;
 	private JPanel panel_1;
-	private JTextPane textPane;
+	private JTextPane txtNapisitePitanje;
 
 	/**
 	 * Launch the application.
@@ -86,51 +86,51 @@ public class Unos_Pitanja extends JFrame {
 			panel = new JPanel();
 			panel.setBackground(Color.WHITE);
 			panel.setLayout(new BorderLayout(0, 0));
-			panel.add(getBtnNewButton_1(), BorderLayout.EAST);
-			panel.add(getBtnNewButton_2(), BorderLayout.WEST);
+			panel.add(getBtnOdustani(), BorderLayout.EAST);
+			panel.add(getBtnNapraviPItanje(), BorderLayout.WEST);
 		}
 		return panel;
 	}
-	public JButton getBtnNewButton_1() {
-		if (btnNewButton_1 == null) {
-			btnNewButton_1 = new JButton("Odustani");
-			btnNewButton_1.addMouseListener(new MouseAdapter() {
+	public JButton getBtnOdustani() {
+		if (btnOdustani == null) {
+			btnOdustani = new JButton("Odustani");
+			btnOdustani.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnNewButton_1.setBackground(new Color(240, 128, 125));
+					btnOdustani.setBackground(new Color(240, 128, 125));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					btnNewButton_1.setBackground(Color.WHITE);
+					btnOdustani.setBackground(Color.WHITE);
 				}
 			});
-			btnNewButton_1.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnNewButton_1.setFocusPainted(false);
-			btnNewButton_1.setBorderPainted(false);
-			btnNewButton_1.setBackground(Color.WHITE);
+			btnOdustani.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnOdustani.setFocusPainted(false);
+			btnOdustani.setBorderPainted(false);
+			btnOdustani.setBackground(Color.WHITE);
 		}
-		return btnNewButton_1;
+		return btnOdustani;
 	}
-	public JButton getBtnNewButton_2() {
-		if (btnNewButton_2 == null) {
-			btnNewButton_2 = new JButton("Napravi pitanje");
-			btnNewButton_2.addMouseListener(new MouseAdapter() {
+	public JButton getBtnNapraviPItanje() {
+		if (btnNapraviPItanje == null) {
+			btnNapraviPItanje = new JButton("Napravi pitanje");
+			btnNapraviPItanje.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnNewButton_2.setBackground(new Color(240, 248, 255));
+					btnNapraviPItanje.setBackground(new Color(240, 248, 255));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					btnNewButton_2.setBackground(Color.WHITE);
+					btnNapraviPItanje.setBackground(Color.WHITE);
 				}
 			});
-			btnNewButton_2.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnNewButton_2.setFocusPainted(false);
-			btnNewButton_2.setBorderPainted(false);
-			btnNewButton_2.setBackground(Color.WHITE);
+			btnNapraviPItanje.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnNapraviPItanje.setFocusPainted(false);
+			btnNapraviPItanje.setBorderPainted(false);
+			btnNapraviPItanje.setBackground(Color.WHITE);
 		
 		}
-		return btnNewButton_2;
+		return btnNapraviPItanje;
 	}
 	public JLabel getLblNapisitePitanje() {
 		if (lblNapisitePitanje == null) {
@@ -150,10 +150,10 @@ public class Unos_Pitanja extends JFrame {
 		return panel_1;
 	}
 	public JTextPane getTextPane_1() {
-		if (textPane == null) {
-			textPane = new JTextPane();
-			textPane.setText("");
+		if (txtNapisitePitanje == null) {
+			txtNapisitePitanje = new JTextPane();
+			txtNapisitePitanje.setText("");
 		}
-		return textPane;
+		return txtNapisitePitanje;
 	}
 }

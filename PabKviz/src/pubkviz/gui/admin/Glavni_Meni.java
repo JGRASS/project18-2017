@@ -26,10 +26,10 @@ public class Glavni_Meni extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblPubKviz;
 	private JPanel panel_1;
-	private JButton button;
-	private JButton button_1;
-	private JButton button_2;
-	private JButton button_3;
+	private JButton btnPokreniKviz;
+	private JButton btnDodajGrupu;
+	private JButton btnNapraviKviz;
+	private JButton btnKrajRada;
 	private JPanel panel_2;
 
 	/**
@@ -81,98 +81,98 @@ public class Glavni_Meni extends JFrame {
 			panel_1.setBackground(new Color(255,255,255));
 			panel_1.setPreferredSize(new Dimension(150, 10));
 			panel_1.setLayout(null);
-			panel_1.add(getButton());
+			panel_1.add(getBtnPokreniKviz());
 			panel_1.add(getButton_1_1());
 			panel_1.add(getButton_2_1());
 			panel_1.add(getButton_3_1());
 		}
 		return panel_1;
 	}
-	public JButton getButton() {
-		if (button == null) {
-			button = new JButton("Pokreni Kviz");
-			button.setBounds(10, 70, 121, 23);
-			button.addMouseListener(new MouseAdapter() {
+	public JButton getBtnPokreniKviz() {
+		if (btnPokreniKviz == null) {
+			btnPokreniKviz = new JButton("Pokreni Kviz");
+			btnPokreniKviz.setBounds(10, 70, 121, 23);
+			btnPokreniKviz.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					button.setBackground(new Color(240, 248, 255));
+					btnPokreniKviz.setBackground(new Color(240, 248, 255));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					button.setBackground(Color.WHITE);
+					btnPokreniKviz.setBackground(Color.WHITE);
 				}
 			});
-			button.setFont(new Font("Verdana", Font.BOLD, 11));
-			button.setFocusPainted(false);
-			button.setBorderPainted(false);
-			button.setBackground(Color.WHITE);
+			btnPokreniKviz.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnPokreniKviz.setFocusPainted(false);
+			btnPokreniKviz.setBorderPainted(false);
+			btnPokreniKviz.setBackground(Color.WHITE);
 		}
-		return button;
+		return btnPokreniKviz;
 	}
 	public JButton getButton_1_1() {
-		if (button_1 == null) {
-			button_1 = new JButton("Dodaj grupu");
-			button_1.setBounds(10, 104, 121, 23);
-			button_1.setFont(new Font("Verdana", Font.BOLD, 11));
-			button_1.setFocusPainted(false);
-			button_1.setBorderPainted(false);
-			button_1.setBackground(Color.WHITE);
-			button_1.addMouseListener(new MouseAdapter() {
+		if (btnDodajGrupu == null) {
+			btnDodajGrupu = new JButton("Dodaj grupu");
+			btnDodajGrupu.setBounds(10, 104, 121, 23);
+			btnDodajGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnDodajGrupu.setFocusPainted(false);
+			btnDodajGrupu.setBorderPainted(false);
+			btnDodajGrupu.setBackground(Color.WHITE);
+			btnDodajGrupu.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					button_1.setBackground(new Color(240, 248, 255));
+					btnDodajGrupu.setBackground(new Color(240, 248, 255));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					button_1.setBackground(Color.WHITE);
+					btnDodajGrupu.setBackground(Color.WHITE);
 				}
 			});
 			
 		}
 		
-		return button_1;
+		return btnDodajGrupu;
 	}
 	public JButton getButton_2_1() {
-		if (button_2 == null) {
-			button_2 = new JButton("Napravi kviz");
-			button_2.setBounds(10, 138, 121, 23);
-			button_2.setFont(new Font("Verdana", Font.BOLD, 11));
-			button_2.setFocusPainted(false);
-			button_2.setBorderPainted(false);
-			button_2.setBackground(Color.WHITE);
-			button_2.addMouseListener(new MouseAdapter() {
+		if (btnNapraviKviz == null) {
+			btnNapraviKviz = new JButton("Napravi kviz");
+			btnNapraviKviz.setBounds(10, 138, 121, 23);
+			btnNapraviKviz.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnNapraviKviz.setFocusPainted(false);
+			btnNapraviKviz.setBorderPainted(false);
+			btnNapraviKviz.setBackground(Color.WHITE);
+			btnNapraviKviz.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					button_2.setBackground(new Color(240, 248, 255));
+					btnNapraviKviz.setBackground(new Color(240, 248, 255));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					button_2.setBackground(Color.WHITE);
+					btnNapraviKviz.setBackground(Color.WHITE);
 				}
 			});
 		}
-		return button_2;
+		return btnNapraviKviz;
 	}
 	public JButton getButton_3_1() {
-		if (button_3 == null) {
-			button_3 = new JButton("Kraj rada");
-			button_3.setBounds(10, 172, 121, 23);
-			button_3.setFont(new Font("Verdana", Font.BOLD, 11));
-			button_3.setFocusPainted(false);
-			button_3.setBorderPainted(false);
-			button_3.setBackground(Color.WHITE);
-			button_3.addMouseListener(new MouseAdapter() {
+		if (btnKrajRada == null) {
+			btnKrajRada = new JButton("Kraj rada");
+			btnKrajRada.setBounds(10, 172, 121, 23);
+			btnKrajRada.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnKrajRada.setFocusPainted(false);
+			btnKrajRada.setBorderPainted(false);
+			btnKrajRada.setBackground(Color.WHITE);
+			btnKrajRada.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					button_3.setBackground(new Color(240, 128, 125));
+					btnKrajRada.setBackground(new Color(240, 128, 125));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					button_3.setBackground(Color.WHITE);
+					btnKrajRada.setBackground(Color.WHITE);
 				}
 			});
 		}
-		return button_3;
+		return btnKrajRada;
 	}
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
