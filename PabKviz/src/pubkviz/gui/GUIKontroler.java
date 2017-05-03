@@ -1,6 +1,7 @@
 package pubkviz.gui;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -14,7 +15,6 @@ import pubkviz.gui.admin.Glavni_Meni;
 import pubkviz.gui.admin.NapraviKviz;
 import pubkviz.gui.admin.Unos_Pitanja;
 import pubkviz.gui.korisnik.Glavni_Meni_Korisnik;
-import pubkviz.gui.korisnik.Registracija_Grupe;
 import pubkviz.gui.login.Login;
 
 public class GUIKontroler {
@@ -25,7 +25,6 @@ public class GUIKontroler {
 	private static NapraviKviz napraviKviz;
 	private static Unos_Pitanja unosPitanja;
 	private static Glavni_Meni_Korisnik glavniProzorKorisnik;
-	private static Registracija_Grupe registracijaGrupe;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -104,17 +103,19 @@ public class GUIKontroler {
 	}
 
 	public static void izmeniGrupu() {
-		registracijaGrupe = new Registracija_Grupe();
-		registracijaGrupe.setLocationRelativeTo(pocetniProzor);
-
-		registracijaGrupe.setTitle("Izmenite grupu");
-		registracijaGrupe.setVisible(true);
+		dodajGrupu = new Dodaj_Grupu();
+		dodajGrupu.setLocationRelativeTo(glavniProzor);
+		
+		dodajGrupu.setTitle("Izmeni grupu");
+		dodajGrupu.setVisible(true);
 	}
 
 	public static void otvoriRegistar() {
-		registracijaGrupe = new Registracija_Grupe();
-		registracijaGrupe.setLocationRelativeTo(pocetniProzor);
-		registracijaGrupe.setVisible(true);
+		dodajGrupu = new Dodaj_Grupu();
+		dodajGrupu.setLocationRelativeTo(glavniProzor);
+		dodajGrupu.setTitle("Registruj se");
+		dodajGrupu.setVisible(true);
+	
 	}
 
 	public static void ugasiAplikaciju() {

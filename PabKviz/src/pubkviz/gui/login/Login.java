@@ -30,7 +30,7 @@ public class Login extends JFrame {
 	private JLabel lblLozinka;
 	private JTextField textKorisnicko_Ime;
 	private JButton btnPrijaviSe;
-	private JButton btnRegistrujiSe;
+	private JButton btnRegistrujSe;
 	private JPasswordField passwordField;
 
 
@@ -51,7 +51,7 @@ public class Login extends JFrame {
 		contentPane.add(getLblLozinka());
 		contentPane.add(getTextKorisnicko_Ime());
 		contentPane.add(getBtnPrijaviSe());
-		contentPane.add(getBtnRegistrujiSe());
+		contentPane.add(getBtnRegistrujSe());
 		contentPane.add(getPasswordField());
 	}
 	public JLabel getLblKorisnickoIme() {
@@ -123,32 +123,32 @@ public class Login extends JFrame {
 		}
 		return btnPrijaviSe;
 	}
-	public JButton getBtnRegistrujiSe() {
-		if (btnRegistrujiSe == null) {
-			btnRegistrujiSe = new JButton("Registruji se");
-			btnRegistrujiSe.addActionListener(new ActionListener() {
+	public JButton getBtnRegistrujSe() {
+		if (btnRegistrujSe == null) {
+			btnRegistrujSe = new JButton("Registruj se");
+			btnRegistrujSe.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.otvoriRegistar();
 				}
 			});
-			btnRegistrujiSe.setBounds(152, 222, 136, 23);
-			btnRegistrujiSe.addMouseListener(new MouseAdapter() {
+			btnRegistrujSe.setBounds(152, 222, 136, 23);
+			btnRegistrujSe.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnRegistrujiSe.setBackground(new Color(240, 248, 255));
+					btnRegistrujSe.setBackground(new Color(240, 248, 255));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					btnRegistrujiSe.setBackground(Color.WHITE);
+					btnRegistrujSe.setBackground(Color.WHITE);
 				}
 			});
-			btnRegistrujiSe.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnRegistrujiSe.setFocusPainted(false);
-			btnRegistrujiSe.setBorderPainted(false);
-			btnRegistrujiSe.setBackground(Color.WHITE);
+			btnRegistrujSe.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnRegistrujSe.setFocusPainted(false);
+			btnRegistrujSe.setBorderPainted(false);
+			btnRegistrujSe.setBackground(Color.WHITE);
 		
 		}
-		return btnRegistrujiSe;
+		return btnRegistrujSe;
 	}
 	public JPasswordField getPasswordField() {
 		if (passwordField == null) {

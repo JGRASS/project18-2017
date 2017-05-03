@@ -184,6 +184,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			btnIzbrisiGrupu = new JButton("Izbrisi grupu");
 			btnIzbrisiGrupu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.izbrisGrupu();
 				}
 			});
 			btnIzbrisiGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
