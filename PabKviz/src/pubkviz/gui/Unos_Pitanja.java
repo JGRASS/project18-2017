@@ -46,6 +46,7 @@ public class Unos_Pitanja extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	/**
