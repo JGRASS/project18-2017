@@ -9,6 +9,11 @@ import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,7 +25,6 @@ public class Glavni_Meni extends JFrame {
 
 	private JPanel contentPane;
 	private JLabel lblPubKviz;
-	private JPanel panel;
 	private JPanel panel_1;
 	private JButton button;
 	private JButton button_1;
@@ -59,30 +63,21 @@ public class Glavni_Meni extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.add(getPanel(), BorderLayout.NORTH);
 		contentPane.add(getPanel_1(), BorderLayout.WEST);
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
 	}
 	public JLabel getLblPubKviz() {
 		if (lblPubKviz == null) {
 			lblPubKviz = new JLabel("Pub Kviz");
+			lblPubKviz.setBounds(102, 11, 151, 46);
 			lblPubKviz.setFont(new Font("Book Antiqua", Font.PLAIN, 37));
 		}
 		return lblPubKviz;
 	}
-	public JPanel getPanel() {
-		if (panel == null) {
-			panel = new JPanel();
-			panel.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
-			panel.setBackground(new Color(235,235,235));
-			panel.add(getLblPubKviz());
-		}
-		return panel;
-	}
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
+		//	panel_1.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
 			panel_1.setBackground(new Color(255,255,255));
 			panel_1.setPreferredSize(new Dimension(150, 10));
 			panel_1.setLayout(null);
@@ -96,7 +91,7 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton() {
 		if (button == null) {
 			button = new JButton("Pokreni Kviz");
-			button.setBounds(10, 23, 121, 23);
+			button.setBounds(10, 70, 121, 23);
 			button.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
@@ -117,7 +112,7 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton_1_1() {
 		if (button_1 == null) {
 			button_1 = new JButton("Dodaj grupu");
-			button_1.setBounds(10, 57, 121, 23);
+			button_1.setBounds(10, 104, 121, 23);
 			button_1.setFont(new Font("Verdana", Font.BOLD, 11));
 			button_1.setFocusPainted(false);
 			button_1.setBorderPainted(false);
@@ -140,7 +135,7 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton_2_1() {
 		if (button_2 == null) {
 			button_2 = new JButton("Napravi kviz");
-			button_2.setBounds(10, 91, 121, 23);
+			button_2.setBounds(10, 138, 121, 23);
 			button_2.setFont(new Font("Verdana", Font.BOLD, 11));
 			button_2.setFocusPainted(false);
 			button_2.setBorderPainted(false);
@@ -161,7 +156,7 @@ public class Glavni_Meni extends JFrame {
 	public JButton getButton_3_1() {
 		if (button_3 == null) {
 			button_3 = new JButton("Kraj rada");
-			button_3.setBounds(10, 125, 121, 23);
+			button_3.setBounds(10, 172, 121, 23);
 			button_3.setFont(new Font("Verdana", Font.BOLD, 11));
 			button_3.setFocusPainted(false);
 			button_3.setBorderPainted(false);
@@ -181,11 +176,28 @@ public class Glavni_Meni extends JFrame {
 	}
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
-			panel_2 = new JPanel();
-			panel_2.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
+			panel_2 = new JPanel(){
+		        @Override
+		        protected void paintComponent(Graphics grphcs) {
+		            super.paintComponent(grphcs);
+		            Graphics2D g2d = (Graphics2D) grphcs;
+		            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+		                    RenderingHints.VALUE_ANTIALIAS_ON);
+		            GradientPaint gp = new GradientPaint(0, 340,
+							getBackground().brighter().brighter(), 1000, getHeight(),
+		                    getBackground().darker());
+		            g2d.setPaint(gp);
+		            g2d.fillRect( 0,0,getWidth(),  getHeight()); 
+
+		        }
+
+		    };
+		//	panel_2.setBorder(new LineBorder(new Color(230, 230, 230), 2, true));
 			panel_2.setBackground(new Color(245,245,245));
 			panel_2.setLayout(null);
+			panel_2.add(getLblPubKviz());
 		}
+		
 		return panel_2;
 	}
 }
