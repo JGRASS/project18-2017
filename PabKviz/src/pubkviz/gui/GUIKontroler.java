@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 
 import pubkviz.gui.admin.Dodaj_Grupu;
 import pubkviz.gui.admin.Glavni_Meni;
+import pubkviz.gui.admin.Izmeni;
 import pubkviz.gui.admin.NapraviKviz;
 import pubkviz.gui.admin.Unos_Pitanja;
 import pubkviz.gui.korisnik.Glavni_Meni_Korisnik;
@@ -30,6 +31,7 @@ public class GUIKontroler {
 	private static Glavni_Meni_Korisnik glavniProzorKorisnik;
 	private static Pokreni_Kviz kviz;
 	private static Obrisi_Pitanje obrisiPitanje;
+	private static Izmeni izmena;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -203,6 +205,12 @@ public class GUIKontroler {
 		napraviKviz.setModal(true);
 		napraviKviz.setVisible(true);
 
+	}
+	public static void otvoriIzmenjivac(){
+		izmena = new Izmeni();
+		izmena.setLocationRelativeTo(glavniProzor);
+		izmena.setVisible(true);
+		
 	}
 
 	public static void izaberiBrojClanova() {

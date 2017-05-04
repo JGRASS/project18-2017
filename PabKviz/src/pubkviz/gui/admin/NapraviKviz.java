@@ -48,7 +48,7 @@ public class NapraviKviz extends JDialog {
 	private JLabel lblNazivKviza;
 	private JTextField txtNazivKviza;
 	private JButton btnIzmeniPitanje;
-	private JButton btnPogledajTest;
+	private JButton btnPogledajKviz;
 
 
 
@@ -93,7 +93,7 @@ public class NapraviKviz extends JDialog {
 			panel.add(getBtnUnesiPitanje());
 			panel.add(getBtnIzmeniPitanje());
 			panel.add(getBtnObrisiPitanje());
-			panel.add(getBtnPogledajTest());
+			panel.add(getBtnPogledajKviz());
 		}
 		return panel;
 	}
@@ -157,7 +157,7 @@ public class NapraviKviz extends JDialog {
 	}
 	public JButton getBtnSacuvajTest() {
 		if (btnSacuvajTest == null) {
-			btnSacuvajTest = new JButton("Sacuvaj test");
+			btnSacuvajTest = new JButton("Sacuvaj kviz");
 			btnSacuvajTest.setEnabled(false);
 			btnSacuvajTest.setBounds(10, 225, 125, 25);
 			getBtnSacuvajTest().setPreferredSize(new Dimension(125, 25));
@@ -248,6 +248,11 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnIzmeniPitanje() {
 		if (btnIzmeniPitanje == null) {
 			btnIzmeniPitanje = new JButton("Izmeni");
+			btnIzmeniPitanje.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.otvoriIzmenjivac();
+				}
+			});
 			btnIzmeniPitanje.setPreferredSize(new Dimension(125, 25));
 			btnIzmeniPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnIzmeniPitanje.setFocusPainted(false);
@@ -256,20 +261,20 @@ public class NapraviKviz extends JDialog {
 		}
 		return btnIzmeniPitanje;
 	}
-	public JButton getBtnPogledajTest() {
-		if (btnPogledajTest == null) {
-			btnPogledajTest = new JButton("Pogledaj test");
-			btnPogledajTest.addActionListener(new ActionListener() {
+	public JButton getBtnPogledajKviz() {
+		if (btnPogledajKviz == null) {
+			btnPogledajKviz = new JButton("Pogledaj kviz");
+			btnPogledajKviz.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.pogledajTest();
 				}
 			});
-			btnPogledajTest.setPreferredSize(new Dimension(125, 25));
-			btnPogledajTest.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnPogledajTest.setFocusPainted(false);
-			btnPogledajTest.setBorderPainted(false);
-			btnPogledajTest.setBackground(Color.WHITE);
+			btnPogledajKviz.setPreferredSize(new Dimension(125, 25));
+			btnPogledajKviz.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnPogledajKviz.setFocusPainted(false);
+			btnPogledajKviz.setBorderPainted(false);
+			btnPogledajKviz.setBackground(Color.WHITE);
 		}
-		return btnPogledajTest;
+		return btnPogledajKviz;
 	}
 }

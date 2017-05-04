@@ -28,7 +28,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JCheckBox;
 
-public class Obrisi_Pitanje extends JDialog {
+public class Izmeni extends JDialog {
 
 	private JPanel contentPane;
 	private JPanel panel;
@@ -43,16 +43,13 @@ public class Obrisi_Pitanje extends JDialog {
 	private JTextArea txtDonjePitanje;
 	private JButton btnPrthodnaStrana;
 	private JButton btnSledecaStrana;
-	private JCheckBox chckbxObrisiGornje;
-	private JCheckBox chckbxObrisiSrednje;
-	private JCheckBox chckbxObrisiSrednje_1;
-	private JButton btnObrisiPitanje;
+	private JButton btnSacuvaj;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public Obrisi_Pitanje() {
+	public Izmeni() {
 		setModal(true);
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -61,7 +58,7 @@ public class Obrisi_Pitanje extends JDialog {
 			}
 		});
 		setResizable(false);
-		setTitle("Obrisi pitanje");
+		setTitle("Izmeni pitanje");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 465, 584);
 		contentPane = new JPanel();
@@ -100,10 +97,7 @@ public class Obrisi_Pitanje extends JDialog {
 			panel.add(getScrollPane_2_1());
 			panel.add(getBtnPrthodnaStrana());
 			panel.add(getBtnSledecaStrana());
-			panel.add(getChckbxObrisiGornje());
-			panel.add(getChckbxObrisiSrednje());
-			panel.add(getChckbxObrisiSrednje_1());
-			panel.add(getBtnObrisiPitanje());
+			panel.add(getBtnSacuvaj());
 		}
 		return panel;
 	}
@@ -225,39 +219,15 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return btnSledecaStrana;
 	}
-	public JCheckBox getChckbxObrisiGornje() {
-		if (chckbxObrisiGornje == null) {
-			chckbxObrisiGornje = new JCheckBox("Obrisi gornje");
-			chckbxObrisiGornje.setBounds(10, 105, 106, 23);
-			chckbxObrisiGornje.setBackground(new Color(255, 255, 255));
+	public JButton getBtnSacuvaj() {
+		if (btnSacuvaj == null) {
+			btnSacuvaj = new JButton("Sacuvaj");
+			btnSacuvaj.setFont(new Font("Verdana", Font.BOLD, 11));
+			btnSacuvaj.setFocusPainted(false);
+			btnSacuvaj.setBorderPainted(false);
+			btnSacuvaj.setBackground(Color.WHITE);
+			btnSacuvaj.setBounds(10, 477, 168, 23);
 		}
-		return chckbxObrisiGornje;
-	}
-	public JCheckBox getChckbxObrisiSrednje() {
-		if (chckbxObrisiSrednje == null) {
-			chckbxObrisiSrednje = new JCheckBox("Obrisi srednje");
-			chckbxObrisiSrednje.setBackground(Color.WHITE);
-			chckbxObrisiSrednje.setBounds(10, 268, 106, 23);
-		}
-		return chckbxObrisiSrednje;
-	}
-	public JCheckBox getChckbxObrisiSrednje_1() {
-		if (chckbxObrisiSrednje_1 == null) {
-			chckbxObrisiSrednje_1 = new JCheckBox("Obrisi donje");
-			chckbxObrisiSrednje_1.setBackground(Color.WHITE);
-			chckbxObrisiSrednje_1.setBounds(10, 434, 106, 23);
-		}
-		return chckbxObrisiSrednje_1;
-	}
-	public JButton getBtnObrisiPitanje() {
-		if (btnObrisiPitanje == null) {
-			btnObrisiPitanje = new JButton("Obrisi pitanje");
-			btnObrisiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnObrisiPitanje.setFocusPainted(false);
-			btnObrisiPitanje.setBorderPainted(false);
-			btnObrisiPitanje.setBackground(Color.WHITE);
-			btnObrisiPitanje.setBounds(10, 477, 168, 23);
-		}
-		return btnObrisiPitanje;
+		return btnSacuvaj;
 	}
 }

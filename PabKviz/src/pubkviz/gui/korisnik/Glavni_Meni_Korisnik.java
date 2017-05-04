@@ -30,6 +30,7 @@ import pubkviz.gui.admin.Glavni_Meni;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 
 public class Glavni_Meni_Korisnik extends JFrame {
@@ -53,6 +54,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	 * @return 
 	 */
 	public Glavni_Meni_Korisnik(){
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Glavni_Meni_Korisnik.class.getResource("/123.png")));
 		setResizable(false);
 		setBackground(Color.WHITE);
 		setTitle("Pub Kviz");

@@ -213,6 +213,11 @@ public class Dodaj_Grupu extends JDialog {
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 			btnOdustani.setBounds(317, 362, 89, 23);
 			
 			btnOdustani.setFocusPainted(false);

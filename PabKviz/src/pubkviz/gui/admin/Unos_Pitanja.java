@@ -48,6 +48,7 @@ public class Unos_Pitanja extends JDialog {
 	 * Create the frame.
 	 */
 	public Unos_Pitanja() {
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent arg0) {

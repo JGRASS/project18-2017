@@ -22,6 +22,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.MatteBorder;
+import java.awt.Toolkit;
 
 public class Login extends JFrame {
 
@@ -39,6 +41,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/123.png")));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -71,6 +74,7 @@ public class Login extends JFrame {
 	public JTextField getTextKorisnicko_Ime() {
 		if (textKorisnicko_Ime == null) {
 			textKorisnicko_Ime = new JTextField();
+			textKorisnicko_Ime.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 			textKorisnicko_Ime.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyPressed(KeyEvent e) {
@@ -153,6 +157,7 @@ public class Login extends JFrame {
 	public JPasswordField getPasswordField() {
 		if (passwordField == null) {
 			passwordField = new JPasswordField();
+			passwordField.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 			passwordField.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyPressed(KeyEvent e) {
