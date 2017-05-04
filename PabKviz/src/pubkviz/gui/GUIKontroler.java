@@ -2,13 +2,11 @@ package pubkviz.gui;
 
 import java.awt.Color;
 
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 import pubkviz.gui.admin.Dodaj_Grupu;
@@ -18,6 +16,7 @@ import pubkviz.gui.admin.NapraviKviz;
 import pubkviz.gui.admin.Unos_Pitanja;
 import pubkviz.gui.korisnik.Glavni_Meni_Korisnik;
 import pubkviz.gui.admin.Obrisi_Pitanje;
+import pubkviz.gui.korisnik.Registracija;
 import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
 
@@ -32,6 +31,7 @@ public class GUIKontroler {
 	private static Pokreni_Kviz kviz;
 	private static Obrisi_Pitanje obrisiPitanje;
 	private static Izmeni izmena;
+	private static Registracija registar;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -112,17 +112,16 @@ public class GUIKontroler {
 	public static void izmeniGrupu() {
 		dodajGrupu = new Dodaj_Grupu();
 		dodajGrupu.setLocationRelativeTo(glavniProzor);
-		
+
 		dodajGrupu.setTitle("Izmeni grupu");
 		dodajGrupu.setVisible(true);
 	}
 
 	public static void otvoriRegistar() {
-		dodajGrupu = new Dodaj_Grupu();
-		dodajGrupu.setLocationRelativeTo(glavniProzor);
-		dodajGrupu.setTitle("Registruj se");
-		dodajGrupu.setVisible(true);
-	
+		registar = new Registracija();
+		registar.setLocationRelativeTo(glavniProzor);
+		registar.setVisible(true);
+
 	}
 
 	public static void ugasiAplikaciju() {
@@ -132,15 +131,17 @@ public class GUIKontroler {
 			System.exit(0);
 		}
 	}
+
 	public static void ugasiAplikacijuKorisnik() {
-		int i = JOptionPane.showConfirmDialog(glavniProzorKorisnik, "Da li zelite da zatvorite aplikaciju?", "Zatvaranje",
-				JOptionPane.YES_NO_OPTION);
+		int i = JOptionPane.showConfirmDialog(glavniProzorKorisnik, "Da li zelite da zatvorite aplikaciju?",
+				"Zatvaranje", JOptionPane.YES_NO_OPTION);
 		if (i == JOptionPane.YES_OPTION) {
 			System.exit(0);
 		}
 	}
-	public static void izbrisGrupu(){
-		int i = JOptionPane.showConfirmDialog(glavniProzorKorisnik, "Da li zelite da izbrisete grupu?", "Obris",
+
+	public static void izbrisGrupu() {
+		int i = JOptionPane.showConfirmDialog(glavniProzorKorisnik, "Da li zelite da izbrisete grupu?", "Obrisi",
 				JOptionPane.YES_NO_OPTION);
 		if (i == JOptionPane.YES_OPTION) {
 			System.exit(0);
@@ -176,41 +177,42 @@ public class GUIKontroler {
 		dodajGrupu.setVisible(true);
 
 	}
-	public static void pokreniKviz(){
+
+	public static void pokreniKviz() {
 		kviz = new Pokreni_Kviz();
 		kviz.setLocationRelativeTo(glavniProzorKorisnik);
 		kviz.setVisible(true);
-	
-		
+
 	}
-	public static void obrisiPitanje(){
+
+	public static void obrisiPitanje() {
 		obrisiPitanje = new Obrisi_Pitanje();
 		obrisiPitanje.setLocationRelativeTo(glavniProzor);
 		obrisiPitanje.setVisible(true);
-		
+
 	}
-	public static void pogledajTest(){
+
+	public static void pogledajTest() {
 		kviz = new Pokreni_Kviz();
 		napraviKviz.setModal(false);
 		kviz.setLocationRelativeTo(glavniProzor);
 		kviz.setVisible(true);
-	
-	
-		
+
 	}
-	public static void pogledajTestZatvaranje(){
+
+	public static void pogledajTestZatvaranje() {
 		kviz.dispose();
-		
-	
+
 		napraviKviz.setModal(true);
 		napraviKviz.setVisible(true);
 
 	}
-	public static void otvoriIzmenjivac(){
+
+	public static void otvoriIzmenjivac() {
 		izmena = new Izmeni();
 		izmena.setLocationRelativeTo(glavniProzor);
 		izmena.setVisible(true);
-		
+
 	}
 
 	public static void izaberiBrojClanova() {
@@ -287,6 +289,86 @@ public class GUIKontroler {
 			dodajGrupu.getLblprezime_3().setVisible(true);
 			dodajGrupu.getLblprezime_4().setVisible(true);
 			dodajGrupu.getLblprezime_5().setVisible(true);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public static void izaberiBrojClanovaRegi() {
+
+		int m = Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem());
+
+		switch (m) {
+		case 2:
+
+			registar.getLblime_3().setVisible(false);
+			registar.getLblime_4().setVisible(false);
+			registar.getLblime_5().setVisible(false);
+
+			registar.getTxtIme_3().setVisible(false);
+			registar.getTxtIme_4().setVisible(false);
+			registar.getTxtIme_5().setVisible(false);
+
+			registar.getTxtPrezime_3().setVisible(false);
+			registar.getTxtPrezime4().setVisible(false);
+			registar.getTxtPrezime_5().setVisible(false);
+
+			registar.getLblprezime_3().setVisible(false);
+			registar.getLblprezime_4().setVisible(false);
+			registar.getLblprezime_5().setVisible(false);
+			break;
+		case 3:
+			registar.getLblime_3().setVisible(true);
+			registar.getLblime_4().setVisible(false);
+			registar.getLblime_5().setVisible(false);
+
+			registar.getTxtIme_3().setVisible(true);
+			registar.getTxtIme_4().setVisible(false);
+			registar.getTxtIme_5().setVisible(false);
+
+			registar.getTxtPrezime_3().setVisible(true);
+			registar.getTxtPrezime4().setVisible(false);
+			registar.getTxtPrezime_5().setVisible(false);
+
+			registar.getLblprezime_3().setVisible(true);
+			registar.getLblprezime_4().setVisible(false);
+			registar.getLblprezime_5().setVisible(false);
+			break;
+		case 4:
+			registar.getLblime_3().setVisible(true);
+			registar.getLblime_4().setVisible(true);
+			registar.getLblime_5().setVisible(false);
+
+			registar.getTxtIme_3().setVisible(true);
+			registar.getTxtIme_4().setVisible(true);
+			registar.getTxtIme_5().setVisible(false);
+
+			registar.getTxtPrezime_3().setVisible(true);
+			registar.getTxtPrezime4().setVisible(true);
+			registar.getTxtPrezime_5().setVisible(false);
+
+			registar.getLblprezime_3().setVisible(true);
+			registar.getLblprezime_4().setVisible(true);
+			registar.getLblprezime_5().setVisible(false);
+			break;
+
+		case 5:
+			registar.getLblime_3().setVisible(true);
+			registar.getLblime_4().setVisible(true);
+			registar.getLblime_5().setVisible(true);
+
+			registar.getTxtIme_3().setVisible(true);
+			registar.getTxtIme_4().setVisible(true);
+			registar.getTxtIme_5().setVisible(true);
+
+			registar.getTxtPrezime_3().setVisible(true);
+			registar.getTxtPrezime4().setVisible(true);
+			registar.getTxtPrezime_5().setVisible(true);
+
+			registar.getLblprezime_3().setVisible(true);
+			registar.getLblprezime_4().setVisible(true);
+			registar.getLblprezime_5().setVisible(true);
 			break;
 		default:
 			break;

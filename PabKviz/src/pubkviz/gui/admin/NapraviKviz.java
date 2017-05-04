@@ -158,7 +158,6 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnSacuvajTest() {
 		if (btnSacuvajTest == null) {
 			btnSacuvajTest = new JButton("Sacuvaj kviz");
-			btnSacuvajTest.setEnabled(false);
 			btnSacuvajTest.setBounds(10, 225, 125, 25);
 			getBtnSacuvajTest().setPreferredSize(new Dimension(125, 25));
 			btnSacuvajTest.setFont(new Font("Verdana", Font.BOLD, 11));

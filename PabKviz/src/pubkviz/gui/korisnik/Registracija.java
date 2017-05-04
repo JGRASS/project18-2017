@@ -1,4 +1,4 @@
-package pubkviz.gui.admin;
+package pubkviz.gui.korisnik;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -32,8 +32,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.JPasswordField;
 
-public class Dodaj_Grupu extends JDialog {
+public class Registracija extends JDialog {
 
 	private JPanel contentPane;
 	private JLabel lblUnesiteImeGrupe;
@@ -43,7 +44,7 @@ public class Dodaj_Grupu extends JDialog {
 	private JLabel lblIzaberiteBrojClanova;
 	private JPanel panel_2;
 	private JComboBox cbxIzaberiteBrojClanova;
-	private JButton btnSacuvaj;
+	private JButton btnRegistrujSe;
 	private JButton btnOdustani;
 	private JLabel lblime;
 	private JLabel lblime_3;
@@ -65,17 +66,21 @@ public class Dodaj_Grupu extends JDialog {
 	private JTextField txtPrezime_3;
 	private JTextField txtPrezime4;
 	private JTextField txtPrezime_5;
+	private JPasswordField passwordField;
+	private JLabel lblUnesiPonovoSifru;
+	private JLabel lblUnesiSifru;
+	private JPasswordField passwordField_1;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public Dodaj_Grupu() {
+	public Registracija() {
 		setModal(true);
-		setTitle("Dodaj grupu");
+		setTitle("Registracija");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 423, 495);
+		setBounds(100, 100, 423, 589);
 		contentPane = new JPanel(){
 	        @Override
 	        protected void paintComponent(Graphics grphcs) {
@@ -148,7 +153,7 @@ public class Dodaj_Grupu extends JDialog {
 			panel_2.setBackground(new Color(255, 255, 255, 0));
 			panel_2.add(getCbxIzaberiteBrojClanova());
 			panel_2.add(getBtnOdustani());
-			panel_2.add(getBtnSacuvaj());
+			panel_2.add(getBtnRegistrujSe());
 			panel_2.add(getLblime());
 			panel_2.add(getLblime_3());
 			panel_2.add(getLblime_2());
@@ -169,6 +174,10 @@ public class Dodaj_Grupu extends JDialog {
 			panel_2.add(getTxtPrezime_3());
 			panel_2.add(getTxtPrezime4());
 			panel_2.add(getTxtPrezime_5());
+			panel_2.add(getPasswordField());
+			panel_2.add(getLblUnesiPonovoSifru());
+			panel_2.add(getLblUnesiSifru());
+			panel_2.add(getPasswordField_1());
 		}
 		return panel_2;
 	}
@@ -178,7 +187,7 @@ public class Dodaj_Grupu extends JDialog {
 			cbxIzaberiteBrojClanova.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent arg0) {
 					
-					GUIKontroler.izaberiBrojClanova();
+					GUIKontroler.izaberiBrojClanovaRegi();
 				}
 			});
 			cbxIzaberiteBrojClanova.setBackground(new Color(255,255,255));
@@ -187,27 +196,27 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return cbxIzaberiteBrojClanova;
 	}
-	public JButton getBtnSacuvaj() {
-		if (btnSacuvaj == null) {
-			btnSacuvaj = new JButton("Sacuvaj");
-			btnSacuvaj.setBounds(0, 362, 89, 23);
-			btnSacuvaj.setFocusPainted(false);
-			btnSacuvaj.setBorderPainted(false);
-			btnSacuvaj.setBackground(Color.WHITE);
+	public JButton getBtnRegistrujSe() {
+		if (btnRegistrujSe == null) {
+			btnRegistrujSe = new JButton("Registruj se");
+			btnRegistrujSe.setBounds(0, 456, 89, 23);
+			btnRegistrujSe.setFocusPainted(false);
+			btnRegistrujSe.setBorderPainted(false);
+			btnRegistrujSe.setBackground(Color.WHITE);
 			
-			btnSacuvaj.addMouseListener(new MouseAdapter() {
+			btnRegistrujSe.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
-					btnSacuvaj.setBackground(new Color(240, 248, 255));
+					btnRegistrujSe.setBackground(new Color(240, 248, 255));
 				}
 				@Override
 				public void mouseExited(MouseEvent e) {
-					btnSacuvaj.setBackground(Color.WHITE);
+					btnRegistrujSe.setBackground(Color.WHITE);
 				}
 			});
 			
 		}
-		return btnSacuvaj;
+		return btnRegistrujSe;
 	}
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
@@ -217,7 +226,7 @@ public class Dodaj_Grupu extends JDialog {
 					dispose();
 				}
 			});
-			btnOdustani.setBounds(317, 362, 89, 23);
+			btnOdustani.setBounds(317, 456, 89, 23);
 			
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);
@@ -385,5 +394,35 @@ public class Dodaj_Grupu extends JDialog {
 			txtPrezime_5.setBounds(210, 308, 196, 20);
 		}
 		return txtPrezime_5;
+	}
+	public JPasswordField getPasswordField() {
+		if (passwordField == null) {
+			passwordField = new JPasswordField();
+			passwordField.setBounds(0, 364, 196, 20);
+		}
+		return passwordField;
+	}
+	public JLabel getLblUnesiPonovoSifru() {
+		if (lblUnesiPonovoSifru == null) {
+			lblUnesiPonovoSifru = new JLabel("Unesi ponovo sifru");
+			lblUnesiPonovoSifru.setFont(new Font("Calibri", Font.BOLD, 16));
+			lblUnesiPonovoSifru.setBounds(0, 395, 196, 14);
+		}
+		return lblUnesiPonovoSifru;
+	}
+	public JLabel getLblUnesiSifru() {
+		if (lblUnesiSifru == null) {
+			lblUnesiSifru = new JLabel("Unesi sifru");
+			lblUnesiSifru.setFont(new Font("Calibri", Font.BOLD, 16));
+			lblUnesiSifru.setBounds(0, 339, 196, 14);
+		}
+		return lblUnesiSifru;
+	}
+	public JPasswordField getPasswordField_1() {
+		if (passwordField_1 == null) {
+			passwordField_1 = new JPasswordField();
+			passwordField_1.setBounds(0, 420, 196, 20);
+		}
+		return passwordField_1;
 	}
 }
