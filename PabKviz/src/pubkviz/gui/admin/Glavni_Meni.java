@@ -55,7 +55,7 @@ public class Glavni_Meni extends JFrame {
 		setResizable(false);
 		setBackground(Color.WHITE);
 		setTitle("Pub Kviz");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 690, 477);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
