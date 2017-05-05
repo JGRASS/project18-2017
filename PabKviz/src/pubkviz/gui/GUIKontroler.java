@@ -214,6 +214,8 @@ public class GUIKontroler {
 		izmena.setVisible(true);
 
 	}
+	
+	
 
 	public static void izaberiBrojClanova() {
 
@@ -295,6 +297,7 @@ public class GUIKontroler {
 		}
 	}
 
+	
 	public static void izaberiBrojClanovaRegi() {
 
 		int m = Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem());

@@ -199,7 +199,11 @@ public class Registracija extends JDialog {
 	public JButton getBtnRegistrujSe() {
 		if (btnRegistrujSe == null) {
 			btnRegistrujSe = new JButton("Registruj se");
-			btnRegistrujSe.setBounds(0, 456, 100, 23);
+			btnRegistrujSe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
+			btnRegistrujSe.setBounds(0, 456, 150, 23);
 			btnRegistrujSe.setFocusPainted(false);
 			btnRegistrujSe.setBorderPainted(false);
 			btnRegistrujSe.setBackground(Color.WHITE);
