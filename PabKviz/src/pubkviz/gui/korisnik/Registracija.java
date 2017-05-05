@@ -107,7 +107,7 @@ public class Registracija extends JDialog {
 
 	public JLabel getLblUnesiteImeGrupe() {
 		if (lblUnesiteImeGrupe == null) {
-			lblUnesiteImeGrupe = new JLabel("Unesite ime grupe");
+			lblUnesiteImeGrupe = new JLabel("Unesite ime grupe:");
 			lblUnesiteImeGrupe.setFont(new Font("Calibri", Font.BOLD, 16));
 		}
 		return lblUnesiteImeGrupe;
@@ -199,7 +199,7 @@ public class Registracija extends JDialog {
 	public JButton getBtnRegistrujSe() {
 		if (btnRegistrujSe == null) {
 			btnRegistrujSe = new JButton("Registruj se");
-			btnRegistrujSe.setBounds(0, 456, 89, 23);
+			btnRegistrujSe.setBounds(0, 456, 100, 23);
 			btnRegistrujSe.setFocusPainted(false);
 			btnRegistrujSe.setBorderPainted(false);
 			btnRegistrujSe.setBackground(Color.WHITE);
@@ -404,7 +404,7 @@ public class Registracija extends JDialog {
 	}
 	public JLabel getLblUnesiPonovoSifru() {
 		if (lblUnesiPonovoSifru == null) {
-			lblUnesiPonovoSifru = new JLabel("Unesi ponovo sifru");
+			lblUnesiPonovoSifru = new JLabel("Unesi ponovo sifru:");
 			lblUnesiPonovoSifru.setFont(new Font("Calibri", Font.BOLD, 16));
 			lblUnesiPonovoSifru.setBounds(0, 395, 196, 14);
 		}
@@ -412,7 +412,7 @@ public class Registracija extends JDialog {
 	}
 	public JLabel getLblUnesiSifru() {
 		if (lblUnesiSifru == null) {
-			lblUnesiSifru = new JLabel("Unesi sifru");
+			lblUnesiSifru = new JLabel("Unesi sifru :");
 			lblUnesiSifru.setFont(new Font("Calibri", Font.BOLD, 16));
 			lblUnesiSifru.setBounds(0, 339, 196, 14);
 		}
