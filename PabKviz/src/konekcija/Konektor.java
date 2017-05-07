@@ -48,6 +48,7 @@ public class Konektor implements BazaInterfejs {
 	 */
 	private void otvoriKonekciju() {
 		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			konekcija = DriverManager.getConnection(baza, username, password);
 			izjava = konekcija.createStatement();
 		} catch (Exception e) {
