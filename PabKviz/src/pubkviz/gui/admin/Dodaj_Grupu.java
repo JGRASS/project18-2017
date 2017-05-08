@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import konekcija.Konektor;
+import modeli.Clan;
+import modeli.Grupa;
 import pubkviz.gui.GUIKontroler;
 
 import javax.swing.JLabel;
@@ -28,6 +31,8 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ItemListener;
@@ -66,7 +71,6 @@ public class Dodaj_Grupu extends JDialog {
 	private JTextField txtPrezime4;
 	private JTextField txtPrezime_5;
 
-
 	/**
 	 * Create the frame.
 	 */
@@ -76,22 +80,20 @@ public class Dodaj_Grupu extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 423, 495);
-		contentPane = new JPanel(){
-	        @Override
-	        protected void paintComponent(Graphics grphcs) {
-	            super.paintComponent(grphcs);
-	            Graphics2D g2d = (Graphics2D) grphcs;
-	            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-	                    RenderingHints.VALUE_ANTIALIAS_ON);
-	            GradientPaint gp = new GradientPaint(0, 340,
-						getBackground().brighter().brighter(), 1000, getHeight(),
-	                    getBackground().darker());
-	            g2d.setPaint(gp);
-	            g2d.fillRect( 0,0,getWidth(),  getHeight()); 
+		contentPane = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics grphcs) {
+				super.paintComponent(grphcs);
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				GradientPaint gp = new GradientPaint(0, 340, getBackground().brighter().brighter(), 1000, getHeight(),
+						getBackground().darker());
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
 
-	        }
+			}
 
-	    };
+		};
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -107,6 +109,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblUnesiteImeGrupe;
 	}
+
 	public JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -116,6 +119,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return panel;
 	}
+
 	public JTextField getTxtUnesiteImeGrupe() {
 		if (txtUnesiteImeGrupe == null) {
 			txtUnesiteImeGrupe = new JTextField();
@@ -124,6 +128,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtUnesiteImeGrupe;
 	}
+
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -134,6 +139,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return panel_1;
 	}
+
 	public JLabel getLblIzaberiteBrojClanova() {
 		if (lblIzaberiteBrojClanova == null) {
 			lblIzaberiteBrojClanova = new JLabel("Izaberite broj clanova:");
@@ -141,6 +147,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblIzaberiteBrojClanova;
 	}
+
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
@@ -172,43 +179,126 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return panel_2;
 	}
+
 	public JComboBox getCbxIzaberiteBrojClanova() {
 		if (cbxIzaberiteBrojClanova == null) {
 			cbxIzaberiteBrojClanova = new JComboBox();
 			cbxIzaberiteBrojClanova.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent arg0) {
-					
+
 					GUIKontroler.izaberiBrojClanova();
 				}
 			});
-			cbxIzaberiteBrojClanova.setBackground(new Color(255,255,255));
-			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] {"5", "4", "3", "2"}));
+			cbxIzaberiteBrojClanova.setBackground(new Color(255, 255, 255));
+			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] { "5", "4", "3", "2" }));
 			cbxIzaberiteBrojClanova.setBounds(0, 11, 53, 27);
 		}
 		return cbxIzaberiteBrojClanova;
 	}
+
 	public JButton getBtnSacuvaj() {
 		if (btnSacuvaj == null) {
 			btnSacuvaj = new JButton("Sacuvaj");
+			btnSacuvaj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					try {
+						// dodavanje grupe
+						String imeGrupe = txtUnesiteImeGrupe.getText();
+						if (imeGrupe == null || imeGrupe.isEmpty()) {
+							getTxtUnesiteImeGrupe().setText("Unesite naziv grupe");
+							return;
+						}
+						Konektor konektor = new Konektor();
+						LinkedList<Grupa> grupe = (LinkedList<Grupa>) konektor.vratiGrupe();
+						int brojGrupa = grupe.size();
+						for (int i = 0; i < brojGrupa; i++) {
+							Grupa grupa = grupe.get(i);
+							if (grupa.getNaziv().equals(imeGrupe)) {
+								getTxtUnesiteImeGrupe().setText("Grupa vec postoji");
+								return;
+							}
+						}
+						konektor.dodajGrupu(new Grupa(brojGrupa + 1, imeGrupe));
+						// dodavanje clanova
+						LinkedList<Clan> clanovi = (LinkedList<Clan>) konektor.vratiClanove();
+						int brojClanova = clanovi.size();
+						LinkedList<Clan> provera = new LinkedList<>();
+						if (txtIme.getText() == null || txtIme.getText().isEmpty()) {
+							txtIme.setText("Unesite ime");
+							return;
+						}
+						if (txtPrezime.getText() == null || txtPrezime.getText().isEmpty()) {
+							txtPrezime.setText("Unesite prezime");
+							return;
+						}
+						Clan clan1 = new Clan(brojClanova + 1, txtIme.getText(), txtPrezime.getText(), imeGrupe);
+						konektor.dodajClana(clan1);
+						if (txtIme_2.getText() == null || txtIme_2.getText().isEmpty()) {
+							txtIme_2.setText("Unesite ime");
+							return;
+						}
+						if (txtPrezime_2.getText() == null || txtPrezime_2.getText().isEmpty()) {
+							txtPrezime_2.setText("Unesite prezime");
+							return;
+						}
+						Clan clan2 = new Clan(brojClanova + 2, txtIme_2.getText(), txtPrezime_2.getText(), imeGrupe);
+						konektor.dodajClana(clan2);
+						if (txtIme_3.getText() == null || txtIme_3.getText().isEmpty()) {
+							txtIme_3.setText("Unesite ime");
+							return;
+						}
+						if (txtPrezime_3.getText() == null || txtPrezime_3.getText().isEmpty()) {
+							txtPrezime_3.setText("Unesite prezime");
+							return;
+						}
+						Clan clan3 = new Clan(brojClanova + 3, txtIme_3.getText(), txtPrezime_3.getText(), imeGrupe);
+						konektor.dodajClana(clan3);
+						if (txtIme_4.getText() == null || txtIme_4.getText().isEmpty()) {
+							txtIme_4.setText("Unesite ime");
+							return;
+						}
+						if (txtPrezime4.getText() == null || txtPrezime4.getText().isEmpty()) {
+							txtPrezime4.setText("Unesite prezime");
+							return;
+						}
+						Clan clan4 = new Clan(brojClanova + 4, txtIme_4.getText(), txtPrezime4.getText(), imeGrupe);
+						konektor.dodajClana(clan4);
+						if (txtIme_5.getText() == null || txtIme_5.getText().isEmpty()) {
+							txtIme_5.setText("Unesite ime");
+							return;
+						}
+						if (txtPrezime_5.getText() == null || txtPrezime_5.getText().isEmpty()) {
+							txtPrezime_5.setText("Unesite prezime");
+							return;
+						}
+						Clan clan5 = new Clan(brojClanova + 5, txtIme_5.getText(), txtPrezime_5.getText(), imeGrupe);
+						konektor.dodajClana(clan5);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
 			btnSacuvaj.setBounds(0, 362, 89, 23);
 			btnSacuvaj.setFocusPainted(false);
 			btnSacuvaj.setBorderPainted(false);
 			btnSacuvaj.setBackground(Color.WHITE);
-			
+
 			btnSacuvaj.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					btnSacuvaj.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnSacuvaj.setBackground(Color.WHITE);
 				}
 			});
-			
+
 		}
 		return btnSacuvaj;
 	}
+
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
@@ -218,7 +308,7 @@ public class Dodaj_Grupu extends JDialog {
 				}
 			});
 			btnOdustani.setBounds(317, 362, 89, 23);
-			
+
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);
 			btnOdustani.setBackground(Color.WHITE);
@@ -227,15 +317,17 @@ public class Dodaj_Grupu extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnOdustani.setBackground(new Color(240, 128, 125));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnOdustani.setBackground(Color.WHITE);
 				}
 			});
-		
+
 		}
 		return btnOdustani;
 	}
+
 	public JLabel getLblime() {
 		if (lblime == null) {
 			lblime = new JLabel("1.Ime");
@@ -243,6 +335,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblime;
 	}
+
 	public JLabel getLblime_3() {
 		if (lblime_3 == null) {
 			lblime_3 = new JLabel("3.Ime");
@@ -250,6 +343,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblime_3;
 	}
+
 	public JLabel getLblime_2() {
 		if (lblime_2 == null) {
 			lblime_2 = new JLabel("2.Ime");
@@ -257,6 +351,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblime_2;
 	}
+
 	public JLabel getLblime_4() {
 		if (lblime_4 == null) {
 			lblime_4 = new JLabel("4.Ime");
@@ -264,6 +359,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblime_4;
 	}
+
 	public JLabel getLblime_5() {
 		if (lblime_5 == null) {
 			lblime_5 = new JLabel("5.Ime");
@@ -271,6 +367,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblime_5;
 	}
+
 	public JTextField getTxtIme() {
 		if (txtIme == null) {
 			txtIme = new JTextField();
@@ -279,6 +376,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtIme;
 	}
+
 	public JTextField getTxtIme_2() {
 		if (txtIme_2 == null) {
 			txtIme_2 = new JTextField();
@@ -287,6 +385,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtIme_2;
 	}
+
 	public JTextField getTxtIme_3() {
 		if (txtIme_3 == null) {
 			txtIme_3 = new JTextField();
@@ -295,6 +394,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtIme_3;
 	}
+
 	public JTextField getTxtIme_4() {
 		if (txtIme_4 == null) {
 			txtIme_4 = new JTextField();
@@ -303,6 +403,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtIme_4;
 	}
+
 	public JTextField getTxtIme_5() {
 		if (txtIme_5 == null) {
 			txtIme_5 = new JTextField();
@@ -311,6 +412,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtIme_5;
 	}
+
 	public JLabel getLblprezime() {
 		if (lblprezime == null) {
 			lblprezime = new JLabel("1.Prezime");
@@ -318,6 +420,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblprezime;
 	}
+
 	public JLabel getLblprezime_3() {
 		if (lblprezime_3 == null) {
 			lblprezime_3 = new JLabel("3.Prezime");
@@ -325,6 +428,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblprezime_3;
 	}
+
 	public JLabel getLblprezime_2() {
 		if (lblprezime_2 == null) {
 			lblprezime_2 = new JLabel("2.Prezime");
@@ -332,6 +436,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblprezime_2;
 	}
+
 	public JLabel getLblprezime_4() {
 		if (lblprezime_4 == null) {
 			lblprezime_4 = new JLabel("4.Prezime");
@@ -339,6 +444,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblprezime_4;
 	}
+
 	public JLabel getLblprezime_5() {
 		if (lblprezime_5 == null) {
 			lblprezime_5 = new JLabel("5.Prezime");
@@ -346,6 +452,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return lblprezime_5;
 	}
+
 	public JTextField getTxtPrezime() {
 		if (txtPrezime == null) {
 			txtPrezime = new JTextField();
@@ -354,6 +461,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtPrezime;
 	}
+
 	public JTextField getTxtPrezime_2() {
 		if (txtPrezime_2 == null) {
 			txtPrezime_2 = new JTextField();
@@ -362,6 +470,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtPrezime_2;
 	}
+
 	public JTextField getTxtPrezime_3() {
 		if (txtPrezime_3 == null) {
 			txtPrezime_3 = new JTextField();
@@ -370,6 +479,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtPrezime_3;
 	}
+
 	public JTextField getTxtPrezime4() {
 		if (txtPrezime4 == null) {
 			txtPrezime4 = new JTextField();
@@ -378,6 +488,7 @@ public class Dodaj_Grupu extends JDialog {
 		}
 		return txtPrezime4;
 	}
+
 	public JTextField getTxtPrezime_5() {
 		if (txtPrezime_5 == null) {
 			txtPrezime_5 = new JTextField();

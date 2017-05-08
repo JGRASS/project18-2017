@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.Collection;
 import java.util.LinkedList;
 import modeli.Clan;
+import modeli.Grupa;
 import modeli.Pitanje;
 
 /**
@@ -73,13 +74,14 @@ public class Konektor implements BazaInterfejs {
 	@Override
 	public void dodajClana(Clan clan) {
 		otvoriKonekciju();
-		String upit = "INSERT INTO clanovi(id, ime, prezime) VALUES(?, ?, ?)";
+		String upit = "INSERT INTO clanovi(id, ime, prezime, grupa) VALUES(?, ?, ?, ?)";
 		try {
 			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
 			pripremljenaIzjava.setLong(1, clan.getId());
 			pripremljenaIzjava.setString(2, clan.getIme());
 			pripremljenaIzjava.setString(3, clan.getPrezime());
-			pripremljenaIzjava.executeQuery();
+			pripremljenaIzjava.setString(4, clan.getGrupa());
+			pripremljenaIzjava.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -96,42 +98,7 @@ public class Konektor implements BazaInterfejs {
 		try {
 			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
 			pripremljenaIzjava.setInt(1, id);
-			pripremljenaIzjava.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-	}
-
-	/**
-	 * Metoda dodaje pitanje koje je ulazni argument u tabelu pitanja u bazu
-	 */
-	@Override
-	public void dodajPitanje(Pitanje pitanje) {
-		otvoriKonekciju();
-		String upit = "INSERT INTO pitanja(id, tekst) VALUES(?, ?)";
-		try {
-			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
-			pripremljenaIzjava.setLong(1, pitanje.getId());
-			pripremljenaIzjava.setString(2, pitanje.getTekst());
-			pripremljenaIzjava.executeQuery();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-	}
-
-	/**
-	 * Metoda brise pitanje sa zadatim id-om iz tabele pitanja iz baze
-	 */
-	@Override
-	public void izbrisiPitanje(int id) {
-		otvoriKonekciju();
-		String upit = "DELETE FROM pitanja WHERE id=?";
-		try {
-			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
-			pripremljenaIzjava.setInt(1, id);
-			pripremljenaIzjava.executeQuery();
+			pripremljenaIzjava.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -152,6 +119,7 @@ public class Konektor implements BazaInterfejs {
 				clan.setId(rezultat.getLong("id"));
 				clan.setIme(rezultat.getString("ime"));
 				clan.setPrezime(rezultat.getString("prezime"));
+				clan.setGrupa(rezultat.getString("grupa"));
 				clanovi.add(clan);
 			}
 		} catch (SQLException e) {
@@ -159,6 +127,41 @@ public class Konektor implements BazaInterfejs {
 		}
 		zatvoriKonekciju();
 		return clanovi;
+	}
+
+	/**
+	 * Metoda dodaje pitanje koje je ulazni argument u tabelu pitanja u bazu
+	 */
+	@Override
+	public void dodajPitanje(Pitanje pitanje) {
+		otvoriKonekciju();
+		String upit = "INSERT INTO pitanja(id, tekst) VALUES(?, ?)";
+		try {
+			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
+			pripremljenaIzjava.setLong(1, pitanje.getId());
+			pripremljenaIzjava.setString(2, pitanje.getTekst());
+			pripremljenaIzjava.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		zatvoriKonekciju();
+	}
+
+	/**
+	 * Metoda brise pitanje sa zadatim id-om iz tabele pitanja iz baze
+	 */
+	@Override
+	public void izbrisiPitanje(int id) {
+		otvoriKonekciju();
+		String upit = "DELETE FROM pitanja WHERE id=?";
+		try {
+			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
+			pripremljenaIzjava.setInt(1, id);
+			pripremljenaIzjava.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		zatvoriKonekciju();
 	}
 
 	/**
@@ -181,6 +184,63 @@ public class Konektor implements BazaInterfejs {
 		}
 		zatvoriKonekciju();
 		return pitanja;
+	}
+
+	/**
+	 * Metoda dodaje grupu koja je ulazni argument u tabelu grupe u bazu
+	 */
+	@Override
+	public void dodajGrupu(Grupa grupa) {
+		otvoriKonekciju();
+		String upit = "INSERT INTO grupe(id, naziv) VALUES(?, ?)";
+		try {
+			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
+			pripremljenaIzjava.setLong(1, grupa.getId());
+			pripremljenaIzjava.setString(2, grupa.getNaziv());
+			pripremljenaIzjava.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		zatvoriKonekciju();
+	}
+
+	/**
+	 * Metoda brise grupu sa zadatim id-om iz tabele grupe iz baze
+	 */
+	@Override
+	public void izbrisiGrupu(int id) {
+		otvoriKonekciju();
+		String upit = "DELETE FROM grupe WHERE id=?";
+		try {
+			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
+			pripremljenaIzjava.setInt(1, id);
+			pripremljenaIzjava.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		zatvoriKonekciju();
+	}
+
+	/**
+	 * Metoda vraca listu svih grupa iz baze
+	 */
+	@Override
+	public Collection<Grupa> vratiGrupe() {
+		Collection<Grupa> grupe = new LinkedList<>();
+		otvoriKonekciju();
+		try {
+			ResultSet rezultat = izjava.executeQuery("SELECT * FROM grupe");
+			while (rezultat.next()) {
+				Grupa grupa = new Grupa();
+				grupa.setId(rezultat.getLong("id"));
+				grupa.setNaziv(rezultat.getString("naziv"));
+				grupe.add(grupa);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		zatvoriKonekciju();
+		return grupe;
 	}
 
 }
