@@ -1,7 +1,6 @@
 package pubkviz.gui.admin;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,10 +13,8 @@ import pubkviz.gui.GUIKontroler;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
 import java.awt.RenderingHints;
 
-import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JButton;
@@ -27,11 +24,9 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Collection;
 import java.util.LinkedList;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
