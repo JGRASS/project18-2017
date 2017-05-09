@@ -274,7 +274,7 @@ public class Unos_Pitanja extends JDialog {
 	}
 	public JLabel getLblUnesiteOdgovoreI() {
 		if (lblUnesiteOdgovoreI == null) {
-			lblUnesiteOdgovoreI = new JLabel("Unesite odgovore i selektujite tacan:");
+			lblUnesiteOdgovoreI = new JLabel("Unesite odgovore i oznacite tacan:");
 			lblUnesiteOdgovoreI.setFont(new Font("Calibri", Font.BOLD, 16));
 			lblUnesiteOdgovoreI.setBounds(14, 92, 256, 14);
 		}
