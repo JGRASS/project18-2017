@@ -186,7 +186,7 @@ public class Unos_Pitanja extends JDialog {
 	public JTextArea getTextPane_1() {
 		if (txtNapisitePitanje == null) {
 			txtNapisitePitanje = new JTextArea();
-			txtNapisitePitanje.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+			txtNapisitePitanje.setBorder(new LineBorder(new Color(0, 0, 0)));
 			txtNapisitePitanje.setBounds(4, 4, 426, 77);
 			txtNapisitePitanje.setLineWrap(true);
 			txtNapisitePitanje.setWrapStyleWord(true);
