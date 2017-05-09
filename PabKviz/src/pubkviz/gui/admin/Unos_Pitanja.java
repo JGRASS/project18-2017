@@ -76,22 +76,7 @@ public class Unos_Pitanja extends JDialog {
 		setTitle("Unesite pitanje");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel(){
-	        @Override
-	        protected void paintComponent(Graphics grphcs) {
-	            super.paintComponent(grphcs);
-	            Graphics2D g2d = (Graphics2D) grphcs;
-	            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-	                    RenderingHints.VALUE_ANTIALIAS_ON);
-	            GradientPaint gp = new GradientPaint(0, 340,
-						getBackground().brighter().brighter(), 1000, getHeight(),
-	                    getBackground().darker());
-	            g2d.setPaint(gp);
-	            g2d.fillRect( 0,0,getWidth(),  getHeight()); 
-
-	        }
-
-	    };
+		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -168,7 +153,7 @@ public class Unos_Pitanja extends JDialog {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
 			panel_1.setBackground(Color.WHITE);
-			panel_1.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), new BevelBorder(BevelBorder.RAISED, null, null, null, null)));
+			panel_1.setBorder(null);
 			panel_1.setLayout(null);
 			panel_1.add(getTextPane_1());
 			panel_1.add(getRdbtnPrviOdgovor());

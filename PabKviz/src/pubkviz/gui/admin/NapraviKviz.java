@@ -37,7 +37,6 @@ import java.awt.Dialog.ModalExclusionType;
 public class NapraviKviz extends JDialog {
 
 	private JPanel contentPane;
-	private JPanel panel;
 	private JButton btnUnesiPitanje;
 	private JButton btnObrisiPitanje;
 	private JButton btnSacuvajTest;
@@ -60,46 +59,18 @@ public class NapraviKviz extends JDialog {
 		setTitle("Napravi kviz");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel(){
-	        @Override
-	        protected void paintComponent(Graphics grphcs) {
-	            super.paintComponent(grphcs);
-	            Graphics2D g2d = (Graphics2D) grphcs;
-	            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-	                    RenderingHints.VALUE_ANTIALIAS_ON);
-	            GradientPaint gp = new GradientPaint(0, 340,
-						getBackground().brighter().brighter(), 2000, getHeight(),
-	                    getBackground().darker());
-	            g2d.setPaint(gp);
-	            g2d.fillRect( 0,0,getWidth(),  getHeight()); 
-
-	        }
-
-	    };
+		setBounds(100, 100, 330, 328);
+		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.add(getPanel(), BorderLayout.WEST);
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
-	}
-
-	public JPanel getPanel() {
-		if (panel == null) {
-			panel = new JPanel();
-			panel.setBackground(new Color(255, 255, 255, 155));
-			panel.setPreferredSize(new Dimension(125, 0));
-			panel.add(getBtnUnesiPitanje());
-			panel.add(getBtnIzmeniPitanje());
-			panel.add(getBtnObrisiPitanje());
-			panel.add(getBtnPogledajKviz());
-		}
-		return panel;
 	}
 	public JButton getBtnUnesiPitanje() {
 		if (btnUnesiPitanje == null) {
 			btnUnesiPitanje = new JButton("Unesi pitanje");
+			btnUnesiPitanje.setBounds(91, 73, 125, 25);
 			btnUnesiPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.unosPitanja();
@@ -129,6 +100,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnObrisiPitanje() {
 		if (btnObrisiPitanje == null) {
 			btnObrisiPitanje = new JButton("Obrisi pitanje");
+			btnObrisiPitanje.setBounds(91, 181, 125, 25);
 			btnObrisiPitanje.setPreferredSize(new Dimension(125, 25));
 			btnObrisiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnObrisiPitanje.setFocusPainted(false);
@@ -158,7 +130,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnSacuvajTest() {
 		if (btnSacuvajTest == null) {
 			btnSacuvajTest = new JButton("Sacuvaj kviz");
-			btnSacuvajTest.setBounds(10, 225, 125, 25);
+			btnSacuvajTest.setBounds(0, 253, 125, 25);
 			getBtnSacuvajTest().setPreferredSize(new Dimension(125, 25));
 			btnSacuvajTest.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnSacuvajTest.setFocusPainted(false);
@@ -187,7 +159,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnIzadji() {
 		if (btnIzadji == null) {
 			btnIzadji = new JButton("Izadji");
-			btnIzadji.setBounds(174, 225, 125, 25);
+			btnIzadji.setBounds(179, 253, 125, 25);
 			btnIzadji.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					dispose();
@@ -225,6 +197,10 @@ public class NapraviKviz extends JDialog {
 			panel_2.add(getTxtNazivKviza());
 			panel_2.add(getBtnSacuvajTest());
 			panel_2.add(getBtnIzadji());
+			panel_2.add(getBtnUnesiPitanje());
+			panel_2.add(getBtnIzmeniPitanje());
+			panel_2.add(getBtnObrisiPitanje());
+			panel_2.add(getBtnPogledajKviz());
 		}
 		return panel_2;
 	}
@@ -232,14 +208,14 @@ public class NapraviKviz extends JDialog {
 		if (lblNazivKviza == null) {
 			lblNazivKviza = new JLabel("Naziv kviza");
 			lblNazivKviza.setFont(new Font("Calibri", Font.BOLD, 16));
-			lblNazivKviza.setBounds(10, 24, 125, 14);
+			lblNazivKviza.setBounds(10, 11, 125, 14);
 		}
 		return lblNazivKviza;
 	}
 	public JTextField getTxtNazivKviza() {
 		if (txtNazivKviza == null) {
 			txtNazivKviza = new JTextField();
-			txtNazivKviza.setBounds(10, 62, 289, 20);
+			txtNazivKviza.setBounds(10, 36, 294, 20);
 			txtNazivKviza.setColumns(10);
 		}
 		return txtNazivKviza;
@@ -247,6 +223,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnIzmeniPitanje() {
 		if (btnIzmeniPitanje == null) {
 			btnIzmeniPitanje = new JButton("Izmeni");
+			btnIzmeniPitanje.setBounds(91, 109, 125, 25);
 			btnIzmeniPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKontroler.otvoriIzmenjivac();
@@ -263,6 +240,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnPogledajKviz() {
 		if (btnPogledajKviz == null) {
 			btnPogledajKviz = new JButton("Pogledaj kviz");
+			btnPogledajKviz.setBounds(91, 145, 125, 25);
 			btnPogledajKviz.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.pogledajTest();
