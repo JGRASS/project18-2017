@@ -226,8 +226,7 @@ public class GUIKontroler {
 	}
 
 	public static String[] napraviNizImena() {
-		String[] imena = null;
-
+		String[] imena = new String[5];
 		if (dodajGrupu.getTxtIme().isVisible()) {
 			imena[0] = dodajGrupu.getTxtIme().getText();
 		}
@@ -243,14 +242,12 @@ public class GUIKontroler {
 		if (dodajGrupu.getTxtIme_5().isVisible()) {
 			imena[4] = dodajGrupu.getTxtIme_5().getText();
 		}
-
 		return imena;
 
 	}
 
 	public static String[] napraviNizPrezimena() {
-		String[] pimena = null;
-
+		String[] pimena = new String[5];
 		if (dodajGrupu.getTxtPrezime().isVisible()) {
 			pimena[0] = dodajGrupu.getTxtPrezime().getText();
 		}
@@ -266,7 +263,6 @@ public class GUIKontroler {
 		if (dodajGrupu.getTxtPrezime_5().isVisible()) {
 			pimena[4] = dodajGrupu.getTxtPrezime_5().getText();
 		}
-
 		return pimena;
 
 	}
