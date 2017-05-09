@@ -76,22 +76,7 @@ public class Dodaj_Grupu extends JDialog {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 423, 495);
-		contentPane = new JPanel(){
-	        @Override
-	        protected void paintComponent(Graphics grphcs) {
-	            super.paintComponent(grphcs);
-	            Graphics2D g2d = (Graphics2D) grphcs;
-	            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-	                    RenderingHints.VALUE_ANTIALIAS_ON);
-	            GradientPaint gp = new GradientPaint(0, 340,
-						getBackground().brighter().brighter(), 1000, getHeight(),
-	                    getBackground().darker());
-	            g2d.setPaint(gp);
-	            g2d.fillRect( 0,0,getWidth(),  getHeight()); 
-
-	        }
-
-	    };
+		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -127,7 +112,7 @@ public class Dodaj_Grupu extends JDialog {
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setBackground(new Color(255, 255, 255, 10));
+			panel_1.setBackground(Color.WHITE);
 			panel_1.setLayout(new BorderLayout(0, 0));
 			panel_1.add(getLblIzaberiteBrojClanova(), BorderLayout.NORTH);
 			panel_1.add(getPanel_2(), BorderLayout.CENTER);
@@ -145,7 +130,7 @@ public class Dodaj_Grupu extends JDialog {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
 			panel_2.setLayout(null);
-			panel_2.setBackground(new Color(255, 255, 255, 0));
+			panel_2.setBackground(Color.WHITE);
 			panel_2.add(getCbxIzaberiteBrojClanova());
 			panel_2.add(getBtnOdustani());
 			panel_2.add(getBtnSacuvaj());
