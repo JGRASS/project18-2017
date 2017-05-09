@@ -157,6 +157,7 @@ public class Pokreni_Kviz extends JDialog {
 	public JTextArea getTxtGornjePitanje() {
 		if (txtGornjePitanje == null) {
 			txtGornjePitanje = new JTextArea();
+			txtGornjePitanje.setEditable(false);
 			txtGornjePitanje.setWrapStyleWord(true);
 			txtGornjePitanje.setLineWrap(true);
 		}
@@ -194,6 +195,7 @@ public class Pokreni_Kviz extends JDialog {
 	public JTextArea getTxtDonjePitanje() {
 		if (txtDonjePitanje == null) {
 			txtDonjePitanje = new JTextArea();
+			txtDonjePitanje.setEditable(false);
 			txtDonjePitanje.setLineWrap(true);
 			txtDonjePitanje.setWrapStyleWord(true);
 		}
