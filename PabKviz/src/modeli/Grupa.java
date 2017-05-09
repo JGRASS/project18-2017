@@ -1,5 +1,9 @@
 package modeli;
 
+import java.util.LinkedList;
+
+import sistemske_operacije.SODodajGrupu;
+
 public class Grupa {
 
 	private long id;
@@ -35,4 +39,7 @@ public class Grupa {
 		return "Grupa [id=" + id + ", naziv=" + naziv + "]";
 	}
 
+	public void dodajGrupu(String imeGrupe, LinkedList<Clan> clanovi) {
+		SODodajGrupu.izvrsi(imeGrupe, clanovi);
+	}
 }
