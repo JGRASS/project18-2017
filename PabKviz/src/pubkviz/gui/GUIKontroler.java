@@ -19,6 +19,8 @@ import pubkviz.gui.admin.Obrisi_Pitanje;
 import pubkviz.gui.korisnik.Registracija;
 import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
+import sistemske_operacije.SODodajGrupu;
+import sistemske_operacije.SONapraviListuClanova;
 
 public class GUIKontroler {
 
@@ -214,8 +216,60 @@ public class GUIKontroler {
 		izmena.setVisible(true);
 
 	}
-	
-	
+
+	public static void unesiPodatkeZaGrupu() {
+		SODodajGrupu.izvrsi(dodajGrupu.getTxtUnesiteImeGrupe().getText(),
+				SONapraviListuClanova.izvrsi(napraviNizImena(), napraviNizPrezimena(),
+						Integer.valueOf((String) dodajGrupu.getCbxIzaberiteBrojClanova().getSelectedItem()),
+						dodajGrupu.getTxtUnesiteImeGrupe().getText()));
+
+	}
+
+	public static String[] napraviNizImena() {
+		String[] imena = null;
+
+		if (dodajGrupu.getTxtIme().isVisible()) {
+			imena[0] = dodajGrupu.getTxtIme().getText();
+		}
+		if (dodajGrupu.getTxtIme_2().isVisible()) {
+			imena[1] = dodajGrupu.getTxtIme_2().getText();
+		}
+		if (dodajGrupu.getTxtIme_3().isVisible()) {
+			imena[2] = dodajGrupu.getTxtIme_3().getText();
+		}
+		if (dodajGrupu.getTxtIme_4().isVisible()) {
+			imena[3] = dodajGrupu.getTxtIme_4().getText();
+		}
+		if (dodajGrupu.getTxtIme_5().isVisible()) {
+			imena[4] = dodajGrupu.getTxtIme_5().getText();
+		}
+
+		return imena;
+
+	}
+
+	public static String[] napraviNizPrezimena() {
+		String[] pimena = null;
+
+		if (dodajGrupu.getTxtPrezime().isVisible()) {
+			pimena[0] = dodajGrupu.getTxtPrezime().getText();
+		}
+		if (dodajGrupu.getTxtPrezime_2().isVisible()) {
+			pimena[1] = dodajGrupu.getTxtPrezime_2().getText();
+		}
+		if (dodajGrupu.getTxtPrezime_3().isVisible()) {
+			pimena[2] = dodajGrupu.getTxtPrezime_3().getText();
+		}
+		if (dodajGrupu.getTxtPrezime4().isVisible()) {
+			pimena[3] = dodajGrupu.getTxtPrezime4().getText();
+		}
+		if (dodajGrupu.getTxtPrezime_5().isVisible()) {
+			pimena[4] = dodajGrupu.getTxtPrezime_5().getText();
+		}
+
+		return pimena;
+
+	}
 
 	public static void izaberiBrojClanova() {
 
@@ -297,7 +351,6 @@ public class GUIKontroler {
 		}
 	}
 
-	
 	public static void izaberiBrojClanovaRegi() {
 
 		int m = Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem());

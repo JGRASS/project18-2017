@@ -194,6 +194,11 @@ public class Dodaj_Grupu extends JDialog {
 	public JButton getBtnSacuvaj() {
 		if (btnSacuvaj == null) {
 			btnSacuvaj = new JButton("Sacuvaj");
+			btnSacuvaj.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					 GUIKontroler.unesiPodatkeZaGrupu();
+				}
+			});
 			btnSacuvaj.setBounds(0, 362, 89, 23);
 			btnSacuvaj.setFocusPainted(false);
 			btnSacuvaj.setBorderPainted(false);
