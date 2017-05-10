@@ -8,6 +8,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 import modeli.Kviz;
 import pubkviz.gui.admin.Glavni_Meni;
@@ -201,6 +202,7 @@ public class GUIKontroler {
 		izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
 		izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
 		izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+		vratiSelektovanoDugme().setSelected(true);
 		}
 		izmena.setLocationRelativeTo(glavniProzor);
 		izmena.setVisible(true);
@@ -215,6 +217,7 @@ public class GUIKontroler {
 		izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
 		izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
 		izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+		vratiSelektovanoDugme().setSelected(true);
 		}else{
 			iterator--;
 		}
@@ -230,10 +233,26 @@ public class GUIKontroler {
 		izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
 		izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
 		izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+		vratiSelektovanoDugme().setSelected(true);
 		}else{
 			iterator++;
 		}
 	
+	}
+	public static JRadioButton vratiSelektovanoDugme(){
+		String tacanOdgovor = SOVratiPitanje.izvrsi(iterator).getTacanOdgovor();
+		
+		if(izmena.getTxtPrviOdgovor().getText().equals(tacanOdgovor)){
+			return izmena.getRdbtnPrviOdgovor();
+		}
+		if(izmena.getTxtDrugiOdgovor().getText().equals(tacanOdgovor)){
+			return izmena.getRdbtnDrugiOdgovor();
+		}
+		if(izmena.getTxtTreciOdgovor().getText().equals(tacanOdgovor)){
+			return izmena.getRdbtnTreciOdgovor();
+		}
+		return null;
+		
 	}
 	public static void unesiPodatkeZaGrupu() {
 		if (vratiPassword() == null) {
