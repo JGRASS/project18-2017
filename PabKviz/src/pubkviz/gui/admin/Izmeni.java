@@ -298,6 +298,7 @@ public class Izmeni extends JDialog {
 			btnSacuvajIzmenu = new JButton("Sacuvaj izmenu");
 			btnSacuvajIzmenu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sacuvajIzmenu();
 				}
 			});
 			btnSacuvajIzmenu.setBounds(4, 228, 177, 23);
@@ -312,6 +313,11 @@ public class Izmeni extends JDialog {
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 			btnOdustani.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);

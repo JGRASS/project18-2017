@@ -107,7 +107,7 @@ public class NapraviKviz extends JDialog {
 			btnObrisiPitanje.setBackground(Color.WHITE);
 			btnObrisiPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.obrisiPitanje();
+					GUIKontroler.otvoriBrisac();
 				}
 			});
 			btnObrisiPitanje.addMouseListener(new MouseAdapter() {

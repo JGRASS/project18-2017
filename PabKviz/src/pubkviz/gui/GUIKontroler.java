@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
@@ -23,7 +24,9 @@ import pubkviz.gui.login.Login;
 import pubkviz.sifra.JavaEkripcija;
 import sistemske_operacije.SODodajGrupu;
 import sistemske_operacije.SONapraviListuClanova;
+import sistemske_operacije.SOObrisiPitanje;
 import sistemske_operacije.SOPrimiPitanje;
+import sistemske_operacije.SOSacuvajIzmenu;
 import sistemske_operacije.SOSerijalizujKviz;
 import sistemske_operacije.SOVratiPitanje;
 
@@ -169,12 +172,7 @@ public class GUIKontroler {
 
 	}
 
-	public static void obrisiPitanje() {
-		obrisiPitanje = new Obrisi_Pitanje();
-		obrisiPitanje.setLocationRelativeTo(glavniProzor);
-		obrisiPitanje.setVisible(true);
-
-	}
+	
 
 	public static void pogledajTest() {
 		kviz = new Pokreni_Kviz();
@@ -189,6 +187,69 @@ public class GUIKontroler {
 
 		napraviKviz.setModal(true);
 		napraviKviz.setVisible(true);
+
+	}
+	public static void otvoriBrisac(){
+		obrisiPitanje = new Obrisi_Pitanje();
+		
+		iterator = 0;
+		if (SOVratiPitanje.izvrsi(iterator) != null) {
+			obrisiPitanje.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
+			obrisiPitanje.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
+			obrisiPitanje.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
+			obrisiPitanje.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+			vratiSelektovanoDugmeObrisa().setSelected(true);
+		}
+		obrisiPitanje.setLocationRelativeTo(glavniProzor);
+		obrisiPitanje.setVisible(true);
+		
+	}
+	public static void sledecePitanjeObrisa() {
+		if (iterator == Kviz.pitanja.size() - 1) {
+			return;
+		}
+		iterator++;
+		if (SOVratiPitanje.izvrsi(iterator) != null) {
+			obrisiPitanje.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
+			obrisiPitanje.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
+			obrisiPitanje.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
+			obrisiPitanje.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+			vratiSelektovanoDugmeObrisa().setSelected(true);
+		} else {
+			iterator--;
+		}
+
+	}
+
+	private static AbstractButton vratiSelektovanoDugmeObrisa() {
+		String tacanOdgovor = SOVratiPitanje.izvrsi(iterator).getTacanOdgovor();
+
+		if (obrisiPitanje.getTxtPrviOdgovor().getText().equals(tacanOdgovor)) {
+			return obrisiPitanje.getRdbtnPrviOdgovor();
+		}
+		if (obrisiPitanje.getTxtDrugiOdgovor().getText().equals(tacanOdgovor)) {
+			return obrisiPitanje.getRdbtnDrugiOdgovor();
+		}
+		if (obrisiPitanje.getTxtTreciOdgovor().getText().equals(tacanOdgovor)) {
+			return obrisiPitanje.getRdbtnTreciOdgovor();
+		}
+		return null;
+	}
+
+	public static void prethodnoPitanjeObrisa() {
+		if (iterator == 0) {
+			return;
+		}
+		iterator--;
+		if (SOVratiPitanje.izvrsi(iterator) != null) {
+			obrisiPitanje.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
+			obrisiPitanje.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
+			obrisiPitanje.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
+			obrisiPitanje.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+			vratiSelektovanoDugmeObrisa().setSelected(true);
+		} else {
+			iterator++;
+		}
 
 	}
 
@@ -346,6 +407,36 @@ public class GUIKontroler {
 		}
 		if (unosPitanja.getRdbtnDrugiOdgovor().isSelected()) {
 			return unosPitanja.getTxtDrugiOdgovor().getText();
+		}
+		return null;
+	}
+
+	public static void sacuvajIzmenu() {
+		String tacanOdgvor = vratiTacanOdgovorIzmena();
+
+		SOSacuvajIzmenu.izvrsi(iterator, izmena.getTextPane_1().getText(), izmena.getTxtPrviOdgovor().getText(),
+				izmena.getTxtDrugiOdgovor().getText(), izmena.getTxtTreciOdgovor().getText(), tacanOdgvor);
+		izmena.dispose();
+
+	}
+	public static void izbrisiPitanje(){
+		SOObrisiPitanje.izvrsi(iterator);
+		if(Kviz.pitanja.isEmpty()){
+			napraviKviz.getBtnIzmeniPitanje().setEnabled(false);
+			napraviKviz.getBtnObrisiPitanje().setEnabled(false);
+		}
+		obrisiPitanje.dispose();
+	}
+
+	private static String vratiTacanOdgovorIzmena() {
+		if (izmena.getRdbtnPrviOdgovor().isSelected()) {
+			return izmena.getTxtPrviOdgovor().getText();
+		}
+		if (izmena.getRdbtnTreciOdgovor().isSelected()) {
+			return izmena.getTxtTreciOdgovor().getText();
+		}
+		if (izmena.getRdbtnDrugiOdgovor().isSelected()) {
+			return izmena.getTxtDrugiOdgovor().getText();
 		}
 		return null;
 	}

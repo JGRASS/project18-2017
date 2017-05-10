@@ -101,7 +101,7 @@ public class Obrisi_Pitanje extends JDialog {
 			btnPrethodnoPitanje.setBounds(4, 262, 177, 23);
 			btnPrethodnoPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
+					GUIKontroler.prethodnoPitanjeObrisa();
 				}
 			});
 			btnPrethodnoPitanje.addMouseListener(new MouseAdapter() {
@@ -126,6 +126,11 @@ public class Obrisi_Pitanje extends JDialog {
 	public JButton getBtnSledecePitanje() {
 		if (btnSledecePitanje == null) {
 			btnSledecePitanje = new JButton("Sledece pitanje");
+			btnSledecePitanje.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sledecePitanjeObrisa();
+				}
+			});
 			btnSledecePitanje.setBounds(253, 262, 177, 23);
 			btnSledecePitanje.addMouseListener(new MouseAdapter() {
 				@Override
@@ -296,6 +301,11 @@ public class Obrisi_Pitanje extends JDialog {
 	public JButton getBtnObrisiPitanje() {
 		if (btnObrisiPitanje == null) {
 			btnObrisiPitanje = new JButton("Obrisi pitanje");
+			btnObrisiPitanje.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.izbrisiPitanje();
+				}
+			});
 			btnObrisiPitanje.setBounds(4, 228, 177, 23);
 			btnObrisiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnObrisiPitanje.setFocusPainted(false);
@@ -308,6 +318,11 @@ public class Obrisi_Pitanje extends JDialog {
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
+			btnOdustani.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 			btnOdustani.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);
