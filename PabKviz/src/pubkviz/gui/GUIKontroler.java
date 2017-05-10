@@ -186,25 +186,28 @@ public class GUIKontroler {
 		
 		SOUcitajKviz.izvrsi();
 		
+		int brojPitanja = Kviz.pitanja.size();
+		int strana = brojPitanja / 2;
+		
 		iteratorDonji = 1;
 		iteratorGornji = 0;
 		
 
-		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
+		if (iteratorGornji != strana) {
 			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
 			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
 			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
 			kviz.getTxtTreciGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTreciOdgovor());
 			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
 		}
-		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
+		if (iteratorDonji != strana) {
 			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
 			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
 			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
 			kviz.getTxtTreciDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTreciOdgovor());
 			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
 		}
-		else  {
+		if(iteratorDonji == strana || iteratorGornji == strana){
 			kviz.getTxtDonjePitanje().setVisible(false);
 			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
 			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
@@ -217,6 +220,7 @@ public class GUIKontroler {
 			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
 			kviz.getLblDonjiOdgovor().setVisible(false);
 			kviz.getScrollPane_2_1().setVisible(false);
+			kviz.getBtnSledecaStrana().setText("Zavrsi sa kvizom");
 			
 		}
 		kviz.setLocationRelativeTo(glavniProzorKorisnik);
@@ -230,33 +234,35 @@ public class GUIKontroler {
 		}
 		iteratorDonji += 2;
 		iteratorGornji += 2;
-		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
+		int brojPitanja = Kviz.pitanja.size();
+		int strana = brojPitanja / 2;
+		if (iteratorGornji != strana) {
 			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
 			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
 			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
 			kviz.getTxtTreciGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTreciOdgovor());
 			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
 		}
-		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
+		if (iteratorDonji != strana) {
 			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
 			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
 			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
 			kviz.getTxtTreciDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTreciOdgovor());
 			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
 		}
-		else  {
+		if(iteratorDonji == strana || iteratorGornji == strana){
 			kviz.getTxtDonjePitanje().setVisible(false);
 			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
 			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
 			kviz.getTxtTreciDonjiOdgovor().setVisible(false);
 			kviz.getLblDonjePitanje().setVisible(false);
-			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
-			kviz.getLblDonjiOdgovor().setVisible(false);
-			kviz.getScrollPane_2_1().setVisible(false);
 			kviz.getRadioButton_4().setVisible(false);
 			kviz.getRadioButton_5().setVisible(false);
 			kviz.getRadioButton_6().setVisible(false);
 			kviz.getRadioButton_7().setVisible(false);
+			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
+			kviz.getLblDonjiOdgovor().setVisible(false);
+			kviz.getScrollPane_2_1().setVisible(false);
 			kviz.getBtnSledecaStrana().setText("Zavrsi sa kvizom");
 			
 		}
