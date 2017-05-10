@@ -192,11 +192,12 @@ public class Konektor implements BazaInterfejs {
 	@Override
 	public void dodajGrupu(Grupa grupa) {
 		otvoriKonekciju();
-		String upit = "INSERT INTO grupe(id, naziv) VALUES(?, ?)";
+		String upit = "INSERT INTO grupe(id, naziv, sifra) VALUES(?, ?, ?)";
 		try {
 			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
 			pripremljenaIzjava.setLong(1, grupa.getId());
 			pripremljenaIzjava.setString(2, grupa.getNaziv());
+			pripremljenaIzjava.setString(3, grupa.getPassword());
 			pripremljenaIzjava.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -234,6 +235,7 @@ public class Konektor implements BazaInterfejs {
 				Grupa grupa = new Grupa();
 				grupa.setId(rezultat.getLong("id"));
 				grupa.setNaziv(rezultat.getString("naziv"));
+				grupa.setPassword(rezultat.getString("sifra"));
 				grupe.add(grupa);
 			}
 		} catch (SQLException e) {

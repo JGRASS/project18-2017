@@ -18,6 +18,7 @@ import pubkviz.gui.admin.Obrisi_Pitanje;
 import pubkviz.gui.korisnik.Registracija;
 import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
+import pubkviz.sifra.JavaEkripcija;
 import sistemske_operacije.SODodajGrupu;
 import sistemske_operacije.SONapraviListuClanova;
 
@@ -193,6 +194,9 @@ public class GUIKontroler {
 	}
 
 	public static void unesiPodatkeZaGrupu() {
+		if (vratiPassword() == null) {
+			return;
+		}
 		SODodajGrupu.izvrsi(registar.getTxtUnesiteImeGrupe().getText(),
 				SONapraviListuClanova.izvrsi(napraviNizImena(), napraviNizPrezimena(),
 						Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem()),
@@ -244,14 +248,16 @@ public class GUIKontroler {
 	}
 
 	public static String vratiPassword() {
-		// implementirati proveru da li je dva puta unesen isti password u
-		// passwordField-ove
-		String passwordOriginal = registar.getPasswordField().toString();
-		String passwordPonovljeni = registar.getPasswordField_1().toString();
-		if (passwordOriginal.equals(passwordPonovljeni)) {
-
+		String passwordOriginal = registar.getPasswordField().getText();
+		String passwordPonovljeni = registar.getPasswordField_1().getText();
+		if (!(passwordOriginal.equals(passwordPonovljeni))) {
+			registar.getTxtUnesiteImeGrupe().setText("Unesite sifru ponovo");
+			registar.getPasswordField().setText(null);
+			registar.getPasswordField_1().setText(null);
+			return null;
 		}
-		return "";
+		passwordOriginal = JavaEkripcija.enkripcija(passwordOriginal);
+		return passwordOriginal.toString();
 	}
 
 	public static void izaberiBrojClanovaRegi() {
