@@ -248,8 +248,8 @@ public class GUIKontroler {
 	}
 
 	public static String vratiPassword() {
-		String passwordOriginal = registar.getPasswordField().getText();
-		String passwordPonovljeni = registar.getPasswordField_1().getText();
+		String passwordOriginal = String.valueOf(registar.getPasswordField().getPassword());
+		String passwordPonovljeni = String.valueOf(registar.getPasswordField_1().getPassword());
 		if (!(passwordOriginal.equals(passwordPonovljeni))) {
 			registar.getTxtUnesiteImeGrupe().setText("Unesite sifru ponovo");
 			registar.getPasswordField().setText(null);
@@ -257,7 +257,7 @@ public class GUIKontroler {
 			return null;
 		}
 		passwordOriginal = JavaEkripcija.enkripcija(passwordOriginal);
-		return passwordOriginal.toString();
+		return passwordOriginal;
 	}
 
 	public static void izaberiBrojClanovaRegi() {
