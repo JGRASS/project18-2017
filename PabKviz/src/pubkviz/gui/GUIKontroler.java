@@ -308,6 +308,7 @@ public class GUIKontroler {
 
 		SOPrimiPitanje.izvrsi(unosPitanja.getTextPane_1().getText(), unosPitanja.getTxtPrviOdgovor().getText(),
 				unosPitanja.getTxtDrugiOdgovor().getText(), unosPitanja.getTxtTreciOdgovor().getText(), tacanOdgvor);
+		unosPitanja.dispose();
 	}
 
 	private static String vratiTacanOdgovor() {
