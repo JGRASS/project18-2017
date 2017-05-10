@@ -21,10 +21,11 @@ import pubkviz.gui.admin.Obrisi_Pitanje;
 import pubkviz.gui.korisnik.Registracija;
 import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
-import pubkviz.sifra.JavaEkripcija;
+import pubkviz.sifra.JavaEnkripcija;
 import sistemske_operacije.SODodajGrupu;
 import sistemske_operacije.SONapraviListuClanova;
 import sistemske_operacije.SOObrisiPitanje;
+import sistemske_operacije.SOPrijaviSe;
 import sistemske_operacije.SOPrimiPitanje;
 import sistemske_operacije.SOSacuvajIzmenu;
 import sistemske_operacije.SOSerijalizujKviz;
@@ -88,6 +89,18 @@ public class GUIKontroler {
 			glavniProzor.setVisible(true);
 			glavniProzor.setLocationRelativeTo(null);
 			pocetniProzor.setEnabled(false);
+		} else if (SOPrijaviSe.izvrsi(vratiKorisnickoIme(), vratiLozinku())) {
+			glavniProzorKorisnik = new Glavni_Meni_Korisnik();
+			glavniProzorKorisnik.setLocationRelativeTo(null);
+			glavniProzorKorisnik.setVisible(true);
+			pocetniProzor.dispose();
+			glavniProzorKorisnik.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					ugasiAplikacijuKorisnik();
+				}
+			});
+
 		}
 	}
 
@@ -172,8 +185,6 @@ public class GUIKontroler {
 
 	}
 
-	
-
 	public static void pogledajTest() {
 		kviz = new Pokreni_Kviz();
 		napraviKviz.setModal(false);
@@ -189,9 +200,10 @@ public class GUIKontroler {
 		napraviKviz.setVisible(true);
 
 	}
-	public static void otvoriBrisac(){
+
+	public static void otvoriBrisac() {
 		obrisiPitanje = new Obrisi_Pitanje();
-		
+
 		iterator = 0;
 		if (SOVratiPitanje.izvrsi(iterator) != null) {
 			obrisiPitanje.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
@@ -202,8 +214,9 @@ public class GUIKontroler {
 		}
 		obrisiPitanje.setLocationRelativeTo(glavniProzor);
 		obrisiPitanje.setVisible(true);
-		
+
 	}
+
 	public static void sledecePitanjeObrisa() {
 		if (iterator == Kviz.pitanja.size() - 1) {
 			return;
@@ -382,7 +395,7 @@ public class GUIKontroler {
 			registar.getPasswordField_1().setText(null);
 			return null;
 		}
-		passwordOriginal = JavaEkripcija.enkripcija(passwordOriginal);
+		passwordOriginal = JavaEnkripcija.enkripcija(passwordOriginal);
 		return passwordOriginal;
 	}
 
@@ -419,9 +432,10 @@ public class GUIKontroler {
 		izmena.dispose();
 
 	}
-	public static void izbrisiPitanje(){
+
+	public static void izbrisiPitanje() {
 		SOObrisiPitanje.izvrsi(iterator);
-		if(Kviz.pitanja.isEmpty()){
+		if (Kviz.pitanja.isEmpty()) {
 			napraviKviz.getBtnIzmeniPitanje().setEnabled(false);
 			napraviKviz.getBtnObrisiPitanje().setEnabled(false);
 		}

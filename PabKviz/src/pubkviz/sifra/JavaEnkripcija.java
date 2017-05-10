@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class JavaEkripcija {
+public class JavaEnkripcija {
 
 	public static String enkripcija(String sifra) {
 

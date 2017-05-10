@@ -45,9 +45,6 @@ public class NapraviKviz extends JDialog {
 	private JProgressBar progressBar;
 	private JPanel panel_2;
 	private JButton btnIzmeniPitanje;
-	private JButton btnPogledajKviz;
-
-
 
 	/**
 	 * Create the frame.
@@ -65,10 +62,11 @@ public class NapraviKviz extends JDialog {
 		setContentPane(contentPane);
 		contentPane.add(getPanel_2(), BorderLayout.CENTER);
 	}
+
 	public JButton getBtnUnesiPitanje() {
 		if (btnUnesiPitanje == null) {
 			btnUnesiPitanje = new JButton("Unesi pitanje");
-			btnUnesiPitanje.setBounds(91, 11, 125, 25);
+			btnUnesiPitanje.setBounds(91, 39, 125, 25);
 			btnUnesiPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.unosPitanja();
@@ -84,22 +82,23 @@ public class NapraviKviz extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnUnesiPitanje.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnUnesiPitanje.setBackground(Color.WHITE);
 				}
 			});
-			
+
 		}
-		
-		
+
 		return btnUnesiPitanje;
 	}
+
 	public JButton getBtnObrisiPitanje() {
 		if (btnObrisiPitanje == null) {
 			btnObrisiPitanje = new JButton("Obrisi pitanje");
 			btnObrisiPitanje.setEnabled(false);
-			btnObrisiPitanje.setBounds(91, 119, 125, 25);
+			btnObrisiPitanje.setBounds(91, 111, 125, 25);
 			btnObrisiPitanje.setPreferredSize(new Dimension(125, 25));
 			btnObrisiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnObrisiPitanje.setFocusPainted(false);
@@ -115,17 +114,18 @@ public class NapraviKviz extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnObrisiPitanje.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnObrisiPitanje.setBackground(Color.WHITE);
 				}
 			});
-			
+
 		}
-		
-		
+
 		return btnObrisiPitanje;
 	}
+
 	public JButton getBtnSacuvajTest() {
 		if (btnSacuvajTest == null) {
 			btnSacuvajTest = new JButton("Sacuvaj kviz");
@@ -145,17 +145,18 @@ public class NapraviKviz extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnSacuvajTest.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnSacuvajTest.setBackground(Color.WHITE);
 				}
 			});
-			
+
 		}
-		
-		
+
 		return btnSacuvajTest;
 	}
+
 	public JButton getBtnIzadji() {
 		if (btnIzadji == null) {
 			btnIzadji = new JButton("Izadji");
@@ -175,18 +176,16 @@ public class NapraviKviz extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnIzadji.setBackground(new Color(240, 128, 125));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnIzadji.setBackground(Color.WHITE);
 				}
 			});
-			
-		
-		
+
 		}
 		return btnIzadji;
 	}
-
 
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
@@ -198,15 +197,15 @@ public class NapraviKviz extends JDialog {
 			panel_2.add(getBtnUnesiPitanje());
 			panel_2.add(getBtnIzmeniPitanje());
 			panel_2.add(getBtnObrisiPitanje());
-			panel_2.add(getBtnPogledajKviz());
 		}
 		return panel_2;
 	}
+
 	public JButton getBtnIzmeniPitanje() {
 		if (btnIzmeniPitanje == null) {
 			btnIzmeniPitanje = new JButton("Izmeni");
 			btnIzmeniPitanje.setEnabled(false);
-			btnIzmeniPitanje.setBounds(91, 47, 125, 25);
+			btnIzmeniPitanje.setBounds(91, 75, 125, 25);
 			btnIzmeniPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GUIKontroler.otvoriIzmenjivac();
@@ -219,22 +218,5 @@ public class NapraviKviz extends JDialog {
 			btnIzmeniPitanje.setBackground(Color.WHITE);
 		}
 		return btnIzmeniPitanje;
-	}
-	public JButton getBtnPogledajKviz() {
-		if (btnPogledajKviz == null) {
-			btnPogledajKviz = new JButton("Pogledaj kviz");
-			btnPogledajKviz.setBounds(91, 83, 125, 25);
-			btnPogledajKviz.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.pogledajTest();
-				}
-			});
-			btnPogledajKviz.setPreferredSize(new Dimension(125, 25));
-			btnPogledajKviz.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnPogledajKviz.setFocusPainted(false);
-			btnPogledajKviz.setBorderPainted(false);
-			btnPogledajKviz.setBackground(Color.WHITE);
-		}
-		return btnPogledajKviz;
 	}
 }
