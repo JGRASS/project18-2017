@@ -186,86 +186,66 @@ public class GUIKontroler {
 		
 		SOUcitajKviz.izvrsi();
 		
-		int brojPitanja = Kviz.pitanja.size();
-		int strana = brojPitanja / 2;
+	
 		
 		iteratorDonji = 1;
 		iteratorGornji = 0;
 		
 
-		if (iteratorGornji != strana) {
+		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
 			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
 			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
 			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
 			kviz.getTxtTreciGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTreciOdgovor());
 			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
 		}
-		if (iteratorDonji != strana) {
+		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
 			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
 			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
 			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
 			kviz.getTxtTreciDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTreciOdgovor());
 			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
 		}
-		if(iteratorDonji == strana || iteratorGornji == strana){
-			kviz.getTxtDonjePitanje().setVisible(false);
-			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
-			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
-			kviz.getTxtTreciDonjiOdgovor().setVisible(false);
-			kviz.getLblDonjePitanje().setVisible(false);
-			kviz.getRadioButton_4().setVisible(false);
-			kviz.getRadioButton_5().setVisible(false);
-			kviz.getRadioButton_6().setVisible(false);
-			kviz.getRadioButton_7().setVisible(false);
-			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
-			kviz.getLblDonjiOdgovor().setVisible(false);
-			kviz.getScrollPane_2_1().setVisible(false);
-			kviz.getBtnSledecaStrana().setText("Zavrsi sa kvizom");
-			
-		}
+	
 		kviz.setLocationRelativeTo(glavniProzorKorisnik);
 		kviz.setVisible(true);
 
 	}
 
 	public static void sacuvajNastavi(){
-		if ((iteratorGornji >= Kviz.pitanja.size() - 2) && (iteratorDonji >= Kviz.pitanja.size()- 3)) {
-			return;
-		}
+	
 		iteratorDonji += 2;
 		iteratorGornji += 2;
-		int brojPitanja = Kviz.pitanja.size();
-		int strana = brojPitanja / 2;
-		if (iteratorGornji != strana) {
+	
+		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
 			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
 			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
 			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
 			kviz.getTxtTreciGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTreciOdgovor());
 			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
 		}
-		if (iteratorDonji != strana) {
+		else if(SOVratiPitanje.izvrsi(iteratorGornji) == null){
+			kviz.getTxtGornjePitanje().setText("");
+			kviz.getTxtPrviGornjiOdgovor().setText("");
+			kviz.getTxtDrugiGornjiOdgovor().setText("");
+			kviz.getTxtTreciGornjiOdgovor().setText("");
+			kviz.getLblGornjePitanje().setText("pitanje");
+			
+		}
+		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
 			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
 			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
 			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
 			kviz.getTxtTreciDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTreciOdgovor());
 			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
+		}else if(SOVratiPitanje.izvrsi(iteratorDonji) == null){
+			kviz.getTxtDonjePitanje().setText("");
+			kviz.getTxtPrviDonjiOdgovor().setText("");
+			kviz.getTxtTreciDonjiOdgovor().setText("");
+			kviz.getTxtDrugiDonjiOdgovor().setText("");
+			kviz.getLblGornjePitanje().setText("pitanje");
 		}
-		if(iteratorDonji == strana || iteratorGornji == strana){
-			kviz.getTxtDonjePitanje().setVisible(false);
-			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
-			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
-			kviz.getTxtTreciDonjiOdgovor().setVisible(false);
-			kviz.getLblDonjePitanje().setVisible(false);
-			kviz.getRadioButton_4().setVisible(false);
-			kviz.getRadioButton_5().setVisible(false);
-			kviz.getRadioButton_6().setVisible(false);
-			kviz.getRadioButton_7().setVisible(false);
-			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
-			kviz.getLblDonjiOdgovor().setVisible(false);
-			kviz.getScrollPane_2_1().setVisible(false);
-			kviz.getBtnSledecaStrana().setText("Zavrsi sa kvizom");
-			
-		}
+
 		
 	
 	}
