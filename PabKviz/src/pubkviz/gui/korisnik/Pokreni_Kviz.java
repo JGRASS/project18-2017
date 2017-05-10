@@ -29,6 +29,9 @@ import java.awt.event.WindowEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+
+import pubkviz.gui.GUIKontroler;
+
 import javax.swing.ButtonGroup;
 import java.awt.Component;
 import javax.swing.border.BevelBorder;
@@ -46,7 +49,6 @@ public class Pokreni_Kviz extends JDialog {
 	private JScrollPane scrollPane_2;
 	private JLabel lblDonjiOdgovor;
 	private JTextArea txtDonjePitanje;
-	private JButton btnPrthodnaStrana;
 	private JButton btnSledecaStrana;
 	private JRadioButton radioButton;
 	private JRadioButton radioButton_1;
@@ -103,7 +105,6 @@ public class Pokreni_Kviz extends JDialog {
 			panel.add(getLblDonjePitanje());
 			panel.add(getScrollPane_2_1());
 			panel.add(getLblDonjiOdgovor());
-			panel.add(getBtnPrthodnaStrana());
 			panel.add(getBtnSledecaStrana());
 			panel.add(getRadioButton());
 			panel.add(getRadioButton_1());
@@ -193,35 +194,15 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtDonjePitanje;
 	}
-	public JButton getBtnPrthodnaStrana() {
-		if (btnPrthodnaStrana == null) {
-			btnPrthodnaStrana = new JButton("Prethodna strana");
-			btnPrthodnaStrana.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-				}
-			});
-			btnPrthodnaStrana.setBounds(10, 499, 168, 23);
-			btnPrthodnaStrana.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnPrthodnaStrana.setFocusPainted(false);
-			btnPrthodnaStrana.setBorderPainted(false);
-			btnPrthodnaStrana.setBackground(Color.WHITE);
-			btnPrthodnaStrana.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					btnPrthodnaStrana.setBackground(new Color(240, 248, 255));
-				}
-				@Override
-				public void mouseExited(MouseEvent e) {
-					btnPrthodnaStrana.setBackground(Color.WHITE);
-				}
-			});
-		}
-		return btnPrthodnaStrana;
-	}
 	public JButton getBtnSledecaStrana() {
 		if (btnSledecaStrana == null) {
-			btnSledecaStrana = new JButton("Sledeca strana");
-			btnSledecaStrana.setBounds(259, 499, 168, 23);
+			btnSledecaStrana = new JButton("Sacuvaj odgovore i nastavi");
+			btnSledecaStrana.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sacuvajNastavi();
+				}
+			});
+			btnSledecaStrana.setBounds(10, 499, 417, 23);
 			btnSledecaStrana.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnSledecaStrana.setFocusPainted(false);
 			btnSledecaStrana.setBorderPainted(false);

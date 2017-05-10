@@ -29,6 +29,7 @@ import sistemske_operacije.SOPrijaviSe;
 import sistemske_operacije.SOPrimiPitanje;
 import sistemske_operacije.SOSacuvajIzmenu;
 import sistemske_operacije.SOSerijalizujKviz;
+import sistemske_operacije.SOUcitajKviz;
 import sistemske_operacije.SOVratiPitanje;
 
 public class GUIKontroler {
@@ -43,6 +44,8 @@ public class GUIKontroler {
 	private static Izmeni izmena;
 	private static Registracija registar;
 	private static int iterator;
+	private static int iteratorGornji;
+	private static int iteratorDonji;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -180,17 +183,85 @@ public class GUIKontroler {
 
 	public static void pokreniKviz() {
 		kviz = new Pokreni_Kviz();
+		
+		SOUcitajKviz.izvrsi();
+		
+		iteratorDonji = 1;
+		iteratorGornji = 0;
+		
+
+		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
+			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
+			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
+			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
+			kviz.getTxtTreciGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTreciOdgovor());
+			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
+		}
+		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
+			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
+			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
+			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
+			kviz.getTxtTreciDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTreciOdgovor());
+			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
+		}
+		else  {
+			kviz.getTxtDonjePitanje().setVisible(false);
+			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
+			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
+			kviz.getTxtTreciDonjiOdgovor().setVisible(false);
+			kviz.getLblDonjePitanje().setVisible(false);
+			kviz.getRadioButton_4().setVisible(false);
+			kviz.getRadioButton_5().setVisible(false);
+			kviz.getRadioButton_6().setVisible(false);
+			kviz.getRadioButton_7().setVisible(false);
+			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
+			kviz.getLblDonjiOdgovor().setVisible(false);
+			kviz.getScrollPane_2_1().setVisible(false);
+			
+		}
 		kviz.setLocationRelativeTo(glavniProzorKorisnik);
 		kviz.setVisible(true);
 
 	}
 
-	public static void pogledajTest() {
-		kviz = new Pokreni_Kviz();
-		napraviKviz.setModal(false);
-		kviz.setLocationRelativeTo(glavniProzor);
-		kviz.setVisible(true);
-
+	public static void sacuvajNastavi(){
+		if ((iteratorGornji >= Kviz.pitanja.size() - 2) && (iteratorDonji >= Kviz.pitanja.size()- 3)) {
+			return;
+		}
+		iteratorDonji += 2;
+		iteratorGornji += 2;
+		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
+			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
+			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
+			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
+			kviz.getTxtTreciGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTreciOdgovor());
+			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
+		}
+		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
+			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
+			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
+			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
+			kviz.getTxtTreciDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTreciOdgovor());
+			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
+		}
+		else  {
+			kviz.getTxtDonjePitanje().setVisible(false);
+			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
+			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
+			kviz.getTxtTreciDonjiOdgovor().setVisible(false);
+			kviz.getLblDonjePitanje().setVisible(false);
+			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
+			kviz.getLblDonjiOdgovor().setVisible(false);
+			kviz.getScrollPane_2_1().setVisible(false);
+			kviz.getRadioButton_4().setVisible(false);
+			kviz.getRadioButton_5().setVisible(false);
+			kviz.getRadioButton_6().setVisible(false);
+			kviz.getRadioButton_7().setVisible(false);
+			kviz.getBtnSledecaStrana().setText("Zavrsi sa kvizom");
+			
+		}
+		
+	
 	}
 
 	public static void pogledajTestZatvaranje() {

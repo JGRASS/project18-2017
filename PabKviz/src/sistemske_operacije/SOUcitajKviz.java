@@ -13,7 +13,7 @@ import modeli.Pitanje;
 
 public class SOUcitajKviz {
 
-	public static void izvrsi(LinkedList<Pitanje> pitanja) {
+	public static void izvrsi() {
 		try {
 			Kviz.pitanja.clear();
 			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("data/kviz.dat")));
@@ -23,7 +23,7 @@ public class SOUcitajKviz {
 					Kviz.pitanja.add(pitanje);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+			
 			}
 			in.close();
 		} catch (Exception e) {
