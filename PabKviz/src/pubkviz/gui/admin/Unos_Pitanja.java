@@ -38,6 +38,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.ButtonGroup;
 import javax.swing.border.LineBorder;
+import java.awt.event.MouseMotionAdapter;
 
 public class Unos_Pitanja extends JDialog {
 
@@ -224,6 +225,14 @@ public class Unos_Pitanja extends JDialog {
 	public JTextField getTxtPrviOdgovor() {
 		if (txtPrviOdgovor == null) {
 			txtPrviOdgovor = new JTextField();
+			txtPrviOdgovor.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					if(txtPrviOdgovor.getText().equals("Prvi odgovor")){
+						txtPrviOdgovor.setText("");
+					}
+				}
+			});
 			txtPrviOdgovor.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 			txtPrviOdgovor.setText("Prvi odgovor");
 			txtPrviOdgovor.setBounds(31, 132, 125, 20);
@@ -234,6 +243,14 @@ public class Unos_Pitanja extends JDialog {
 	public JTextField getTxtDrugiOdgovor() {
 		if (txtDrugiOdgovor == null) {
 			txtDrugiOdgovor = new JTextField();
+			txtDrugiOdgovor.addMouseMotionListener(new MouseMotionAdapter() {
+				@Override
+				public void mouseDragged(MouseEvent arg0) {
+					if(txtDrugiOdgovor.getText().equals("Drugi odgovor")){
+						txtDrugiOdgovor.setText("");
+					}
+				}
+			});
 			txtDrugiOdgovor.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 			txtDrugiOdgovor.setText("Drugi odgovor");
 			txtDrugiOdgovor.setColumns(10);
@@ -255,6 +272,14 @@ public class Unos_Pitanja extends JDialog {
 	public JTextField getTxtTreciOdgovor() {
 		if (txtTreciOdgovor == null) {
 			txtTreciOdgovor = new JTextField();
+			txtTreciOdgovor.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if(txtTreciOdgovor.getText().equals("Treci odgovor")){
+						txtTreciOdgovor.setText("");
+					}
+				}
+			});
 			txtTreciOdgovor.setBorder(new MatteBorder(0, 0, 1, 0, (Color) new Color(0, 0, 0)));
 			txtTreciOdgovor.setText("Treci odgovor");
 			txtTreciOdgovor.setColumns(10);
