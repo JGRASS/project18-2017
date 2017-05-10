@@ -39,7 +39,6 @@ public class Glavni_Meni extends JFrame {
 	private JLabel lblPubKviz;
 	private JPanel panel_1;
 	private JButton btnPokreniKviz;
-	private JButton btnDodajGrupu;
 	private JButton btnNapraviKviz;
 	private JButton btnKrajRada;
 	private JPanel panel_2;
@@ -81,7 +80,6 @@ public class Glavni_Meni extends JFrame {
 			panel_1.setPreferredSize(new Dimension(150, 10));
 			panel_1.setLayout(null);
 			panel_1.add(getBtnPokreniKviz());
-			panel_1.add(getButton_1_1());
 			panel_1.add(getButton_2_1());
 			panel_1.add(getButton_3_1());
 		}
@@ -90,6 +88,11 @@ public class Glavni_Meni extends JFrame {
 	public JButton getBtnPokreniKviz() {
 		if (btnPokreniKviz == null) {
 			btnPokreniKviz = new JButton("Pokreni Kviz");
+			btnPokreniKviz.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.pokreniKviz();
+				}
+			});
 			btnPokreniKviz.setBounds(10, 70, 121, 23);
 			btnPokreniKviz.addMouseListener(new MouseAdapter() {
 				@Override
@@ -108,34 +111,6 @@ public class Glavni_Meni extends JFrame {
 		}
 		return btnPokreniKviz;
 	}
-	public JButton getButton_1_1() {
-		if (btnDodajGrupu == null) {
-			btnDodajGrupu = new JButton("Dodaj grupu");
-			btnDodajGrupu.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.dodajGrupu();
-				}
-			});
-			btnDodajGrupu.setBounds(10, 104, 121, 23);
-			btnDodajGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnDodajGrupu.setFocusPainted(false);
-			btnDodajGrupu.setBorderPainted(false);
-			btnDodajGrupu.setBackground(Color.WHITE);
-			btnDodajGrupu.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					btnDodajGrupu.setBackground(new Color(240, 248, 255));
-				}
-				@Override
-				public void mouseExited(MouseEvent e) {
-					btnDodajGrupu.setBackground(Color.WHITE);
-				}
-			});
-			
-		}
-		
-		return btnDodajGrupu;
-	}
 	public JButton getButton_2_1() {
 		if (btnNapraviKviz == null) {
 			btnNapraviKviz = new JButton("Napravi kviz");
@@ -144,7 +119,7 @@ public class Glavni_Meni extends JFrame {
 					GUIKontroler.napraviKviz();
 				}
 			});
-			btnNapraviKviz.setBounds(10, 138, 121, 23);
+			btnNapraviKviz.setBounds(10, 104, 121, 23);
 			btnNapraviKviz.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnNapraviKviz.setFocusPainted(false);
 			btnNapraviKviz.setBorderPainted(false);
@@ -170,7 +145,7 @@ public class Glavni_Meni extends JFrame {
 					GUIKontroler.ugasiAplikaciju();
 				}
 			});
-			btnKrajRada.setBounds(10, 172, 121, 23);
+			btnKrajRada.setBounds(10, 138, 121, 23);
 			btnKrajRada.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnKrajRada.setFocusPainted(false);
 			btnKrajRada.setBorderPainted(false);

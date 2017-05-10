@@ -181,7 +181,7 @@ public class Dodaj_Grupu extends JDialog {
 			cbxIzaberiteBrojClanova.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent arg0) {
 
-					GUIKontroler.izaberiBrojClanova();
+					GUIKontroler.izaberiBrojClanovaRegi();
 				}
 			});
 			cbxIzaberiteBrojClanova.setBackground(new Color(255, 255, 255));
@@ -196,7 +196,7 @@ public class Dodaj_Grupu extends JDialog {
 			btnSacuvaj = new JButton("Sacuvaj");
 			btnSacuvaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					 GUIKontroler.unesiPodatkeZaGrupu();
+
 				}
 			});
 			btnSacuvaj.setBounds(0, 362, 89, 23);

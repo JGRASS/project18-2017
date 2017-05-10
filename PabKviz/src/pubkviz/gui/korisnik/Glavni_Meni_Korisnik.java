@@ -43,7 +43,6 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	private JButton btnKrajRada;
 	private JPanel panel_2;
 	private JButton btnIzmeniGrupu;
-	private JButton btnIzbrisiGrupu;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 
@@ -86,7 +85,6 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			panel_1.add(getBtnPokreniKviz());
 			panel_1.add(getButton_3_1());
 			panel_1.add(getButton_1());
-			panel_1.add(getButton_2());
 		}
 		return panel_1;
 	}
@@ -124,7 +122,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 					GUIKontroler.ugasiAplikacijuKorisnik();
 				}
 			});
-			btnKrajRada.setBounds(10, 172, 121, 23);
+			btnKrajRada.setBounds(10, 138, 121, 23);
 			btnKrajRada.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnKrajRada.setFocusPainted(false);
 			btnKrajRada.setBorderPainted(false);
@@ -174,7 +172,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			btnIzmeniGrupu = new JButton("Izmeni grupu");
 			btnIzmeniGrupu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.izmeniGrupu();
+					GUIKontroler.otvoriRegistar();
 				}
 			});
 			btnIzmeniGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
@@ -194,32 +192,6 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			});
 		}
 		return btnIzmeniGrupu;
-	}
-	public JButton getButton_2() {
-		if (btnIzbrisiGrupu == null) {
-			btnIzbrisiGrupu = new JButton("Izbrisi grupu");
-			btnIzbrisiGrupu.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.izbrisGrupu();
-				}
-			});
-			btnIzbrisiGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnIzbrisiGrupu.setFocusPainted(false);
-			btnIzbrisiGrupu.setBorderPainted(false);
-			btnIzbrisiGrupu.setBackground(Color.WHITE);
-			btnIzbrisiGrupu.setBounds(10, 138, 121, 23);
-			btnIzbrisiGrupu.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					btnIzbrisiGrupu.setBackground(new Color(240, 248, 255));
-				}
-				@Override
-				public void mouseExited(MouseEvent e) {
-					btnIzbrisiGrupu.setBackground(Color.WHITE);
-				}
-			});
-		}
-		return btnIzbrisiGrupu;
 	}
 
 	public JLabel getLblNewLabel_1() {
