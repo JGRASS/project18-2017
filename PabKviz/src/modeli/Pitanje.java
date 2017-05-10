@@ -27,6 +27,9 @@ public class Pitanje implements Serializable {
 	}
 
 	public void setTekst(String tekst) {
+		if (tekst == null || tekst.isEmpty()) {
+			throw new RuntimeException("Tekst ne sme biti null niti prazan string");
+		}
 		this.tekst = tekst;
 	}
 
@@ -35,6 +38,9 @@ public class Pitanje implements Serializable {
 	}
 
 	public void setPrviOdgovor(String prviOdgovor) {
+		if (prviOdgovor == null || prviOdgovor.isEmpty()) {
+			throw new RuntimeException("Prvi odgovor ne sme biti null niti prazan string");
+		}
 		this.prviOdgovor = prviOdgovor;
 	}
 
@@ -43,6 +49,9 @@ public class Pitanje implements Serializable {
 	}
 
 	public void setDrugiOdgovor(String drugiOdgovor) {
+		if (drugiOdgovor == null || drugiOdgovor.isEmpty()) {
+			throw new RuntimeException("Drugi odgovor ne sme biti null niti prazan string");
+		}
 		this.drugiOdgovor = drugiOdgovor;
 	}
 
@@ -51,6 +60,9 @@ public class Pitanje implements Serializable {
 	}
 
 	public void setTreciOdgovor(String treciOdgovor) {
+		if (treciOdgovor == null || treciOdgovor.isEmpty()) {
+			throw new RuntimeException("Treci odgovor ne sme biti null niti prazan string");
+		}
 		this.treciOdgovor = treciOdgovor;
 	}
 
@@ -59,6 +71,9 @@ public class Pitanje implements Serializable {
 	}
 
 	public void setTacanOdgovor(String tacanOdgovor) {
+		if (tacanOdgovor == null || tacanOdgovor.isEmpty()) {
+			throw new RuntimeException("Tacan odgovor ne sme biti null niti prazan string");
+		}
 		this.tacanOdgovor = tacanOdgovor;
 	}
 

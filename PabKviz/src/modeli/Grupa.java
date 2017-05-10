@@ -25,6 +25,9 @@ public class Grupa {
 	}
 
 	public void setId(long id) {
+		if (id < 0) {
+			throw new RuntimeException("Id ne sme biti manji od 0");
+		}
 		this.id = id;
 	}
 
@@ -33,6 +36,9 @@ public class Grupa {
 	}
 
 	public void setNaziv(String naziv) {
+		if (naziv == null || naziv.isEmpty()) {
+			throw new RuntimeException("Naziv ne sme biti null niti prazan string");
+		}
 		this.naziv = naziv;
 	}
 
@@ -41,6 +47,9 @@ public class Grupa {
 	}
 
 	public void setPassword(String password) {
+		if (password == null || password.isEmpty()) {
+			throw new RuntimeException("Sifra ne sme biti null niti prazan string");
+		}
 		this.password = password;
 	}
 

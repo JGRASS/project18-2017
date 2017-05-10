@@ -25,6 +25,9 @@ public class Clan {
 	}
 
 	public void setId(long id) {
+		if (id < 0) {
+			throw new RuntimeException("Id ne sme biti manji od 0");
+		}
 		this.id = id;
 	}
 
@@ -33,6 +36,9 @@ public class Clan {
 	}
 
 	public void setIme(String ime) {
+		if (ime == null || ime.isEmpty()) {
+			throw new RuntimeException("Ime ne sme biti null niti prazan string");
+		}
 		this.ime = ime;
 	}
 
@@ -41,6 +47,9 @@ public class Clan {
 	}
 
 	public void setPrezime(String prezime) {
+		if (prezime == null || prezime.isEmpty()) {
+			throw new RuntimeException("Prezime ne sme biti null niti prazan string");
+		}
 		this.prezime = prezime;
 	}
 
@@ -49,6 +58,9 @@ public class Clan {
 	}
 
 	public void setGrupa(String grupa) {
+		if (grupa == null || grupa.isEmpty()) {
+			throw new RuntimeException("Grupa ne sme biti null niti prazan string");
+		}
 		this.grupa = grupa;
 	}
 
