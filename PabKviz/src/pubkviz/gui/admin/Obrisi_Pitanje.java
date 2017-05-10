@@ -61,8 +61,6 @@ public class Obrisi_Pitanje extends JDialog {
 	private JButton btnObrisiPitanje;
 	private JButton btnOdustani;
 
-
-
 	/**
 	 * Create the frame.
 	 */
@@ -96,13 +94,14 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return panel;
 	}
+
 	public JButton getBtnPrethodnoPitanje() {
 		if (btnPrethodnoPitanje == null) {
 			btnPrethodnoPitanje = new JButton("Prethodno pitanje");
 			btnPrethodnoPitanje.setBounds(4, 262, 177, 23);
 			btnPrethodnoPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.unosPitanjaZatvaranje();
+
 				}
 			});
 			btnPrethodnoPitanje.addMouseListener(new MouseAdapter() {
@@ -110,6 +109,7 @@ public class Obrisi_Pitanje extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnPrethodnoPitanje.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnPrethodnoPitanje.setBackground(Color.WHITE);
@@ -122,6 +122,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return btnPrethodnoPitanje;
 	}
+
 	public JButton getBtnSledecePitanje() {
 		if (btnSledecePitanje == null) {
 			btnSledecePitanje = new JButton("Sledece pitanje");
@@ -131,6 +132,7 @@ public class Obrisi_Pitanje extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnSledecePitanje.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnSledecePitanje.setBackground(Color.WHITE);
@@ -140,10 +142,11 @@ public class Obrisi_Pitanje extends JDialog {
 			btnSledecePitanje.setFocusPainted(false);
 			btnSledecePitanje.setBorderPainted(false);
 			btnSledecePitanje.setBackground(Color.WHITE);
-		
+
 		}
 		return btnSledecePitanje;
 	}
+
 	public JLabel getLblNapisitePitanje() {
 		if (lblNapisitePitanje == null) {
 			lblNapisitePitanje = new JLabel("Pitanje:");
@@ -151,6 +154,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return lblNapisitePitanje;
 	}
+
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -174,6 +178,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return panel_1;
 	}
+
 	public JTextArea getTextPane_1() {
 		if (txtNapisitePitanje == null) {
 			txtNapisitePitanje = new JTextArea();
@@ -186,6 +191,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return txtNapisitePitanje;
 	}
+
 	public JRadioButton getRdbtnPrviOdgovor() {
 		if (rdbtnPrviOdgovor == null) {
 			rdbtnPrviOdgovor = new JRadioButton("");
@@ -195,6 +201,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return rdbtnPrviOdgovor;
 	}
+
 	public JRadioButton getRdbtnTreciOdgovor() {
 		if (rdbtnTreciOdgovor == null) {
 			rdbtnTreciOdgovor = new JRadioButton("");
@@ -204,6 +211,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return rdbtnTreciOdgovor;
 	}
+
 	public JRadioButton getRdbtnDrugiOdgovor() {
 		if (rdbtnDrugiOdgovor == null) {
 			rdbtnDrugiOdgovor = new JRadioButton("");
@@ -213,6 +221,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return rdbtnDrugiOdgovor;
 	}
+
 	public JRadioButton getRdbtnNeZnam() {
 		if (rdbtnNeZnam == null) {
 			rdbtnNeZnam = new JRadioButton("");
@@ -223,6 +232,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return rdbtnNeZnam;
 	}
+
 	public JTextField getTxtPrviOdgovor() {
 		if (txtPrviOdgovor == null) {
 			txtPrviOdgovor = new JTextField();
@@ -235,6 +245,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return txtPrviOdgovor;
 	}
+
 	public JTextField getTxtDrugiOdgovor() {
 		if (txtDrugiOdgovor == null) {
 			txtDrugiOdgovor = new JTextField();
@@ -247,6 +258,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return txtDrugiOdgovor;
 	}
+
 	public JTextField getTxtNeZnam() {
 		if (txtNeZnam == null) {
 			txtNeZnam = new JTextField();
@@ -258,6 +270,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return txtNeZnam;
 	}
+
 	public JTextField getTxtTreciOdgovor() {
 		if (txtTreciOdgovor == null) {
 			txtTreciOdgovor = new JTextField();
@@ -270,6 +283,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return txtTreciOdgovor;
 	}
+
 	public JLabel getLblUnesiteOdgovoreI() {
 		if (lblUnesiteOdgovoreI == null) {
 			lblUnesiteOdgovoreI = new JLabel("Odgovori i tacan odgovor:");
@@ -278,6 +292,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return lblUnesiteOdgovoreI;
 	}
+
 	public JButton getBtnObrisiPitanje() {
 		if (btnObrisiPitanje == null) {
 			btnObrisiPitanje = new JButton("Obrisi pitanje");
@@ -289,6 +304,7 @@ public class Obrisi_Pitanje extends JDialog {
 		}
 		return btnObrisiPitanje;
 	}
+
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
