@@ -88,6 +88,11 @@ public class Glavni_Meni extends JFrame {
 	public JButton getBtnPokreniKviz() {
 		if (btnPokreniKviz == null) {
 			btnPokreniKviz = new JButton("Pokreni Kviz");
+			btnPokreniKviz.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.pokreniKviz();
+				}
+			});
 			btnPokreniKviz.setBounds(10, 70, 121, 23);
 			btnPokreniKviz.addMouseListener(new MouseAdapter() {
 				@Override

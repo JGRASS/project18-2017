@@ -99,7 +99,7 @@ public class Izmeni extends JDialog {
 	public JButton getBtnPrethodnoPitanje() {
 		if (btnPrethodnoPitanje == null) {
 			btnPrethodnoPitanje = new JButton("Prethodno pitanje");
-			btnPrethodnoPitanje.setBounds(4, 262, 149, 23);
+			btnPrethodnoPitanje.setBounds(4, 262, 177, 23);
 			btnPrethodnoPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GUIKontroler.unosPitanjaZatvaranje();
@@ -125,7 +125,7 @@ public class Izmeni extends JDialog {
 	public JButton getBtnSledecePitanje() {
 		if (btnSledecePitanje == null) {
 			btnSledecePitanje = new JButton("Sledece pitanje");
-			btnSledecePitanje.setBounds(291, 262, 139, 23);
+			btnSledecePitanje.setBounds(253, 262, 177, 23);
 			btnSledecePitanje.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
@@ -267,14 +267,14 @@ public class Izmeni extends JDialog {
 		if (lblUnesiteOdgovoreI == null) {
 			lblUnesiteOdgovoreI = new JLabel("Izmenite odgovore i oznacite tacan:");
 			lblUnesiteOdgovoreI.setFont(new Font("Calibri", Font.BOLD, 16));
-			lblUnesiteOdgovoreI.setBounds(14, 92, 256, 14);
+			lblUnesiteOdgovoreI.setBounds(4, 92, 256, 14);
 		}
 		return lblUnesiteOdgovoreI;
 	}
 	public JButton getBtnSacuvajIzmenu() {
 		if (btnSacuvajIzmenu == null) {
 			btnSacuvajIzmenu = new JButton("Sacuvaj izmenu");
-			btnSacuvajIzmenu.setBounds(4, 228, 148, 23);
+			btnSacuvajIzmenu.setBounds(4, 228, 177, 23);
 			btnSacuvajIzmenu.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnSacuvajIzmenu.setFocusPainted(false);
 			btnSacuvajIzmenu.setBorderPainted(false);
@@ -289,7 +289,7 @@ public class Izmeni extends JDialog {
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);
 			btnOdustani.setBackground(Color.WHITE);
-			btnOdustani.setBounds(291, 228, 139, 23);
+			btnOdustani.setBounds(253, 228, 177, 23);
 		}
 		return btnOdustani;
 	}
