@@ -194,66 +194,70 @@ public class GUIKontroler {
 
 	public static void otvoriIzmenjivac() {
 		izmena = new Izmeni();
-		
+
 		iterator = 0;
-		
-		if(SOVratiPitanje.izvrsi(iterator) != null){
-		izmena.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
-		izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
-		izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
-		izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
-		vratiSelektovanoDugme().setSelected(true);
+
+		if (SOVratiPitanje.izvrsi(iterator) != null) {
+			izmena.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
+			izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
+			izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
+			izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+			vratiSelektovanoDugme().setSelected(true);
 		}
 		izmena.setLocationRelativeTo(glavniProzor);
 		izmena.setVisible(true);
 	}
-	public static void sledecePitanje(){
-		if(iterator == Kviz.pitanja.size() - 1){
+
+	public static void sledecePitanje() {
+		if (iterator == Kviz.pitanja.size() - 1) {
 			return;
 		}
 		iterator++;
-		if(SOVratiPitanje.izvrsi(iterator) != null){	
-		izmena.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
-		izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
-		izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
-		izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
-		vratiSelektovanoDugme().setSelected(true);
-		}else{
+		if (SOVratiPitanje.izvrsi(iterator) != null) {
+			izmena.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
+			izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
+			izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
+			izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+			vratiSelektovanoDugme().setSelected(true);
+		} else {
 			iterator--;
 		}
-	
+
 	}
-	public static void prethodnoPitanje(){
-		if(iterator == 0){
+
+	public static void prethodnoPitanje() {
+		if (iterator == 0) {
 			return;
 		}
 		iterator--;
-		if(SOVratiPitanje.izvrsi(iterator) != null){	
-		izmena.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
-		izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
-		izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
-		izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
-		vratiSelektovanoDugme().setSelected(true);
-		}else{
+		if (SOVratiPitanje.izvrsi(iterator) != null) {
+			izmena.getTextPane_1().setText(SOVratiPitanje.izvrsi(iterator).getTekst());
+			izmena.getTxtPrviOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getPrviOdgovor());
+			izmena.getTxtDrugiOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getDrugiOdgovor());
+			izmena.getTxtTreciOdgovor().setText(SOVratiPitanje.izvrsi(iterator).getTreciOdgovor());
+			vratiSelektovanoDugme().setSelected(true);
+		} else {
 			iterator++;
 		}
-	
+
 	}
-	public static JRadioButton vratiSelektovanoDugme(){
+
+	public static JRadioButton vratiSelektovanoDugme() {
 		String tacanOdgovor = SOVratiPitanje.izvrsi(iterator).getTacanOdgovor();
-		
-		if(izmena.getTxtPrviOdgovor().getText().equals(tacanOdgovor)){
+
+		if (izmena.getTxtPrviOdgovor().getText().equals(tacanOdgovor)) {
 			return izmena.getRdbtnPrviOdgovor();
 		}
-		if(izmena.getTxtDrugiOdgovor().getText().equals(tacanOdgovor)){
+		if (izmena.getTxtDrugiOdgovor().getText().equals(tacanOdgovor)) {
 			return izmena.getRdbtnDrugiOdgovor();
 		}
-		if(izmena.getTxtTreciOdgovor().getText().equals(tacanOdgovor)){
+		if (izmena.getTxtTreciOdgovor().getText().equals(tacanOdgovor)) {
 			return izmena.getRdbtnTreciOdgovor();
 		}
 		return null;
-		
+
 	}
+
 	public static void unesiPodatkeZaGrupu() {
 		if (vratiPassword() == null) {
 			return;
@@ -328,6 +332,9 @@ public class GUIKontroler {
 		SOPrimiPitanje.izvrsi(unosPitanja.getTextPane_1().getText(), unosPitanja.getTxtPrviOdgovor().getText(),
 				unosPitanja.getTxtDrugiOdgovor().getText(), unosPitanja.getTxtTreciOdgovor().getText(), tacanOdgvor);
 		unosPitanja.dispose();
+
+		napraviKviz.getBtnIzmeniPitanje().setEnabled(true);
+		napraviKviz.getBtnObrisiPitanje().setEnabled(true);
 	}
 
 	private static String vratiTacanOdgovor() {
@@ -342,10 +349,11 @@ public class GUIKontroler {
 		}
 		return null;
 	}
-	public static void sacuvajKviz(){
+
+	public static void sacuvajKviz() {
 		SOSerijalizujKviz.izvrsi(Kviz.pitanja);
 	}
-	
+
 	public static void izaberiBrojClanovaRegi() {
 
 		int m = Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem());

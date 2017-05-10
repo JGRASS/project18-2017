@@ -15,6 +15,9 @@ public class Grupa {
 	}
 
 	public Grupa(long id, String naziv, String password) {
+		if (id < 0 || naziv == null || password == null) {
+			throw new RuntimeException("Morate adekvatno uneti grupu");
+		}
 		this.id = id;
 		this.naziv = naziv;
 		this.password = password;

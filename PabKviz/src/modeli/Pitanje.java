@@ -15,6 +15,10 @@ public class Pitanje implements Serializable {
 	}
 
 	public Pitanje(String tekst, String prviOdgovor, String drugiOdgovor, String treciOdgovor, String tacanOdgovor) {
+		if (tekst == null || prviOdgovor == null || drugiOdgovor == null || treciOdgovor == null
+				|| tacanOdgovor == null) {
+			throw new RuntimeException("Morate adekvatno uneti pitanje");
+		}
 		this.tekst = tekst;
 		this.prviOdgovor = prviOdgovor;
 		this.drugiOdgovor = drugiOdgovor;

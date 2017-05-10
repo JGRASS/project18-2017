@@ -14,6 +14,9 @@ public class Clan {
 	}
 
 	public Clan(long id, String ime, String prezime, String grupa) {
+		if (id < 0 || ime == null || prezime == null || grupa == null) {
+			throw new RuntimeException("Morate adekvatno uneti clana");
+		}
 		this.id = id;
 		this.ime = ime;
 		this.prezime = prezime;

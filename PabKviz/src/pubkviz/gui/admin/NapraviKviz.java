@@ -98,6 +98,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnObrisiPitanje() {
 		if (btnObrisiPitanje == null) {
 			btnObrisiPitanje = new JButton("Obrisi pitanje");
+			btnObrisiPitanje.setEnabled(false);
 			btnObrisiPitanje.setBounds(91, 119, 125, 25);
 			btnObrisiPitanje.setPreferredSize(new Dimension(125, 25));
 			btnObrisiPitanje.setFont(new Font("Verdana", Font.BOLD, 11));
@@ -204,6 +205,7 @@ public class NapraviKviz extends JDialog {
 	public JButton getBtnIzmeniPitanje() {
 		if (btnIzmeniPitanje == null) {
 			btnIzmeniPitanje = new JButton("Izmeni");
+			btnIzmeniPitanje.setEnabled(false);
 			btnIzmeniPitanje.setBounds(91, 47, 125, 25);
 			btnIzmeniPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
