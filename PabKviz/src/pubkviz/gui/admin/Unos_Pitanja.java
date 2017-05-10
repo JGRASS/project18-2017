@@ -124,6 +124,11 @@ public class Unos_Pitanja extends JDialog {
 	public JButton getBtnNapraviPItanje() {
 		if (btnNapraviPItanje == null) {
 			btnNapraviPItanje = new JButton("Napravi pitanje");
+			btnNapraviPItanje.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.unesiPitanje();
+				}
+			});
 			btnNapraviPItanje.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {

@@ -101,6 +101,7 @@ public class Izmeni extends JDialog {
 			btnPrethodnoPitanje.setBounds(4, 262, 177, 23);
 			btnPrethodnoPitanje.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.prethodnoPitanje();
 
 				}
 			});
@@ -126,6 +127,12 @@ public class Izmeni extends JDialog {
 	public JButton getBtnSledecePitanje() {
 		if (btnSledecePitanje == null) {
 			btnSledecePitanje = new JButton("Sledece pitanje");
+			btnSledecePitanje.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sledecePitanje();
+				}
+			});
 			btnSledecePitanje.setBounds(253, 262, 177, 23);
 			btnSledecePitanje.addMouseListener(new MouseAdapter() {
 				@Override
@@ -289,6 +296,10 @@ public class Izmeni extends JDialog {
 	public JButton getBtnSacuvajIzmenu() {
 		if (btnSacuvajIzmenu == null) {
 			btnSacuvajIzmenu = new JButton("Sacuvaj izmenu");
+			btnSacuvajIzmenu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btnSacuvajIzmenu.setBounds(4, 228, 177, 23);
 			btnSacuvajIzmenu.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnSacuvajIzmenu.setFocusPainted(false);

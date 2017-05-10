@@ -136,6 +136,7 @@ public class NapraviKviz extends JDialog {
 			btnSacuvajTest.setBackground(Color.WHITE);
 			btnSacuvajTest.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.sacuvajKviz();
 				}
 			});
 			btnSacuvajTest.addMouseListener(new MouseAdapter() {
