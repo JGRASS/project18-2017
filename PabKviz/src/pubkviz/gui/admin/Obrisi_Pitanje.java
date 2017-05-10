@@ -73,7 +73,7 @@ public class Obrisi_Pitanje extends JDialog {
 			}
 		});
 		setModal(true);
-		setTitle("Izmenite pitanje");
+		setTitle("Obrisite pitanje");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 358);
 		contentPane = new JPanel();
