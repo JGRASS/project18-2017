@@ -75,7 +75,7 @@ public class Izmeni extends JDialog {
 			}
 		});
 		setModal(true);
-		setTitle("Unesite pitanje");
+		setTitle("Izmenite pitanje");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 358);
 		contentPane = new JPanel();
@@ -146,7 +146,7 @@ public class Izmeni extends JDialog {
 	}
 	public JLabel getLblNapisitePitanje() {
 		if (lblNapisitePitanje == null) {
-			lblNapisitePitanje = new JLabel("Napisite pitanje:");
+			lblNapisitePitanje = new JLabel("Izmenite pitanje:");
 			lblNapisitePitanje.setFont(new Font("Calibri", Font.BOLD, 16));
 		}
 		return lblNapisitePitanje;
@@ -265,7 +265,7 @@ public class Izmeni extends JDialog {
 	}
 	public JLabel getLblUnesiteOdgovoreI() {
 		if (lblUnesiteOdgovoreI == null) {
-			lblUnesiteOdgovoreI = new JLabel("Unesite odgovore i oznacite tacan:");
+			lblUnesiteOdgovoreI = new JLabel("Izmenite odgovore i oznacite tacan:");
 			lblUnesiteOdgovoreI.setFont(new Font("Calibri", Font.BOLD, 16));
 			lblUnesiteOdgovoreI.setBounds(14, 92, 256, 14);
 		}
