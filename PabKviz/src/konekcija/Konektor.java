@@ -130,63 +130,6 @@ public class Konektor implements BazaInterfejs {
 	}
 
 	/**
-	 * Metoda dodaje pitanje koje je ulazni argument u tabelu pitanja u bazu
-	 */
-	@Override
-	public void dodajPitanje(Pitanje pitanje) {
-		otvoriKonekciju();
-		String upit = "INSERT INTO pitanja(id, tekst) VALUES(?, ?)";
-		try {
-			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
-			pripremljenaIzjava.setLong(1, pitanje.getId());
-			pripremljenaIzjava.setString(2, pitanje.getTekst());
-			pripremljenaIzjava.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-	}
-
-	/**
-	 * Metoda brise pitanje sa zadatim id-om iz tabele pitanja iz baze
-	 */
-	@Override
-	public void izbrisiPitanje(int id) {
-		otvoriKonekciju();
-		String upit = "DELETE FROM pitanja WHERE id=?";
-		try {
-			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
-			pripremljenaIzjava.setInt(1, id);
-			pripremljenaIzjava.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-	}
-
-	/**
-	 * Metoda vraca listu svih pitanja iz baze
-	 */
-	@Override
-	public Collection<Pitanje> vratiPitanja() {
-		Collection<Pitanje> pitanja = new LinkedList<>();
-		otvoriKonekciju();
-		try {
-			ResultSet rezultat = izjava.executeQuery("SELECT * FROM pitanja");
-			while (rezultat.next()) {
-				Pitanje pitanje = new Pitanje();
-				pitanje.setId(rezultat.getLong("id"));
-				pitanje.setTekst(rezultat.getString("tekst"));
-				pitanja.add(pitanje);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-		return pitanja;
-	}
-
-	/**
 	 * Metoda dodaje grupu koja je ulazni argument u tabelu grupe u bazu
 	 */
 	@Override
