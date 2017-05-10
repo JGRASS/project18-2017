@@ -172,7 +172,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			btnIzmeniGrupu = new JButton("Izmeni grupu");
 			btnIzmeniGrupu.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.izmeniGrupu();
+					GUIKontroler.otvoriRegistar();
 				}
 			});
 			btnIzmeniGrupu.setFont(new Font("Verdana", Font.BOLD, 11));

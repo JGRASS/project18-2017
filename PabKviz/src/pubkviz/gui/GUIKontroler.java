@@ -2,6 +2,7 @@ package pubkviz.gui;
 
 import java.awt.Color;
 
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
@@ -9,7 +10,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JOptionPane;
 
-import pubkviz.gui.admin.Dodaj_Grupu;
+
 import pubkviz.gui.admin.Glavni_Meni;
 import pubkviz.gui.admin.Izmeni;
 import pubkviz.gui.admin.NapraviKviz;
@@ -24,7 +25,7 @@ public class GUIKontroler {
 
 	private static Glavni_Meni glavniProzor;
 	private static Login pocetniProzor;
-	private static Dodaj_Grupu dodajGrupu;
+	
 	private static NapraviKviz napraviKviz;
 	private static Unos_Pitanja unosPitanja;
 	private static Glavni_Meni_Korisnik glavniProzorKorisnik;
@@ -109,13 +110,6 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void izmeniGrupu() {
-		dodajGrupu = new Dodaj_Grupu();
-		dodajGrupu.setLocationRelativeTo(glavniProzor);
-
-		dodajGrupu.setTitle("Izmeni grupu");
-		dodajGrupu.setVisible(true);
-	}
 
 	public static void otvoriRegistar() {
 		registar = new Registracija();
@@ -140,13 +134,7 @@ public class GUIKontroler {
 		}
 	}
 
-	public static void izbrisGrupu() {
-		int i = JOptionPane.showConfirmDialog(glavniProzorKorisnik, "Da li zelite da izbrisete grupu?", "Obrisi",
-				JOptionPane.YES_NO_OPTION);
-		if (i == JOptionPane.YES_OPTION) {
-			System.exit(0);
-		}
-	}
+
 
 	public static void napraviKviz() {
 		napraviKviz = new NapraviKviz();
@@ -171,12 +159,7 @@ public class GUIKontroler {
 
 	}
 
-	public static void dodajGrupu() {
-		dodajGrupu = new Dodaj_Grupu();
-		dodajGrupu.setLocationRelativeTo(glavniProzor);
-		dodajGrupu.setVisible(true);
 
-	}
 
 	public static void pokreniKviz() {
 		kviz = new Pokreni_Kviz();
@@ -217,85 +200,7 @@ public class GUIKontroler {
 	
 	
 
-	public static void izaberiBrojClanova() {
 
-		int m = Integer.valueOf((String) dodajGrupu.getCbxIzaberiteBrojClanova().getSelectedItem());
-
-		switch (m) {
-		case 2:
-
-			dodajGrupu.getLblime_3().setVisible(false);
-			dodajGrupu.getLblime_4().setVisible(false);
-			dodajGrupu.getLblime_5().setVisible(false);
-
-			dodajGrupu.getTxtIme_3().setVisible(false);
-			dodajGrupu.getTxtIme_4().setVisible(false);
-			dodajGrupu.getTxtIme_5().setVisible(false);
-
-			dodajGrupu.getTxtPrezime_3().setVisible(false);
-			dodajGrupu.getTxtPrezime4().setVisible(false);
-			dodajGrupu.getTxtPrezime_5().setVisible(false);
-
-			dodajGrupu.getLblprezime_3().setVisible(false);
-			dodajGrupu.getLblprezime_4().setVisible(false);
-			dodajGrupu.getLblprezime_5().setVisible(false);
-			break;
-		case 3:
-			dodajGrupu.getLblime_3().setVisible(true);
-			dodajGrupu.getLblime_4().setVisible(false);
-			dodajGrupu.getLblime_5().setVisible(false);
-
-			dodajGrupu.getTxtIme_3().setVisible(true);
-			dodajGrupu.getTxtIme_4().setVisible(false);
-			dodajGrupu.getTxtIme_5().setVisible(false);
-
-			dodajGrupu.getTxtPrezime_3().setVisible(true);
-			dodajGrupu.getTxtPrezime4().setVisible(false);
-			dodajGrupu.getTxtPrezime_5().setVisible(false);
-
-			dodajGrupu.getLblprezime_3().setVisible(true);
-			dodajGrupu.getLblprezime_4().setVisible(false);
-			dodajGrupu.getLblprezime_5().setVisible(false);
-			break;
-		case 4:
-			dodajGrupu.getLblime_3().setVisible(true);
-			dodajGrupu.getLblime_4().setVisible(true);
-			dodajGrupu.getLblime_5().setVisible(false);
-
-			dodajGrupu.getTxtIme_3().setVisible(true);
-			dodajGrupu.getTxtIme_4().setVisible(true);
-			dodajGrupu.getTxtIme_5().setVisible(false);
-
-			dodajGrupu.getTxtPrezime_3().setVisible(true);
-			dodajGrupu.getTxtPrezime4().setVisible(true);
-			dodajGrupu.getTxtPrezime_5().setVisible(false);
-
-			dodajGrupu.getLblprezime_3().setVisible(true);
-			dodajGrupu.getLblprezime_4().setVisible(true);
-			dodajGrupu.getLblprezime_5().setVisible(false);
-			break;
-
-		case 5:
-			dodajGrupu.getLblime_3().setVisible(true);
-			dodajGrupu.getLblime_4().setVisible(true);
-			dodajGrupu.getLblime_5().setVisible(true);
-
-			dodajGrupu.getTxtIme_3().setVisible(true);
-			dodajGrupu.getTxtIme_4().setVisible(true);
-			dodajGrupu.getTxtIme_5().setVisible(true);
-
-			dodajGrupu.getTxtPrezime_3().setVisible(true);
-			dodajGrupu.getTxtPrezime4().setVisible(true);
-			dodajGrupu.getTxtPrezime_5().setVisible(true);
-
-			dodajGrupu.getLblprezime_3().setVisible(true);
-			dodajGrupu.getLblprezime_4().setVisible(true);
-			dodajGrupu.getLblprezime_5().setVisible(true);
-			break;
-		default:
-			break;
-		}
-	}
 
 	
 	public static void izaberiBrojClanovaRegi() {
