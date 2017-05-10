@@ -213,6 +213,10 @@ public class GUIKontroler {
 	}
 
 	public static void sacuvajNastavi(){
+		if((iteratorDonji + 1 >= Kviz.pitanja.size()) && (iteratorDonji + 2 >= Kviz.pitanja.size())){
+			kviz.getBtnSledecaStrana().setText("Zavrsi");
+			return;
+		}
 	
 		iteratorDonji += 2;
 		iteratorGornji += 2;
