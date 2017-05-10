@@ -8,14 +8,16 @@ public class Grupa {
 
 	private long id;
 	private String naziv;
+	private String password;
 
 	public Grupa() {
 
 	}
 
-	public Grupa(long id, String naziv) {
+	public Grupa(long id, String naziv, String password) {
 		this.id = id;
 		this.naziv = naziv;
+		this.password = password;
 	}
 
 	public long getId() {
@@ -34,12 +36,20 @@ public class Grupa {
 		this.naziv = naziv;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void dodajGrupu(String imeGrupe, LinkedList<Clan> clanovi, String password) {
+		SODodajGrupu.izvrsi(imeGrupe, clanovi, password);
+	}
+
 	@Override
 	public String toString() {
 		return "Grupa [id=" + id + ", naziv=" + naziv + "]";
-	}
-
-	public void dodajGrupu(String imeGrupe, LinkedList<Clan> clanovi) {
-		SODodajGrupu.izvrsi(imeGrupe, clanovi);
 	}
 }

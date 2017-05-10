@@ -196,7 +196,8 @@ public class GUIKontroler {
 		SODodajGrupu.izvrsi(registar.getTxtUnesiteImeGrupe().getText(),
 				SONapraviListuClanova.izvrsi(napraviNizImena(), napraviNizPrezimena(),
 						Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem()),
-						registar.getTxtUnesiteImeGrupe().getText()));
+						registar.getTxtUnesiteImeGrupe().getText()),
+				vratiPassword());
 
 	}
 
@@ -240,6 +241,17 @@ public class GUIKontroler {
 		}
 		return pimena;
 
+	}
+
+	public static String vratiPassword() {
+		// implementirati proveru da li je dva puta unesen isti password u
+		// passwordField-ove
+		String passwordOriginal = registar.getPasswordField().toString();
+		String passwordPonovljeni = registar.getPasswordField_1().toString();
+		if (passwordOriginal.equals(passwordPonovljeni)) {
+
+		}
+		return "";
 	}
 
 	public static void izaberiBrojClanovaRegi() {

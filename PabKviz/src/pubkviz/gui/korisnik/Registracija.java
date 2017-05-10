@@ -71,7 +71,6 @@ public class Registracija extends JDialog {
 	private JLabel lblUnesiSifru;
 	private JPasswordField passwordField_1;
 
-
 	/**
 	 * Create the frame.
 	 */
@@ -97,6 +96,7 @@ public class Registracija extends JDialog {
 		}
 		return lblUnesiteImeGrupe;
 	}
+
 	public JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
@@ -106,6 +106,7 @@ public class Registracija extends JDialog {
 		}
 		return panel;
 	}
+
 	public JTextField getTxtUnesiteImeGrupe() {
 		if (txtUnesiteImeGrupe == null) {
 			txtUnesiteImeGrupe = new JTextField();
@@ -114,6 +115,7 @@ public class Registracija extends JDialog {
 		}
 		return txtUnesiteImeGrupe;
 	}
+
 	public JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
@@ -124,6 +126,7 @@ public class Registracija extends JDialog {
 		}
 		return panel_1;
 	}
+
 	public JLabel getLblIzaberiteBrojClanova() {
 		if (lblIzaberiteBrojClanova == null) {
 			lblIzaberiteBrojClanova = new JLabel("Izaberite broj clanova:");
@@ -131,6 +134,7 @@ public class Registracija extends JDialog {
 		}
 		return lblIzaberiteBrojClanova;
 	}
+
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
@@ -166,21 +170,22 @@ public class Registracija extends JDialog {
 		}
 		return panel_2;
 	}
+
 	public JComboBox getCbxIzaberiteBrojClanova() {
 		if (cbxIzaberiteBrojClanova == null) {
 			cbxIzaberiteBrojClanova = new JComboBox();
 			cbxIzaberiteBrojClanova.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent arg0) {
-					
 					GUIKontroler.izaberiBrojClanovaRegi();
 				}
 			});
-			cbxIzaberiteBrojClanova.setBackground(new Color(255,255,255));
-			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] {"5", "4", "3", "2"}));
+			cbxIzaberiteBrojClanova.setBackground(new Color(255, 255, 255));
+			cbxIzaberiteBrojClanova.setModel(new DefaultComboBoxModel(new String[] { "5", "4", "3", "2" }));
 			cbxIzaberiteBrojClanova.setBounds(0, 11, 53, 27);
 		}
 		return cbxIzaberiteBrojClanova;
 	}
+
 	public JButton getBtnRegistrujSe() {
 		if (btnRegistrujSe == null) {
 			btnRegistrujSe = new JButton("Registruj se");
@@ -193,21 +198,23 @@ public class Registracija extends JDialog {
 			btnRegistrujSe.setFocusPainted(false);
 			btnRegistrujSe.setBorderPainted(false);
 			btnRegistrujSe.setBackground(Color.WHITE);
-			
+
 			btnRegistrujSe.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					btnRegistrujSe.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnRegistrujSe.setBackground(Color.WHITE);
 				}
 			});
-			
+
 		}
 		return btnRegistrujSe;
 	}
+
 	public JButton getBtnOdustani() {
 		if (btnOdustani == null) {
 			btnOdustani = new JButton("Odustani");
@@ -217,7 +224,7 @@ public class Registracija extends JDialog {
 				}
 			});
 			btnOdustani.setBounds(317, 456, 89, 23);
-			
+
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);
 			btnOdustani.setBackground(Color.WHITE);
@@ -226,15 +233,17 @@ public class Registracija extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnOdustani.setBackground(new Color(240, 128, 125));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnOdustani.setBackground(Color.WHITE);
 				}
 			});
-		
+
 		}
 		return btnOdustani;
 	}
+
 	public JLabel getLblime() {
 		if (lblime == null) {
 			lblime = new JLabel("1.Ime");
@@ -242,6 +251,7 @@ public class Registracija extends JDialog {
 		}
 		return lblime;
 	}
+
 	public JLabel getLblime_3() {
 		if (lblime_3 == null) {
 			lblime_3 = new JLabel("3.Ime");
@@ -249,6 +259,7 @@ public class Registracija extends JDialog {
 		}
 		return lblime_3;
 	}
+
 	public JLabel getLblime_2() {
 		if (lblime_2 == null) {
 			lblime_2 = new JLabel("2.Ime");
@@ -256,6 +267,7 @@ public class Registracija extends JDialog {
 		}
 		return lblime_2;
 	}
+
 	public JLabel getLblime_4() {
 		if (lblime_4 == null) {
 			lblime_4 = new JLabel("4.Ime");
@@ -263,6 +275,7 @@ public class Registracija extends JDialog {
 		}
 		return lblime_4;
 	}
+
 	public JLabel getLblime_5() {
 		if (lblime_5 == null) {
 			lblime_5 = new JLabel("5.Ime");
@@ -270,6 +283,7 @@ public class Registracija extends JDialog {
 		}
 		return lblime_5;
 	}
+
 	public JTextField getTxtIme() {
 		if (txtIme == null) {
 			txtIme = new JTextField();
@@ -278,6 +292,7 @@ public class Registracija extends JDialog {
 		}
 		return txtIme;
 	}
+
 	public JTextField getTxtIme_2() {
 		if (txtIme_2 == null) {
 			txtIme_2 = new JTextField();
@@ -286,6 +301,7 @@ public class Registracija extends JDialog {
 		}
 		return txtIme_2;
 	}
+
 	public JTextField getTxtIme_3() {
 		if (txtIme_3 == null) {
 			txtIme_3 = new JTextField();
@@ -294,6 +310,7 @@ public class Registracija extends JDialog {
 		}
 		return txtIme_3;
 	}
+
 	public JTextField getTxtIme_4() {
 		if (txtIme_4 == null) {
 			txtIme_4 = new JTextField();
@@ -302,6 +319,7 @@ public class Registracija extends JDialog {
 		}
 		return txtIme_4;
 	}
+
 	public JTextField getTxtIme_5() {
 		if (txtIme_5 == null) {
 			txtIme_5 = new JTextField();
@@ -310,6 +328,7 @@ public class Registracija extends JDialog {
 		}
 		return txtIme_5;
 	}
+
 	public JLabel getLblprezime() {
 		if (lblprezime == null) {
 			lblprezime = new JLabel("1.Prezime");
@@ -317,6 +336,7 @@ public class Registracija extends JDialog {
 		}
 		return lblprezime;
 	}
+
 	public JLabel getLblprezime_3() {
 		if (lblprezime_3 == null) {
 			lblprezime_3 = new JLabel("3.Prezime");
@@ -324,6 +344,7 @@ public class Registracija extends JDialog {
 		}
 		return lblprezime_3;
 	}
+
 	public JLabel getLblprezime_2() {
 		if (lblprezime_2 == null) {
 			lblprezime_2 = new JLabel("2.Prezime");
@@ -331,6 +352,7 @@ public class Registracija extends JDialog {
 		}
 		return lblprezime_2;
 	}
+
 	public JLabel getLblprezime_4() {
 		if (lblprezime_4 == null) {
 			lblprezime_4 = new JLabel("4.Prezime");
@@ -338,6 +360,7 @@ public class Registracija extends JDialog {
 		}
 		return lblprezime_4;
 	}
+
 	public JLabel getLblprezime_5() {
 		if (lblprezime_5 == null) {
 			lblprezime_5 = new JLabel("5.Prezime");
@@ -345,6 +368,7 @@ public class Registracija extends JDialog {
 		}
 		return lblprezime_5;
 	}
+
 	public JTextField getTxtPrezime() {
 		if (txtPrezime == null) {
 			txtPrezime = new JTextField();
@@ -353,6 +377,7 @@ public class Registracija extends JDialog {
 		}
 		return txtPrezime;
 	}
+
 	public JTextField getTxtPrezime_2() {
 		if (txtPrezime_2 == null) {
 			txtPrezime_2 = new JTextField();
@@ -361,6 +386,7 @@ public class Registracija extends JDialog {
 		}
 		return txtPrezime_2;
 	}
+
 	public JTextField getTxtPrezime_3() {
 		if (txtPrezime_3 == null) {
 			txtPrezime_3 = new JTextField();
@@ -369,6 +395,7 @@ public class Registracija extends JDialog {
 		}
 		return txtPrezime_3;
 	}
+
 	public JTextField getTxtPrezime4() {
 		if (txtPrezime4 == null) {
 			txtPrezime4 = new JTextField();
@@ -377,6 +404,7 @@ public class Registracija extends JDialog {
 		}
 		return txtPrezime4;
 	}
+
 	public JTextField getTxtPrezime_5() {
 		if (txtPrezime_5 == null) {
 			txtPrezime_5 = new JTextField();
@@ -385,6 +413,7 @@ public class Registracija extends JDialog {
 		}
 		return txtPrezime_5;
 	}
+
 	public JPasswordField getPasswordField() {
 		if (passwordField == null) {
 			passwordField = new JPasswordField();
@@ -392,6 +421,7 @@ public class Registracija extends JDialog {
 		}
 		return passwordField;
 	}
+
 	public JLabel getLblUnesiPonovoSifru() {
 		if (lblUnesiPonovoSifru == null) {
 			lblUnesiPonovoSifru = new JLabel("Unesi ponovo sifru:");
@@ -400,14 +430,16 @@ public class Registracija extends JDialog {
 		}
 		return lblUnesiPonovoSifru;
 	}
+
 	public JLabel getLblUnesiSifru() {
 		if (lblUnesiSifru == null) {
-			lblUnesiSifru = new JLabel("Unesi sifru :");
+			lblUnesiSifru = new JLabel("Unesi sifru:");
 			lblUnesiSifru.setFont(new Font("Calibri", Font.BOLD, 16));
 			lblUnesiSifru.setBounds(0, 339, 196, 14);
 		}
 		return lblUnesiSifru;
 	}
+
 	public JPasswordField getPasswordField_1() {
 		if (passwordField_1 == null) {
 			passwordField_1 = new JPasswordField();

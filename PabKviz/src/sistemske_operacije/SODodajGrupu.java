@@ -7,11 +7,11 @@ import modeli.Grupa;
 
 public class SODodajGrupu {
 
-	public static void izvrsi(String imeGrupe, LinkedList<Clan> clanovi) {
+	public static void izvrsi(String imeGrupe, LinkedList<Clan> clanovi, String password) {
 		try {
 			Konektor konektor = new Konektor();
 			LinkedList<Grupa> sveGrupe = (LinkedList<Grupa>) konektor.vratiGrupe();
-			Grupa grupa = new Grupa(sveGrupe.size() + 1, imeGrupe);
+			Grupa grupa = new Grupa(sveGrupe.size() + 1, imeGrupe, password);
 			konektor.dodajGrupu(grupa);
 			LinkedList<Clan> sviClanovi = (LinkedList<Clan>) konektor.vratiClanove();
 			int brojClanovaUBazi = sviClanovi.size();
