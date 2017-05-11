@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import modeli.Clan;
 import modeli.Grupa;
-import modeli.Pitanje;
 
 /**
  * Klasa uspostavlja vezu i komunicira sa mySQL bazom
@@ -46,6 +45,8 @@ public class Konektor implements BazaInterfejs {
 
 	/**
 	 * Otvaranje konecije sa bazom
+	 * 
+	 * @throws Exception
 	 */
 	private void otvoriKonekciju() {
 		try {
@@ -59,6 +60,8 @@ public class Konektor implements BazaInterfejs {
 
 	/**
 	 * Zatvaranje konekcije sa bazom
+	 * 
+	 * @throws SQLException
 	 */
 	private void zatvoriKonekciju() {
 		try {
@@ -69,7 +72,11 @@ public class Konektor implements BazaInterfejs {
 	}
 
 	/**
-	 * Metoda dodaje clana koji je ulazni argument u tabelu clanovi u bazu
+	 * Metoda dodaje clana u tabelu clanovi u bazu
+	 * 
+	 * @param objekat
+	 *            Clan koji se ubacuje u bazu
+	 * @throws SQLException
 	 */
 	@Override
 	public void dodajClana(Clan clan) {
@@ -82,23 +89,6 @@ public class Konektor implements BazaInterfejs {
 			pripremljenaIzjava.setString(3, clan.getPrezime());
 			pripremljenaIzjava.setString(4, clan.getGrupa());
 			pripremljenaIzjava.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-	}
-
-	/**
-	 * Metoda brise clana sa zadatim id-om iz tabele clanovi iz baze
-	 */
-	@Override
-	public void izbrisiClana(int id) {
-		otvoriKonekciju();
-		String upit = "DELETE FROM clanovi WHERE id=?";
-		try {
-			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
-			pripremljenaIzjava.setInt(1, id);
-			pripremljenaIzjava.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -107,6 +97,9 @@ public class Konektor implements BazaInterfejs {
 
 	/**
 	 * Metoda vraca listu svih clanova iz baze
+	 * 
+	 * @return Lista clanova iz baze
+	 * @throws SQLException
 	 */
 	@Override
 	public Collection<Clan> vratiClanove() {
@@ -130,7 +123,11 @@ public class Konektor implements BazaInterfejs {
 	}
 
 	/**
-	 * Metoda dodaje grupu koja je ulazni argument u tabelu grupe u bazu
+	 * Metoda dodaje grupu u tabelu grupe u bazu
+	 * 
+	 * @param objekat
+	 *            Grupa koja se ubacuje u bazu
+	 * @throws SQLException
 	 */
 	@Override
 	public void dodajGrupu(Grupa grupa) {
@@ -149,24 +146,10 @@ public class Konektor implements BazaInterfejs {
 	}
 
 	/**
-	 * Metoda brise grupu sa zadatim id-om iz tabele grupe iz baze
-	 */
-	@Override
-	public void izbrisiGrupu(int id) {
-		otvoriKonekciju();
-		String upit = "DELETE FROM grupe WHERE id=?";
-		try {
-			PreparedStatement pripremljenaIzjava = konekcija.prepareStatement(upit);
-			pripremljenaIzjava.setInt(1, id);
-			pripremljenaIzjava.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		zatvoriKonekciju();
-	}
-
-	/**
 	 * Metoda vraca listu svih grupa iz baze
+	 * 
+	 * @return lista grupa iz baze
+	 * @throws SQLException
 	 */
 	@Override
 	public Collection<Grupa> vratiGrupe() {
