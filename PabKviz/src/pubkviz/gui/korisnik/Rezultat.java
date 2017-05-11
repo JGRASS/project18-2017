@@ -53,7 +53,7 @@ public class Rezultat extends JDialog {
 		setModal(true);
 		setTitle("Rezultat");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 330, 168);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);

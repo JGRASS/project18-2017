@@ -602,14 +602,29 @@ public class GUIKontroler {
 		if (kviz.getBtnSledecaStrana().getText().equals("Zavrsi")) {
 			String[] komentar = { "Srednje zalosno", "Eksponencijalno dobro!", "Moze i bolje", "Avangardan rezultat",
 					"Nije toliko lose" };
+			
 			sacuvajOdgovorNaPitanjeGornje();
+			if((Kviz.pitanja.size()) % 2 == 0){
+				sacuvajOdgovorNaPitanjeDonje();
+			}
 			rezultat = new Rezultat();
+			rezultat.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					zatvoriKviz();
+					rezultat.dispose();
+				}
+			});
 			Random rand = new Random();
 			rezultat.getTextField_1().setText(komentar[rand.nextInt(5)]);
+			
+			
 
 			rezultat.getTextField().setText(String.valueOf(SOIzracunajBodove.izvrsi()));
 			rezultat.setLocationRelativeTo(kviz);
 			rezultat.setVisible(true);
+			
+		
 
 			Kviz.odgovoriNaPitanja.clear();
 		}

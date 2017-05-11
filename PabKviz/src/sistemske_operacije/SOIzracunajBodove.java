@@ -8,8 +8,6 @@ public class SOIzracunajBodove {
 	public static double izvrsi() {
 		int brojPitanja = Kviz.pitanja.size();
 		int brojTacnihOdgovora = 0, brojNetacnihOdgovora = 0;
-		System.out.println(brojPitanja);
-		System.out.println(Kviz.odgovoriNaPitanja.size());
 		for (int i = 0; i < brojPitanja; i++) {
 			Pitanje pitanje = Kviz.pitanja.get(i);
 			Pitanje odgovorNaPitanje = Kviz.odgovoriNaPitanja.get(i);

@@ -42,7 +42,6 @@ public class Glavni_Meni_Korisnik extends JFrame {
 	private JButton btnPokreniKviz;
 	private JButton btnKrajRada;
 	private JPanel panel_2;
-	private JButton btnIzmeniGrupu;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 
@@ -84,7 +83,6 @@ public class Glavni_Meni_Korisnik extends JFrame {
 			panel_1.setLayout(null);
 			panel_1.add(getBtnPokreniKviz());
 			panel_1.add(getButton_3_1());
-			panel_1.add(getButton_1());
 		}
 		return panel_1;
 	}
@@ -122,7 +120,7 @@ public class Glavni_Meni_Korisnik extends JFrame {
 					GUIKontroler.ugasiAplikacijuKorisnik();
 				}
 			});
-			btnKrajRada.setBounds(10, 138, 121, 23);
+			btnKrajRada.setBounds(10, 104, 121, 23);
 			btnKrajRada.setFont(new Font("Verdana", Font.BOLD, 11));
 			btnKrajRada.setFocusPainted(false);
 			btnKrajRada.setBorderPainted(false);
@@ -166,32 +164,6 @@ public class Glavni_Meni_Korisnik extends JFrame {
 		}
 		
 		return panel_2;
-	}
-	public JButton getButton_1() {
-		if (btnIzmeniGrupu == null) {
-			btnIzmeniGrupu = new JButton("Izmeni grupu");
-			btnIzmeniGrupu.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					GUIKontroler.otvoriRegistar();
-				}
-			});
-			btnIzmeniGrupu.setFont(new Font("Verdana", Font.BOLD, 11));
-			btnIzmeniGrupu.setFocusPainted(false);
-			btnIzmeniGrupu.setBorderPainted(false);
-			btnIzmeniGrupu.setBackground(Color.WHITE);
-			btnIzmeniGrupu.setBounds(10, 104, 121, 23);
-			btnIzmeniGrupu.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseEntered(MouseEvent e) {
-					btnIzmeniGrupu.setBackground(new Color(240, 248, 255));
-				}
-				@Override
-				public void mouseExited(MouseEvent e) {
-					btnIzmeniGrupu.setBackground(Color.WHITE);
-				}
-			});
-		}
-		return btnIzmeniGrupu;
 	}
 
 	public JLabel getLblNewLabel_1() {
