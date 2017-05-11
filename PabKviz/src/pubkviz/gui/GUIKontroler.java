@@ -164,6 +164,7 @@ public class GUIKontroler {
 	}
 
 	public static void napraviKviz() {
+		Kviz.pitanja.clear();
 		napraviKviz = new NapraviKviz();
 		napraviKviz.setLocationRelativeTo(glavniProzor);
 		napraviKviz.setVisible(true);
