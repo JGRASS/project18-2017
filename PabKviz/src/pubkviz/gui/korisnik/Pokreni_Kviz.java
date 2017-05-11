@@ -70,7 +70,6 @@ public class Pokreni_Kviz extends JDialog {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private JLabel label;
 
-
 	/**
 	 * Create the frame.
 	 */
@@ -79,7 +78,7 @@ public class Pokreni_Kviz extends JDialog {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent arg0) {
-				
+
 			}
 		});
 		setResizable(false);
@@ -126,6 +125,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return panel;
 	}
+
 	public JLabel getLblGornjePitanje() {
 		if (lblGornjePitanje == null) {
 			lblGornjePitanje = new JLabel("Gornje pitanje");
@@ -134,6 +134,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return lblGornjePitanje;
 	}
+
 	public JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
@@ -142,6 +143,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return scrollPane;
 	}
+
 	public JTextArea getTxtGornjePitanje() {
 		if (txtGornjePitanje == null) {
 			txtGornjePitanje = new JTextArea();
@@ -152,6 +154,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtGornjePitanje;
 	}
+
 	public JLabel getLblGornjiOdgovor() {
 		if (lblGornjiOdgovor == null) {
 			lblGornjiOdgovor = new JLabel("Izaberite odgovor");
@@ -160,6 +163,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return lblGornjiOdgovor;
 	}
+
 	public JLabel getLblDonjePitanje() {
 		if (lblDonjePitanje == null) {
 			lblDonjePitanje = new JLabel("Donje pitanje");
@@ -168,6 +172,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return lblDonjePitanje;
 	}
+
 	public JScrollPane getScrollPane_2_1() {
 		if (scrollPane_2 == null) {
 			scrollPane_2 = new JScrollPane();
@@ -176,6 +181,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return scrollPane_2;
 	}
+
 	public JLabel getLblDonjiOdgovor() {
 		if (lblDonjiOdgovor == null) {
 			lblDonjiOdgovor = new JLabel("Izaberite odgovor");
@@ -184,6 +190,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return lblDonjiOdgovor;
 	}
+
 	public JTextArea getTxtDonjePitanje() {
 		if (txtDonjePitanje == null) {
 			txtDonjePitanje = new JTextArea();
@@ -194,6 +201,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtDonjePitanje;
 	}
+
 	public JButton getBtnSledecaStrana() {
 		if (btnSledecaStrana == null) {
 			btnSledecaStrana = new JButton("Sacuvaj odgovore i nastavi");
@@ -212,6 +220,7 @@ public class Pokreni_Kviz extends JDialog {
 				public void mouseEntered(MouseEvent e) {
 					btnSledecaStrana.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnSledecaStrana.setBackground(Color.WHITE);
@@ -220,6 +229,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return btnSledecaStrana;
 	}
+
 	public JRadioButton getRadioButton() {
 		if (radioButton == null) {
 			radioButton = new JRadioButton("");
@@ -232,6 +242,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton;
 	}
+
 	public JRadioButton getRadioButton_1() {
 		if (radioButton_1 == null) {
 			radioButton_1 = new JRadioButton("");
@@ -243,6 +254,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_1;
 	}
+
 	public JRadioButton getRadioButton_2() {
 		if (radioButton_2 == null) {
 			radioButton_2 = new JRadioButton("");
@@ -254,6 +266,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_2;
 	}
+
 	public JRadioButton getRadioButton_3() {
 		if (radioButton_3 == null) {
 			radioButton_3 = new JRadioButton("");
@@ -266,12 +279,13 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_3;
 	}
+
 	public JTextField getTxtPrviGornjiOdgovor() {
 		if (txtPrviGornjiOdgovor == null) {
 			txtPrviGornjiOdgovor = new JTextField();
 			txtPrviGornjiOdgovor.setFocusable(false);
 			txtPrviGornjiOdgovor.setEditable(false);
-			//txtDrugiGornjiOdgovor.setOpaque(false);
+			// txtDrugiGornjiOdgovor.setOpaque(false);
 			txtPrviGornjiOdgovor.setBackground(Color.WHITE);
 			txtPrviGornjiOdgovor.setText("Prvi odgovor");
 			txtPrviGornjiOdgovor.setColumns(10);
@@ -280,6 +294,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtPrviGornjiOdgovor;
 	}
+
 	public JTextField getTxtDrugiGornjiOdgovor() {
 		if (txtDrugiGornjiOdgovor == null) {
 			txtDrugiGornjiOdgovor = new JTextField();
@@ -293,6 +308,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtDrugiGornjiOdgovor;
 	}
+
 	public JTextField getTxtNeZnamGornjiOdgovor() {
 		if (txtNeZnamGornjiOdgovor == null) {
 			txtNeZnamGornjiOdgovor = new JTextField();
@@ -306,6 +322,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtNeZnamGornjiOdgovor;
 	}
+
 	public JTextField getTxtTreciGornjiOdgovor() {
 		if (txtTreciGornjiOdgovor == null) {
 			txtTreciGornjiOdgovor = new JTextField();
@@ -319,6 +336,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtTreciGornjiOdgovor;
 	}
+
 	public JRadioButton getRadioButton_4() {
 		if (radioButton_4 == null) {
 			radioButton_4 = new JRadioButton("");
@@ -330,6 +348,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_4;
 	}
+
 	public JRadioButton getRadioButton_5() {
 		if (radioButton_5 == null) {
 			radioButton_5 = new JRadioButton("");
@@ -341,6 +360,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_5;
 	}
+
 	public JRadioButton getRadioButton_6() {
 		if (radioButton_6 == null) {
 			radioButton_6 = new JRadioButton("");
@@ -352,6 +372,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_6;
 	}
+
 	public JRadioButton getRadioButton_7() {
 		if (radioButton_7 == null) {
 			radioButton_7 = new JRadioButton("");
@@ -364,6 +385,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return radioButton_7;
 	}
+
 	public JTextField getTxtPrviDonjiOdgovor() {
 		if (txtPrviDonjiOdgovor == null) {
 			txtPrviDonjiOdgovor = new JTextField();
@@ -377,6 +399,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtPrviDonjiOdgovor;
 	}
+
 	public JTextField getTxtDrugiDonjiOdgovor() {
 		if (txtDrugiDonjiOdgovor == null) {
 			txtDrugiDonjiOdgovor = new JTextField();
@@ -390,6 +413,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtDrugiDonjiOdgovor;
 	}
+
 	public JTextField getTxtNeZnamDonjiOdgovor() {
 		if (txtNeZnamDonjiOdgovor == null) {
 			txtNeZnamDonjiOdgovor = new JTextField();
@@ -403,6 +427,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtNeZnamDonjiOdgovor;
 	}
+
 	public JTextField getTxtTreciDonjiOdgovor() {
 		if (txtTreciDonjiOdgovor == null) {
 			txtTreciDonjiOdgovor = new JTextField();
@@ -416,6 +441,7 @@ public class Pokreni_Kviz extends JDialog {
 		}
 		return txtTreciDonjiOdgovor;
 	}
+
 	public JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("Pub Kviz");
