@@ -1,18 +1,12 @@
 package pubkviz.gui.login;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.RoundRectangle2D;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import pubkviz.gui.GUIKontroler;
-
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -35,8 +29,6 @@ public class Login extends JFrame {
 	private JButton btnRegistrujSe;
 	private JPasswordField passwordField;
 
-
-
 	/**
 	 * Create the frame.
 	 */
@@ -57,6 +49,7 @@ public class Login extends JFrame {
 		contentPane.add(getBtnRegistrujSe());
 		contentPane.add(getPasswordField());
 	}
+
 	public JLabel getLblKorisnickoIme() {
 		if (lblKorisnickoIme == null) {
 			lblKorisnickoIme = new JLabel("Korisnicko ime");
@@ -64,6 +57,7 @@ public class Login extends JFrame {
 		}
 		return lblKorisnickoIme;
 	}
+
 	public JLabel getLblLozinka() {
 		if (lblLozinka == null) {
 			lblLozinka = new JLabel("Lozinka");
@@ -71,6 +65,7 @@ public class Login extends JFrame {
 		}
 		return lblLozinka;
 	}
+
 	public JTextField getTextKorisnicko_Ime() {
 		if (textKorisnicko_Ime == null) {
 			textKorisnicko_Ime = new JTextField();
@@ -82,7 +77,7 @@ public class Login extends JFrame {
 					GUIKontroler.promeniFont();
 				}
 			});
-	
+
 			textKorisnicko_Ime.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -91,16 +86,16 @@ public class Login extends JFrame {
 				}
 			});
 			textKorisnicko_Ime.setText("Unesite ime grupe");
-		
-	
+
 			textKorisnicko_Ime.setForeground(Color.LIGHT_GRAY);
 			textKorisnicko_Ime.setFont(new Font("Tahoma", Font.ITALIC, 10));
-		
+
 			textKorisnicko_Ime.setBounds(152, 88, 136, 20);
 			textKorisnicko_Ime.setColumns(10);
 		}
 		return textKorisnicko_Ime;
 	}
+
 	public JButton getBtnPrijaviSe() {
 		if (btnPrijaviSe == null) {
 			btnPrijaviSe = new JButton("Prijavi se");
@@ -115,6 +110,7 @@ public class Login extends JFrame {
 				public void mouseEntered(MouseEvent e) {
 					btnPrijaviSe.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnPrijaviSe.setBackground(Color.WHITE);
@@ -127,6 +123,7 @@ public class Login extends JFrame {
 		}
 		return btnPrijaviSe;
 	}
+
 	public JButton getBtnRegistrujSe() {
 		if (btnRegistrujSe == null) {
 			btnRegistrujSe = new JButton("Registruj se");
@@ -141,6 +138,7 @@ public class Login extends JFrame {
 				public void mouseEntered(MouseEvent e) {
 					btnRegistrujSe.setBackground(new Color(240, 248, 255));
 				}
+
 				@Override
 				public void mouseExited(MouseEvent e) {
 					btnRegistrujSe.setBackground(Color.WHITE);
@@ -150,10 +148,11 @@ public class Login extends JFrame {
 			btnRegistrujSe.setFocusPainted(false);
 			btnRegistrujSe.setBorderPainted(false);
 			btnRegistrujSe.setBackground(Color.WHITE);
-		
+
 		}
 		return btnRegistrujSe;
 	}
+
 	public JPasswordField getPasswordField() {
 		if (passwordField == null) {
 			passwordField = new JPasswordField();
@@ -161,7 +160,9 @@ public class Login extends JFrame {
 			passwordField.addKeyListener(new KeyAdapter() {
 				@Override
 				public void keyPressed(KeyEvent e) {
-					GUIKontroler.prijaviSePrekoEntera(e.getKeyCode());
+					if (e.getKeyCode() == 10) {
+						GUIKontroler.prijaviSe();
+					}
 				}
 			});
 			passwordField.setBounds(152, 144, 136, 20);

@@ -51,6 +51,7 @@ public class GUIKontroler {
 	private static int iteratorGornji;
 	private static int iteratorDonji;
 	private static Rezultat rezultat;
+	private static String so = "1IU*PKqEu8vP@B7Cm7#mjQNx6N0CB)39zntI13P5Jsr1^(s(E4yF%2Q8smu$RHCi";
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -97,35 +98,7 @@ public class GUIKontroler {
 			glavniProzor.setVisible(true);
 			glavniProzor.setLocationRelativeTo(null);
 			pocetniProzor.setEnabled(false);
-		} else if (SOPrijaviSe.izvrsi(vratiKorisnickoIme(), vratiLozinku())) {
-			glavniProzorKorisnik = new Glavni_Meni_Korisnik();
-			glavniProzorKorisnik.setLocationRelativeTo(null);
-			glavniProzorKorisnik.setVisible(true);
-			pocetniProzor.dispose();
-			glavniProzorKorisnik.addWindowListener(new WindowAdapter() {
-				@Override
-				public void windowClosing(WindowEvent e) {
-					ugasiAplikacijuKorisnik();
-				}
-			});
-
-		}
-	}
-
-	public static void prijaviSePrekoEntera(int enter) {
-		if (vratiKorisnickoIme().equals("admin") && vratiLozinku().equals("admin") && enter == 10) {
-			glavniProzor = new Glavni_Meni();
-			glavniProzor.setLocationRelativeTo(null);
-			glavniProzor.setVisible(true);
-			pocetniProzor.dispose();
-			glavniProzor.addWindowListener(new WindowAdapter() {
-				@Override
-				public void windowClosing(WindowEvent e) {
-					ugasiAplikaciju();
-				}
-			});
-
-		} else if (vratiKorisnickoIme().equals("") && vratiLozinku().equals("") && enter == 10) {
+		} else if (SOPrijaviSe.izvrsi(vratiKorisnickoIme(), vratiLozinku() + so)) {
 			glavniProzorKorisnik = new Glavni_Meni_Korisnik();
 			glavniProzorKorisnik.setLocationRelativeTo(null);
 			glavniProzorKorisnik.setVisible(true);
@@ -529,12 +502,13 @@ public class GUIKontroler {
 		String passwordOriginal = String.valueOf(registar.getPasswordField().getPassword());
 		String passwordPonovljeni = String.valueOf(registar.getPasswordField_1().getPassword());
 		if (!(passwordOriginal.equals(passwordPonovljeni))) {
-			registar.getTxtUnesiteImeGrupe().setText("Unesite sifru ponovo");
+			registar.getTxtStatus().setText("Unesite sifru ponovo");
 			registar.getPasswordField().setText(null);
 			registar.getPasswordField_1().setText(null);
 			return null;
 		}
-		passwordOriginal = JavaEnkripcija.enkripcija(passwordOriginal);
+		passwordOriginal = JavaEnkripcija.enkripcija(passwordOriginal + so);
+		registar.dispose();
 		return passwordOriginal;
 	}
 
@@ -603,9 +577,9 @@ public class GUIKontroler {
 		if (kviz.getBtnSledecaStrana().getText().equals("Zavrsi")) {
 			String[] komentar = { "Srednje zalosno", "Eksponencijalno dobro!", "Moze i bolje", "Avangardan rezultat",
 					"Nije toliko lose" };
-			
+
 			sacuvajOdgovorNaPitanjeGornje();
-			if((Kviz.pitanja.size()) % 2 == 0){
+			if ((Kviz.pitanja.size()) % 2 == 0) {
 				sacuvajOdgovorNaPitanjeDonje();
 			}
 			rezultat = new Rezultat();
@@ -618,14 +592,10 @@ public class GUIKontroler {
 			});
 			Random rand = new Random();
 			rezultat.getTextField_1().setText(komentar[rand.nextInt(5)]);
-			
-			
 
 			rezultat.getTextField().setText(String.valueOf(SOIzracunajBodove.izvrsi()));
 			rezultat.setLocationRelativeTo(kviz);
 			rezultat.setVisible(true);
-			
-		
 
 			Kviz.odgovoriNaPitanja.clear();
 		}

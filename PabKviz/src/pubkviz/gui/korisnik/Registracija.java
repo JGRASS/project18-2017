@@ -70,6 +70,7 @@ public class Registracija extends JDialog {
 	private JLabel lblUnesiPonovoSifru;
 	private JLabel lblUnesiSifru;
 	private JPasswordField passwordField_1;
+	private JTextField txtStatus;
 
 	/**
 	 * Create the frame.
@@ -79,7 +80,7 @@ public class Registracija extends JDialog {
 		setTitle("Registracija");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 423, 589);
+		setBounds(100, 100, 423, 631);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -167,6 +168,7 @@ public class Registracija extends JDialog {
 			panel_2.add(getLblUnesiPonovoSifru());
 			panel_2.add(getLblUnesiSifru());
 			panel_2.add(getPasswordField_1());
+			panel_2.add(getTxtStatus());
 		}
 		return panel_2;
 	}
@@ -194,7 +196,7 @@ public class Registracija extends JDialog {
 					GUIKontroler.unesiPodatkeZaGrupu();
 				}
 			});
-			btnRegistrujSe.setBounds(0, 456, 150, 23);
+			btnRegistrujSe.setBounds(0, 499, 150, 23);
 			btnRegistrujSe.setFocusPainted(false);
 			btnRegistrujSe.setBorderPainted(false);
 			btnRegistrujSe.setBackground(Color.WHITE);
@@ -223,7 +225,7 @@ public class Registracija extends JDialog {
 					dispose();
 				}
 			});
-			btnOdustani.setBounds(317, 456, 89, 23);
+			btnOdustani.setBounds(317, 499, 89, 23);
 
 			btnOdustani.setFocusPainted(false);
 			btnOdustani.setBorderPainted(false);
@@ -446,5 +448,20 @@ public class Registracija extends JDialog {
 			passwordField_1.setBounds(0, 420, 196, 20);
 		}
 		return passwordField_1;
+	}
+
+	public JTextField getTxtStatus() {
+		if (txtStatus == null) {
+			txtStatus = new JTextField();
+			txtStatus.setFont(new Font("Consolas", Font.PLAIN, 12));
+			txtStatus.setForeground(Color.RED);
+			txtStatus.setFocusable(false);
+			txtStatus.setBorder(null);
+			txtStatus.setBackground(Color.WHITE);
+			txtStatus.setEditable(false);
+			txtStatus.setBounds(0, 468, 196, 20);
+			txtStatus.setColumns(10);
+		}
+		return txtStatus;
 	}
 }
