@@ -207,6 +207,7 @@ public class Pokreni_Kviz extends JDialog {
 			btnSledecaStrana = new JButton("Sacuvaj odgovore i nastavi");
 			btnSledecaStrana.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.vratiRezultat();
 					GUIKontroler.sacuvajNastavi();
 				}
 			});

@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Random;
 
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import pubkviz.gui.admin.Unos_Pitanja;
 import pubkviz.gui.korisnik.Glavni_Meni_Korisnik;
 import pubkviz.gui.admin.Obrisi_Pitanje;
 import pubkviz.gui.korisnik.Registracija;
+import pubkviz.gui.korisnik.Rezultat;
 import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
 import pubkviz.sifra.JavaEnkripcija;
@@ -46,6 +48,7 @@ public class GUIKontroler {
 	private static int iterator;
 	private static int iteratorGornji;
 	private static int iteratorDonji;
+	private static Rezultat rezultat;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -527,6 +530,19 @@ public class GUIKontroler {
 	public static void sacuvajKviz() {
 		SOSerijalizujKviz.izvrsi(Kviz.pitanja);
 	}
+	public static void vratiRezultat(){
+		
+		if(kviz.getBtnSledecaStrana().getText().equals("Zavrsi")){
+		String[] komentar = {"Srednje zalosno","Eksponencijalno dobro!","Moze i bolje", "Avangardan rezultat","Nije toliko lose"};
+	
+ 		rezultat = new Rezultat();
+		Random rand = new Random();
+		rezultat.getTextField_1().setText(komentar[rand.nextInt(5)]);
+		rezultat.setLocationRelativeTo(kviz);
+		rezultat.setVisible(true);
+		}
+		
+	}
 
 	public static void izaberiBrojClanovaRegi() {
 
@@ -606,6 +622,11 @@ public class GUIKontroler {
 		default:
 			break;
 		}
+	}
+
+	public static void zatvoriKviz() {
+		kviz.dispose();
+		
 	}
 
 }
