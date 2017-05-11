@@ -25,9 +25,11 @@ import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
 import pubkviz.sifra.JavaEnkripcija;
 import sistemske_operacije.SODodajGrupu;
+import sistemske_operacije.SOIzracunajBodove;
 import sistemske_operacije.SONapraviListuClanova;
 import sistemske_operacije.SOObrisiPitanje;
 import sistemske_operacije.SOPrijaviSe;
+import sistemske_operacije.SOPrimiOdgovorNaPitanje;
 import sistemske_operacije.SOPrimiPitanje;
 import sistemske_operacije.SOSacuvajIzmenu;
 import sistemske_operacije.SOSerijalizujKviz;
@@ -236,6 +238,7 @@ public class GUIKontroler {
 		iteratorGornji += 2;
 
 		if (SOVratiPitanje.izvrsi(iteratorGornji) != null) {
+			sacuvajOdgovorNaPitanjeGornje();
 			kviz.getTxtGornjePitanje().setText(SOVratiPitanje.izvrsi(iteratorGornji).getTekst());
 			kviz.getTxtPrviGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getPrviOdgovor());
 			kviz.getTxtDrugiGornjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorGornji).getDrugiOdgovor());
@@ -258,6 +261,7 @@ public class GUIKontroler {
 
 		}
 		if (SOVratiPitanje.izvrsi(iteratorDonji) != null) {
+			sacuvajOdgovorNaPitanjeDonje();
 			kviz.getTxtDonjePitanje().setText(SOVratiPitanje.izvrsi(iteratorDonji).getTekst());
 			kviz.getTxtPrviDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getPrviOdgovor());
 			kviz.getTxtDrugiDonjiOdgovor().setText(SOVratiPitanje.izvrsi(iteratorDonji).getDrugiOdgovor());
@@ -280,6 +284,51 @@ public class GUIKontroler {
 		}
 
 	}
+
+	public static void sacuvajOdgovorNaPitanjeGornje() {
+
+		String izabranik = izaberiOdgovor();
+
+		SOPrimiOdgovorNaPitanje.izvrsi(kviz.getTxtGornjePitanje().getText(), kviz.getTxtPrviGornjiOdgovor().getText(),
+				kviz.getTxtDrugiDonjiOdgovor().getText(), kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
+	}
+
+	private static String izaberiOdgovor() {
+		if (kviz.getRadioButton().isSelected()) {
+			return kviz.getTxtPrviGornjiOdgovor().getText();
+		}
+		if (kviz.getRadioButton_1().isSelected()) {
+			return kviz.getTxtDrugiGornjiOdgovor().getText();
+		}
+		if (kviz.getRadioButton_2().isSelected()) {
+			return kviz.getTxtTreciGornjiOdgovor().getText();
+		}
+		return kviz.getTxtNeZnamGornjiOdgovor().getText();
+		
+	}
+	
+	public static void sacuvajOdgovorNaPitanjeDonje() {
+
+		String izabranik = izaberiOdgovorDonji();
+
+		SOPrimiOdgovorNaPitanje.izvrsi(kviz.getTxtGornjePitanje().getText(), kviz.getTxtPrviGornjiOdgovor().getText(),
+				kviz.getTxtDrugiDonjiOdgovor().getText(), kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
+	}
+
+	private static String izaberiOdgovorDonji() {
+		if (kviz.getRadioButton_4().isSelected()) {
+			return kviz.getTxtPrviDonjiOdgovor().getText();
+		}
+		if (kviz.getRadioButton_5().isSelected()) {
+			return kviz.getTxtDrugiDonjiOdgovor().getText();
+		}
+		if (kviz.getRadioButton_6().isSelected()) {
+			return kviz.getTxtTreciDonjiOdgovor().getText();
+		}
+		return kviz.getTxtNeZnamGornjiOdgovor().getText();
+		
+	}
+
 
 	public static void pogledajTestZatvaranje() {
 		kviz.dispose();
@@ -546,18 +595,23 @@ public class GUIKontroler {
 	public static void sacuvajKviz() {
 		SOSerijalizujKviz.izvrsi(Kviz.pitanja);
 	}
-	public static void vratiRezultat(){
-		
-		if(kviz.getBtnSledecaStrana().getText().equals("Zavrsi")){
-		String[] komentar = {"Srednje zalosno","Eksponencijalno dobro!","Moze i bolje", "Avangardan rezultat","Nije toliko lose"};
-	
- 		rezultat = new Rezultat();
-		Random rand = new Random();
-		rezultat.getTextField_1().setText(komentar[rand.nextInt(5)]);
-		rezultat.setLocationRelativeTo(kviz);
-		rezultat.setVisible(true);
+
+	public static void vratiRezultat() {
+
+		if (kviz.getBtnSledecaStrana().getText().equals("Zavrsi")) {
+			String[] komentar = { "Srednje zalosno", "Eksponencijalno dobro!", "Moze i bolje", "Avangardan rezultat",
+					"Nije toliko lose" };
+
+			rezultat = new Rezultat();
+			Random rand = new Random();
+			rezultat.getTextField_1().setText(komentar[rand.nextInt(5)]);
+			
+			
+			rezultat.getTextField().setText(String.valueOf(SOIzracunajBodove.izvrsi()));
+			rezultat.setLocationRelativeTo(kviz);
+			rezultat.setVisible(true);
 		}
-		
+
 	}
 
 	public static void izaberiBrojClanovaRegi() {
@@ -642,7 +696,7 @@ public class GUIKontroler {
 
 	public static void zatvoriKviz() {
 		kviz.dispose();
-		
+
 	}
 
 }

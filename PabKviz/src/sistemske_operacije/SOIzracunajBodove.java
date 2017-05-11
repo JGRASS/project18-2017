@@ -8,7 +8,7 @@ public class SOIzracunajBodove {
 	public static double izvrsi() {
 		int brojPitanja = Kviz.pitanja.size();
 		int brojTacnihOdgovora = 0, brojNetacnihOdgovora = 0;
-		for (int i = 0; i < brojPitanja; i++) {
+		for (int i = 0; i < Kviz.odgovoriNaPitanja.size(); i++) {
 			Pitanje pitanje = Kviz.pitanja.get(i);
 			Pitanje odgovorNaPitanje = Kviz.odgovoriNaPitanja.get(i);
 			if (pitanje.getTacanOdgovor().equals(odgovorNaPitanje.getTacanOdgovor())) {
@@ -19,6 +19,6 @@ public class SOIzracunajBodove {
 		}
 		double pozitivniBodovi = (double) brojTacnihOdgovora / brojPitanja * 100;
 		double negativniBodovi = (double) brojNetacnihOdgovora / brojPitanja * 25;
-		return pozitivniBodovi - negativniBodovi;
+		return (int)(pozitivniBodovi - negativniBodovi);
 	}
 }
