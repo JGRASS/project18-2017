@@ -97,7 +97,13 @@ public class GUIKontroler {
 			glavniProzor = new Glavni_Meni();
 			glavniProzor.setVisible(true);
 			glavniProzor.setLocationRelativeTo(null);
-			pocetniProzor.setEnabled(false);
+			pocetniProzor.dispose();
+			glavniProzor.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					ugasiAplikacijuKorisnik();
+				}
+			});
 		} else if (SOPrijaviSe.izvrsi(vratiKorisnickoIme(), vratiLozinku() + so)) {
 			glavniProzorKorisnik = new Glavni_Meni_Korisnik();
 			glavniProzorKorisnik.setLocationRelativeTo(null);
