@@ -270,7 +270,7 @@ public class GUIKontroler {
 	public static void sacuvajOdgovorNaPitanjeGornje() {
 
 		String izabranik = izaberiOdgovor();
-
+		
 		SOPrimiOdgovorNaPitanje.izvrsi(kviz.getTxtGornjePitanje().getText(), kviz.getTxtPrviGornjiOdgovor().getText(),
 				kviz.getTxtDrugiDonjiOdgovor().getText(), kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
 	}
@@ -534,11 +534,11 @@ public class GUIKontroler {
 		if (unosPitanja.getRdbtnPrviOdgovor().isSelected()) {
 			return unosPitanja.getTxtPrviOdgovor().getText();
 		}
-		if (unosPitanja.getRdbtnTreciOdgovor().isSelected()) {
-			return unosPitanja.getTxtTreciOdgovor().getText();
-		}
 		if (unosPitanja.getRdbtnDrugiOdgovor().isSelected()) {
 			return unosPitanja.getTxtDrugiOdgovor().getText();
+		}
+		if (unosPitanja.getRdbtnTreciOdgovor().isSelected()) {
+			return unosPitanja.getTxtTreciOdgovor().getText();
 		}
 		return null;
 	}

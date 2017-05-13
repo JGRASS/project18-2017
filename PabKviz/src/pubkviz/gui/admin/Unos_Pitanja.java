@@ -50,8 +50,8 @@ public class Unos_Pitanja extends JDialog {
 	private JPanel panel_1;
 	private JTextArea txtNapisitePitanje;
 	private JRadioButton rdbtnPrviOdgovor;
-	private JRadioButton rdbtnTreciOdgovor;
 	private JRadioButton rdbtnDrugiOdgovor;
+	private JRadioButton rdbtnTreciOdgovor;
 	private JRadioButton rdbtnNeZnam;
 	private JTextField txtPrviOdgovor;
 	private JTextField txtDrugiOdgovor;
@@ -163,8 +163,8 @@ public class Unos_Pitanja extends JDialog {
 			panel_1.setLayout(null);
 			panel_1.add(getTextPane_1());
 			panel_1.add(getRdbtnPrviOdgovor());
-			panel_1.add(getRdbtnTreciOdgovor());
 			panel_1.add(getRdbtnDrugiOdgovor());
+			panel_1.add(getRdbtnTreciOdgovor());
 			panel_1.add(getRdbtnNeZnam());
 			panel_1.add(getTxtPrviOdgovor());
 			panel_1.add(getTxtDrugiOdgovor());
@@ -194,23 +194,23 @@ public class Unos_Pitanja extends JDialog {
 		}
 		return rdbtnPrviOdgovor;
 	}
-	public JRadioButton getRdbtnTreciOdgovor() {
-		if (rdbtnTreciOdgovor == null) {
-			rdbtnTreciOdgovor = new JRadioButton("");
-			rdbtnTreciOdgovor.setBackground(Color.WHITE);
-			buttonGroup.add(rdbtnTreciOdgovor);
-			rdbtnTreciOdgovor.setBounds(4, 174, 21, 23);
-		}
-		return rdbtnTreciOdgovor;
-	}
 	public JRadioButton getRdbtnDrugiOdgovor() {
 		if (rdbtnDrugiOdgovor == null) {
 			rdbtnDrugiOdgovor = new JRadioButton("");
 			rdbtnDrugiOdgovor.setBackground(Color.WHITE);
 			buttonGroup.add(rdbtnDrugiOdgovor);
-			rdbtnDrugiOdgovor.setBounds(278, 129, 21, 23);
+			rdbtnDrugiOdgovor.setBounds(4, 174, 21, 23);
 		}
 		return rdbtnDrugiOdgovor;
+	}
+	public JRadioButton getRdbtnTreciOdgovor() {
+		if (rdbtnTreciOdgovor == null) {
+			rdbtnTreciOdgovor = new JRadioButton("");
+			rdbtnTreciOdgovor.setBackground(Color.WHITE);
+			buttonGroup.add(rdbtnTreciOdgovor);
+			rdbtnTreciOdgovor.setBounds(278, 129, 21, 23);
+		}
+		return rdbtnTreciOdgovor;
 	}
 	public JRadioButton getRdbtnNeZnam() {
 		if (rdbtnNeZnam == null) {
