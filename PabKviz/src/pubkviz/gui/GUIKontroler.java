@@ -23,8 +23,6 @@ import pubkviz.gui.korisnik.Registracija;
 import pubkviz.gui.korisnik.Rezultat;
 import pubkviz.gui.korisnik.Pokreni_Kviz;
 import pubkviz.gui.login.Login;
-import pubkviz.sifra.JavaEnkripcija;
-
 
 public class GUIKontroler {
 
@@ -157,44 +155,55 @@ public class GUIKontroler {
 	}
 
 	public static void pokreniKviz() {
-		kviz = new Pokreni_Kviz();
 
-		SistemskiKontroler.ucitajKviz();
+		try {
+			kviz = new Pokreni_Kviz();
 
-		iteratorDonji = 1;
-		iteratorGornji = 0;
+			SistemskiKontroler.ucitajKviz();
 
-		if (SistemskiKontroler.vratiPitanje(iteratorGornji) != null) {
-			kviz.getTxtGornjePitanje().setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getTekst());
-			kviz.getTxtPrviGornjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getPrviOdgovor());
-			kviz.getTxtDrugiGornjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getDrugiOdgovor());
-			kviz.getTxtTreciGornjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getTreciOdgovor());
-			kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
+			iteratorDonji = 1;
+			iteratorGornji = 0;
+
+			if (SistemskiKontroler.vratiPitanje(iteratorGornji) != null) {
+				kviz.getTxtGornjePitanje().setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getTekst());
+				kviz.getTxtPrviGornjiOdgovor()
+						.setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getPrviOdgovor());
+				kviz.getTxtDrugiGornjiOdgovor()
+						.setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getDrugiOdgovor());
+				kviz.getTxtTreciGornjiOdgovor()
+						.setText(SistemskiKontroler.vratiPitanje(iteratorGornji).getTreciOdgovor());
+				kviz.getLblGornjePitanje().setText(iteratorGornji + 1 + ". pitanje");
+			}
+			if (SistemskiKontroler.vratiPitanje(iteratorDonji) != null) {
+				kviz.getTxtDonjePitanje().setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getTekst());
+				kviz.getTxtPrviDonjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getPrviOdgovor());
+				kviz.getTxtDrugiDonjiOdgovor()
+						.setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getDrugiOdgovor());
+				kviz.getTxtTreciDonjiOdgovor()
+						.setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getTreciOdgovor());
+				kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
+			} else if (SistemskiKontroler.vratiPitanje(iteratorDonji) == null) {
+				kviz.getTxtDonjePitanje().setVisible(false);
+				kviz.getTxtPrviDonjiOdgovor().setVisible(false);
+				kviz.getTxtTreciDonjiOdgovor().setVisible(false);
+				kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
+				kviz.getLblDonjePitanje().setVisible(false);
+				kviz.getRadioButton_4().setVisible(false);
+				kviz.getRadioButton_5().setVisible(false);
+				kviz.getRadioButton_6().setVisible(false);
+				kviz.getRadioButton_7().setVisible(false);
+				kviz.getLblDonjiOdgovor().setVisible(false);
+				kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
+				kviz.getTxtDonjePitanje().setVisible(false);
+				kviz.getScrollPane_2_1().setVisible(false);
+			}
+
+			kviz.setLocationRelativeTo(glavniProzorKorisnik);
+			kviz.setVisible(true);
+		} catch (Exception e) {
+			zatvoriKviz();
+			System.out.println("Greska: " + e.getMessage());
 		}
-		if (SistemskiKontroler.vratiPitanje(iteratorDonji) != null) {
-			kviz.getTxtDonjePitanje().setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getTekst());
-			kviz.getTxtPrviDonjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getPrviOdgovor());
-			kviz.getTxtDrugiDonjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getDrugiOdgovor());
-			kviz.getTxtTreciDonjiOdgovor().setText(SistemskiKontroler.vratiPitanje(iteratorDonji).getTreciOdgovor());
-			kviz.getLblDonjePitanje().setText(iteratorDonji + 1 + ". pitanje");
-		} else if (SistemskiKontroler.vratiPitanje(iteratorDonji) == null) {
-			kviz.getTxtDonjePitanje().setVisible(false);
-			kviz.getTxtPrviDonjiOdgovor().setVisible(false);
-			kviz.getTxtTreciDonjiOdgovor().setVisible(false);
-			kviz.getTxtDrugiDonjiOdgovor().setVisible(false);
-			kviz.getLblDonjePitanje().setVisible(false);
-			kviz.getRadioButton_4().setVisible(false);
-			kviz.getRadioButton_5().setVisible(false);
-			kviz.getRadioButton_6().setVisible(false);
-			kviz.getRadioButton_7().setVisible(false);
-			kviz.getLblDonjiOdgovor().setVisible(false);
-			kviz.getTxtNeZnamDonjiOdgovor().setVisible(false);
-			kviz.getTxtDonjePitanje().setVisible(false);
-			kviz.getScrollPane_2_1().setVisible(false);
-		}
-
-		kviz.setLocationRelativeTo(glavniProzorKorisnik);
-		kviz.setVisible(true);
 
 	}
 
@@ -260,9 +269,10 @@ public class GUIKontroler {
 	public static void sacuvajOdgovorNaPitanjeGornje() {
 
 		String izabranik = izaberiOdgovor();
-		
-		SistemskiKontroler.primiOdgovorNaPitanje(kviz.getTxtGornjePitanje().getText(), kviz.getTxtPrviGornjiOdgovor().getText(),
-				kviz.getTxtDrugiDonjiOdgovor().getText(), kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
+
+		SistemskiKontroler.primiOdgovorNaPitanje(kviz.getTxtGornjePitanje().getText(),
+				kviz.getTxtPrviGornjiOdgovor().getText(), kviz.getTxtDrugiDonjiOdgovor().getText(),
+				kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
 	}
 
 	private static String izaberiOdgovor() {
@@ -283,8 +293,9 @@ public class GUIKontroler {
 
 		String izabranik = izaberiOdgovorDonji();
 
-		SistemskiKontroler.primiOdgovorNaPitanje(kviz.getTxtGornjePitanje().getText(), kviz.getTxtPrviGornjiOdgovor().getText(),
-				kviz.getTxtDrugiDonjiOdgovor().getText(), kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
+		SistemskiKontroler.primiOdgovorNaPitanje(kviz.getTxtGornjePitanje().getText(),
+				kviz.getTxtPrviGornjiOdgovor().getText(), kviz.getTxtDrugiDonjiOdgovor().getText(),
+				kviz.getTxtTreciGornjiOdgovor().getText(), izabranik);
 	}
 
 	private static String izaberiOdgovorDonji() {
@@ -441,14 +452,18 @@ public class GUIKontroler {
 	}
 
 	public static void unesiPodatkeZaGrupu() {
-		if (vratiPassword() == null) {
-			return;
+		try {
+			if (vratiPassword() == null) {
+				return;
+			}
+			SistemskiKontroler.dodajGrupu(registar.getTxtUnesiteImeGrupe().getText(),
+					SistemskiKontroler.napraviListuClanova(napraviNizImena(), napraviNizPrezimena(),
+							Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem()),
+							registar.getTxtUnesiteImeGrupe().getText()),
+					vratiPassword());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-		SistemskiKontroler.dodajGrupu(registar.getTxtUnesiteImeGrupe().getText(),
-				SistemskiKontroler.napraviListuClanova(napraviNizImena(), napraviNizPrezimena(),
-						Integer.valueOf((String) registar.getCbxIzaberiteBrojClanova().getSelectedItem()),
-						registar.getTxtUnesiteImeGrupe().getText()),
-				vratiPassword());
 
 	}
 
@@ -503,7 +518,7 @@ public class GUIKontroler {
 			registar.getPasswordField_1().setText(null);
 			return null;
 		}
-		passwordOriginal = JavaEnkripcija.enkripcija(passwordOriginal + so);
+		passwordOriginal = SistemskiKontroler.enkripcija(passwordOriginal + so);
 		registar.dispose();
 		return passwordOriginal;
 	}
@@ -512,8 +527,9 @@ public class GUIKontroler {
 
 		String tacanOdgvor = vratiTacanOdgovor();
 
-		SistemskiKontroler.primiPitanje(unosPitanja.getTextPane_1().getText(), unosPitanja.getTxtPrviOdgovor().getText(),
-				unosPitanja.getTxtDrugiOdgovor().getText(), unosPitanja.getTxtTreciOdgovor().getText(), tacanOdgvor);
+		SistemskiKontroler.primiPitanje(unosPitanja.getTextPane_1().getText(),
+				unosPitanja.getTxtPrviOdgovor().getText(), unosPitanja.getTxtDrugiOdgovor().getText(),
+				unosPitanja.getTxtTreciOdgovor().getText(), tacanOdgvor);
 		unosPitanja.dispose();
 
 		napraviKviz.getBtnIzmeniPitanje().setEnabled(true);
@@ -536,8 +552,9 @@ public class GUIKontroler {
 	public static void sacuvajIzmenu() {
 		String tacanOdgvor = vratiTacanOdgovorIzmena();
 
-		SistemskiKontroler.sacuvajIzmenu(iterator, izmena.getTextPane_1().getText(), izmena.getTxtPrviOdgovor().getText(),
-				izmena.getTxtDrugiOdgovor().getText(), izmena.getTxtTreciOdgovor().getText(), tacanOdgvor);
+		SistemskiKontroler.sacuvajIzmenu(iterator, izmena.getTextPane_1().getText(),
+				izmena.getTxtPrviOdgovor().getText(), izmena.getTxtDrugiOdgovor().getText(),
+				izmena.getTxtTreciOdgovor().getText(), tacanOdgvor);
 		izmena.dispose();
 
 	}

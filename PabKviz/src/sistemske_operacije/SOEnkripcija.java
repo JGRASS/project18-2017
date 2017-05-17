@@ -1,12 +1,12 @@
-package pubkviz.sifra;
+package sistemske_operacije;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class JavaEnkripcija {
+public class SOEnkripcija {
 
-	public static String enkripcija(String sifra) {
+	public static String izvrsi(String sifra) {
 
 		String md5 = null;
 
@@ -27,5 +27,4 @@ public class JavaEnkripcija {
 		}
 		return md5;
 	}
-
 }

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import modeli.Clan;
 import modeli.Pitanje;
 import sistemske_operacije.SODodajGrupu;
+import sistemske_operacije.SOEnkripcija;
 import sistemske_operacije.SOIzracunajBodove;
 import sistemske_operacije.SONapraviListuClanova;
 import sistemske_operacije.SOObrisiPitanje;
@@ -26,7 +27,7 @@ public class SistemskiKontroler {
 	}
 
 	public static LinkedList<Clan> napraviListuClanova(String[] imena, String[] prezimena, int brojClanova,
-			String imeGrupe) {
+			String imeGrupe) throws Exception {
 		return SONapraviListuClanova.izvrsi(imena, prezimena, brojClanova, imeGrupe);
 	}
 
@@ -54,11 +55,15 @@ public class SistemskiKontroler {
 		SOSerijalizujKviz.izvrsi(pitanja);
 	}
 
-	public static void ucitajKviz() {
+	public static void ucitajKviz() throws Exception {
 		SOUcitajKviz.izvrsi();
 	}
 
 	public static Pitanje vratiPitanje(int i) {
 		return SOVratiPitanje.izvrsi(i);
+	}
+
+	public static String enkripcija(String sifra) {
+		return SOEnkripcija.izvrsi(sifra);
 	}
 }

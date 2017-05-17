@@ -72,8 +72,4 @@ public class Clan {
 		return "Clan [id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", grupa=" + grupa + "]";
 	}
 
-	public void napraviListuClanova(String[] imena, String[] prezimena, int brojClanova, String imeGrupe) {
-		SONapraviListuClanova.izvrsi(imena, prezimena, brojClanova, imeGrupe);
-	}
-
 }

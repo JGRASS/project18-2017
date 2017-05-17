@@ -13,21 +13,17 @@ import modeli.Pitanje;
 
 public class SOUcitajKviz {
 
-	public static void izvrsi() {
+	public static void izvrsi() throws Exception {
+		Kviz.pitanja.clear();
+		ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("data/kviz.dat")));
 		try {
-			Kviz.pitanja.clear();
-			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("data/kviz.dat")));
-			try {
-				while (true) {
-					Pitanje pitanje = (Pitanje) in.readObject();
-					Kviz.pitanja.add(pitanje);
-				}
-			} catch (Exception e) {
-			
+			while (true) {
+				Pitanje pitanje = (Pitanje) in.readObject();
+				Kviz.pitanja.add(pitanje);
 			}
-			in.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+
 		}
+		in.close();
 	}
 }

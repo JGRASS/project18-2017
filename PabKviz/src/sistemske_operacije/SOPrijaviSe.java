@@ -1,15 +1,16 @@
 package sistemske_operacije;
 
 import java.util.LinkedList;
+
 import konekcija.Konektor;
 import modeli.Grupa;
-import pubkviz.sifra.JavaEnkripcija;
+import pubkviz.sistemski_kontroler.SistemskiKontroler;
 
 public class SOPrijaviSe {
 
 	public static boolean izvrsi(String imeGrupe, String sifra) {
 		try {
-			String enkriptovanaSifra = JavaEnkripcija.enkripcija(sifra);
+			String enkriptovanaSifra = SistemskiKontroler.enkripcija(sifra);
 			Konektor konektor = new Konektor();
 			LinkedList<Grupa> grupe = (LinkedList<Grupa>) konektor.vratiGrupe();
 			for (Grupa grupa : grupe) {
