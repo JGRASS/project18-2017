@@ -21,8 +21,8 @@ public class SistemskiKontroler {
 		SODodajGrupu.izvrsi(imeGrupe, clanovi, password);
 	}
 
-	public static void izracunajBodove() {
-		SOIzracunajBodove.izvrsi();
+	public static double izracunajBodove() {
+		return SOIzracunajBodove.izvrsi();
 	}
 
 	public static LinkedList<Clan> napraviListuClanova(String[] imena, String[] prezimena, int brojClanova,
